@@ -7,14 +7,14 @@ interface Props {
   items: string[];
 }
 const CategoryList: React.FC<Props> = ({title, items}) => {
-  const [activeTab, setActiveTab] = useState("");
+  const [activeItem, setActiveItem] = useState("");
 
   const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     const {innerText} = e.target as HTMLLIElement;
-    if (innerText === activeTab) {
-      setActiveTab("");
+    if (innerText === activeItem) {
+      setActiveItem("");
     } else {
-      setActiveTab(innerText);
+      setActiveItem(innerText);
     }
   };
 
@@ -23,7 +23,11 @@ const CategoryList: React.FC<Props> = ({title, items}) => {
       <Title>{title}</Title>
       <List>
         {items.map((item, idx) => (
-          <Item key={idx} handleClick={handleClick} active={item === activeTab}>
+          <Item
+            key={idx}
+            handleClick={handleClick}
+            active={item === activeItem}
+          >
             {item}
           </Item>
         ))}

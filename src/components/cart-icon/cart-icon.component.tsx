@@ -1,6 +1,6 @@
 import {Container, Bag, Count} from "./cart-icon.styles";
 
-const CartIcon = () => {
+const CartIcon: React.FC = () => {
   return (
     <Container>
       <Bag />

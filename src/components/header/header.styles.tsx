@@ -23,15 +23,6 @@ export const Menu = styled.nav`
   align-items: center;
 `;
 
-export const NavOption = styled.a`
-  font-size: 17px;
-  color: ${({theme}) => theme.accent};
-
-  &:not(:last-of-type) {
-    margin-right: 25px;
-  }
-`;
-
 export const UserIcon = styled(Person)`
   width: 25px;
   margin-right: 15px;

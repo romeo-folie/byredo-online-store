@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const CategorySection = styled.div`
-  width: 25%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   /* background-color: red; */
@@ -20,7 +20,7 @@ const CategorySection = styled.div`
 `;
 
 const ProductList = styled.div`
-  width: 55%;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
