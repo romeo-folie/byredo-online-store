@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface Props {
-  active?: boolean;
+  active: boolean;
 }
 
 export const Item = styled.li<Props>`
