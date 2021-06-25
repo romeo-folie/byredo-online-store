@@ -19,11 +19,7 @@ const Header = () => {
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
-    if (innerText === activeOption) {
-      setActiveOption("");
-    } else {
-      setActiveOption(innerText);
-    }
+    setActiveOption(innerText);
   };
 
   return (

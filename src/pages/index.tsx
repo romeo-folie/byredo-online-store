@@ -6,6 +6,7 @@ import {
   FilterColumn,
 } from "../pageStyles/index.styles";
 import ShopItem from "../components/shop-item/shop-item.component";
+import Selector from "../components/selector/selector.component";
 
 const categories = [
   {title: "Explore", items: ["Best Sellers", "New Arrivals", "Gift Cards"]},
@@ -117,7 +118,10 @@ const Home: React.FC = () => {
           />
         ))}
       </ProductList>
-      <FilterColumn />
+      <FilterColumn>
+        <Selector name="Filter" />
+        <Selector name="Sort" />
+      </FilterColumn>
     </Container>
   );
 };

@@ -6,11 +6,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 25%;
+  cursor: pointer;
+  /* margin: 5px; */
 `;
 
-export const Photo = styled.img`
-  max-width: 250px;
-  filter: drop-shadow(30px 15px 4px rgba(0,0,0, 0.1));
+export const Photo = styled.img<{isHovered: boolean}>`
+  transition: all 2s;
+  max-width: ${({isHovered}) => (isHovered ? "270px" : "250px")};
+  filter: drop-shadow(30px 15px 4px rgba(0, 0, 0, 0.1));
 `;
 
 export const Title = styled.h3`

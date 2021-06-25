@@ -33,6 +33,11 @@ export const ProductList = styled.div`
 `;
 
 export const FilterColumn = styled.div`
+  padding-top: 70px;
+  padding-right: 15px;
   width: 15%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
   /* background-color: green; */
 `;

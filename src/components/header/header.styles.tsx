@@ -12,6 +12,7 @@ export const Container = styled.div`
   height: 70px;
   align-items: center;
   padding: 15px;
+  padding-right: 25px;
   z-index: 20;
 `;
 
@@ -26,12 +27,12 @@ export const Menu = styled.nav`
 
 export const UserIcon = styled(Person)`
   width: 25px;
-  margin-right: 15px;
+  margin-right: 20px;
   margin-top: 3px;
 `;
 
 export const SearchIcon = styled(Search)`
   width: 25px;
-  margin-right: 15px;
+  margin-right: 20px;
   margin-top: 5px;
 `;
