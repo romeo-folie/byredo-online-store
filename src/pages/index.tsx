@@ -2,10 +2,11 @@ import CategoryList from "../components/category-list/category-list.component";
 import {
   Container,
   CategorySection,
-  ProductList,
-  FilterColumn,
+  ProductSection,
+  Grid,
+  FilterSection,
 } from "../pageStyles/index.styles";
-import ShopItem from "../components/shop-item/shop-item.component";
+import Product from "../components/product/product.component";
 import Selector from "../components/selector/selector.component";
 
 const categories = [
@@ -59,19 +60,36 @@ const products = [
     price: "70",
   },
   {
-    path: "/images/products/mob_bibliothequeandle-240-g_1-removebg-preview.png",
-    title: "Bibliotheque Candle",
-    price: "20",
+    path: "/images/products/mob_mmink_edp-100_a-removebg-preview.png",
+    title: "M/Mink",
+    price: "40",
+  },
+  {
+    path: "/images/products/mob_bal-d-afrique-perfumed-oil-7-5-ml_1-removebg-preview.png",
+    title: "Bal d'afrique",
+    price: "50",
+  },
+
+  {
+    path: "/images/products/isono_byredo_210414-215_kopia__1440x16401500x1680-removebg-preview.png",
+    title: "Isono",
+    price: "80",
+  },
+
+  {
+    path: "/images/products/1996-removebg-preview.png",
+    title: "1996",
+    price: "40",
+  },
+  {
+    path: "/images/products/takenaka_byredo_210414-342_1440x16401500x1680-removebg-preview.png",
+    title: "Takenaka",
+    price: "120",
   },
   {
     path: "/images/products/mob_la-selection-nomade-3x12-ml_1_1-removebg-preview.png",
     title: "La selection nomade",
     price: "30",
-  },
-  {
-    path: "/images/products/mob_mmink_edp-100_a-removebg-preview.png",
-    title: "M/Mink",
-    price: "40",
   },
   {
     path: "/images/products/edp_trvx_1500x1680-removebg-preview.png",
@@ -82,6 +100,11 @@ const products = [
     path: "/images/products/br_colour_stick_open_1500x1680_chin_of_gold_1-removebg-preview.png",
     title: "Chin of Gold",
     price: "80",
+  },
+  {
+    path: "/images/products/mob_bibliothequeandle-240-g_1-removebg-preview.png",
+    title: "Bibliotheque Candle",
+    price: "20",
   },
   {
     path: "/images/products/desk_OpenSky_EDP-100_D-removebg-preview.png",
@@ -108,20 +131,22 @@ const Home: React.FC = () => {
           <CategoryList title={cat.title} items={cat.items} key={idx} />
         ))}
       </CategorySection>
-      <ProductList>
-        {products.map((prod, idx) => (
-          <ShopItem
-            path={prod.path}
-            title={prod.title}
-            price={prod.price}
-            key={prod.path}
-          />
-        ))}
-      </ProductList>
-      <FilterColumn>
+      <ProductSection>
+        <Grid>
+          {products.map((prod, idx) => (
+            <Product
+              path={prod.path}
+              title={prod.title}
+              price={prod.price}
+              key={prod.path}
+            />
+          ))}
+        </Grid>
+      </ProductSection>
+      <FilterSection>
         <Selector name="Filter" />
         <Selector name="Sort" />
-      </FilterColumn>
+      </FilterSection>
     </Container>
   );
 };

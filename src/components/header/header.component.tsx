@@ -15,7 +15,7 @@ const navOptions = [
 ];
 
 const Header = () => {
-  const [activeOption, setActiveOption] = useState("");
+  const [activeOption, setActiveOption] = useState("Perfume");
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;

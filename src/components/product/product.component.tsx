@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Container, Photo, Title, Price} from "./shop-item.styles";
+import {Container, Photo, Title, Price} from "./product.styles";
 
 interface Props {
   path: string;
@@ -7,7 +7,7 @@ interface Props {
   price: string | number;
 }
 
-const ShopItem: React.FC<Props> = ({path, title, price}) => {
+const Product: React.FC<Props> = ({path, title, price}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const handleMouseOver = () => {
     setIsHovered(true);
@@ -26,4 +26,4 @@ const ShopItem: React.FC<Props> = ({path, title, price}) => {
   );
 };
 
-export default ShopItem;
+export default Product;

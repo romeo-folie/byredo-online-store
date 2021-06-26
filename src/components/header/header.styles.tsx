@@ -18,6 +18,14 @@ export const Container = styled.div`
 
 export const Brand = styled(Logo)`
   width: 100px;
+
+  @media only screen and (min-width: 1600px) {
+    width: 130px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    width: 80px;
+  }
 `;
 
 export const Menu = styled.nav`
@@ -29,10 +37,26 @@ export const UserIcon = styled(Person)`
   width: 25px;
   margin-right: 20px;
   margin-top: 3px;
+
+  @media only screen and (min-width: 1600px) {
+    width: 30px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    width: 20px;
+  }
 `;
 
 export const SearchIcon = styled(Search)`
   width: 25px;
   margin-right: 20px;
   margin-top: 5px;
+
+  @media only screen and (min-width: 1600px) {
+    width: 30px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    width: 20px;
+  }
 `;
