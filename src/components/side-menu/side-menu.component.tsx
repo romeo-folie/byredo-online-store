@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import {
   Container,
   Header,
@@ -11,6 +11,7 @@ import {
   InstaIcon,
   FacebookIcon,
 } from "./side-menu.styles";
+import {MenuContext} from "../../context/sidemenu.state";
 
 const navOptions = [
   "Leather",
@@ -23,11 +24,13 @@ const navOptions = [
 ];
 
 const SideMenu = () => {
+  const {isOpen, toggleMenu} = useContext(MenuContext);
+
   return (
-    <Container>
+    <Container isOpen={isOpen}>
       <Header>
         <Brand />
-        <CloseIcon />
+        <CloseIcon onClick={toggleMenu} />
       </Header>
       <Menu>
         {navOptions.map((opt, idx) => (

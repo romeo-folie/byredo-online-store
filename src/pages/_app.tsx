@@ -3,6 +3,7 @@ import {createGlobalStyle, ThemeProvider} from "styled-components";
 import Header from "../components/header/header.component";
 import Head from "next/head";
 import SideMenu from "../components/side-menu/side-menu.component";
+import SideMenuState from "../context/sidemenu.state";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -70,8 +71,10 @@ function MyApp({Component, pageProps}: AppProps) {
             crossOrigin=""
           />
         </Head>
-        <Header />
-        <SideMenu />
+        <SideMenuState>
+          <Header />
+          <SideMenu />
+        </SideMenuState>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

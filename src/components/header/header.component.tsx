@@ -6,10 +6,11 @@ import {
   SearchIcon,
   MenuIcon,
 } from "./header.styles";
-import {useState, MouseEvent} from "react";
+import {useState, MouseEvent, useContext} from "react";
 import Link from "next/link";
 import CartIcon from "../cart-icon/cart-icon.component";
 import NavItem from "../nav-item/nav-item.component";
+import {MenuContext} from "../../context/sidemenu.state";
 
 const navOptions = [
   "Leather",
@@ -23,6 +24,7 @@ const navOptions = [
 
 const Header = () => {
   const [activeOption, setActiveOption] = useState("Perfume");
+  const {toggleMenu} = useContext(MenuContext);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -31,7 +33,7 @@ const Header = () => {
 
   return (
     <Container>
-      <MenuIcon />
+      <MenuIcon onClick={toggleMenu} />
       <Link href="/" passHref replace>
         <a>
           <Brand />
