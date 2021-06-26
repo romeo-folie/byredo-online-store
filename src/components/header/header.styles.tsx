@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import Logo from "../../assets/vectors/logo.svg";
-import Person from "../../assets/vectors/person-outline.svg";
-import Search from "../../assets/vectors/search-outline.svg";
+import Logo from "../../../public/vectors/logo.svg";
+import Person from "../../../public/vectors/person-outline.svg";
+import Search from "../../../public/vectors/search-outline.svg";
+import MIcon from "../../../public/vectors/menu.svg";
 
 export const Container = styled.div`
   position: absolute;
@@ -25,6 +26,10 @@ export const Brand = styled(Logo)`
 
   @media only screen and (max-width: 1024px) {
     width: 80px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
   }
 `;
 
@@ -58,5 +63,14 @@ export const SearchIcon = styled(Search)`
 
   @media only screen and (max-width: 1024px) {
     width: 20px;
+  }
+`;
+
+export const MenuIcon = styled(MIcon)`
+  width: 30px;
+  cursor: pointer;
+
+  @media only screen and (min-width: 1000px) {
+    display: none;
   }
 `;

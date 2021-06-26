@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Cart from "../../assets/vectors/shopping-bag.svg";
+import Cart from "../../../public/vectors/shopping-bag.svg";
 
 export const Container = styled.div`
   position: relative;

@@ -2,6 +2,7 @@ import type {AppProps} from "next/app";
 import {createGlobalStyle, ThemeProvider} from "styled-components";
 import Header from "../components/header/header.component";
 import Head from "next/head";
+import SideMenu from "../components/side-menu/side-menu.component";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -70,6 +71,7 @@ function MyApp({Component, pageProps}: AppProps) {
           />
         </Head>
         <Header />
+        <SideMenu />
         <Component {...pageProps} />
       </ThemeProvider>
     </>

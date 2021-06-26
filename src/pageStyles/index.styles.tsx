@@ -44,7 +44,6 @@ export const ProductSection = styled.div`
   @media only screen and (max-width: 1000px) {
     width: 100%;
     padding-top: 0;
-    /* margin-top: 10px; */
   }
 `;
 
@@ -52,8 +51,7 @@ export const Grid = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 230px));
-  grid-column-gap: 15px;
-  grid-row-gap: 5px;
+  grid-gap: 15px;
   justify-content: center;
 
   @media only screen and (min-width: 1600px) {
@@ -69,7 +67,7 @@ export const FilterSection = styled.div`
   display: flex;
   flex-direction: column;
   /* align-items: flex-end; */
-  /* background-color: green; */
+  /* background-color: white; */
 
   @media only screen and (min-width: 1600px) {
     padding-top: 90px;

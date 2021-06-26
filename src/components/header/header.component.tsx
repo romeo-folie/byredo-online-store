@@ -1,4 +1,11 @@
-import {Container, Brand, Menu, UserIcon, SearchIcon} from "./header.styles";
+import {
+  Container,
+  Brand,
+  Menu,
+  UserIcon,
+  SearchIcon,
+  MenuIcon,
+} from "./header.styles";
 import {useState, MouseEvent} from "react";
 import Link from "next/link";
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -24,6 +31,7 @@ const Header = () => {
 
   return (
     <Container>
+      <MenuIcon />
       <Link href="/" passHref replace>
         <a>
           <Brand />
