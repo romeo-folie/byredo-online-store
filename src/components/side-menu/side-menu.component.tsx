@@ -18,16 +18,6 @@ import {
 } from "../../context/sidemenu.state";
 import Link from "next/link";
 
-const navOptions = [
-  "Leather",
-  "Eyewear",
-  "Perfume",
-  "Body care",
-  "Home fragrance",
-  "Accessories",
-  "About",
-];
-
 const SideMenu = () => {
   const {state, dispatch} = useContext(MenuContext);
 
@@ -38,7 +28,7 @@ const SideMenu = () => {
         <CloseIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
       </Header>
       <Menu>
-        {navOptions.map((opt, idx) => (
+        {state.navOptions.map((opt, idx) => (
           <Link passHref key={idx} href="#" replace>
             <Option
               onClick={() => dispatch({type: TOGGLE_SUBMENU, payload: opt})}

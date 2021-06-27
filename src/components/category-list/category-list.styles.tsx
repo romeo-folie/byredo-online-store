@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Title = styled.h4`
   font-size: 1rem;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 
   @media only screen and (min-width: 1600px) {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 `;
 

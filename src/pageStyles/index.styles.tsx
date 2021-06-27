@@ -18,6 +18,12 @@ export const CategorySection = styled.div`
   /* background-color: red; */
   padding-top: 70px;
   padding-left: 15px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   @media only screen and (min-width: 1600px) {
     padding-top: 90px;
   }

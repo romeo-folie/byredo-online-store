@@ -47,9 +47,9 @@ export const UserIcon = styled(Person)`
     width: 30px;
   }
 
-  @media only screen and (max-width: 1024px) {
+  /* @media only screen and (max-width: 1024px) {
     width: 20px;
-  }
+  } */
 `;
 
 export const SearchIcon = styled(Search)`
@@ -61,9 +61,9 @@ export const SearchIcon = styled(Search)`
     width: 30px;
   }
 
-  @media only screen and (max-width: 1024px) {
+  /* @media only screen and (max-width: 1024px) {
     width: 20px;
-  }
+  } */
 `;
 
 export const MenuIcon = styled(MIcon)`

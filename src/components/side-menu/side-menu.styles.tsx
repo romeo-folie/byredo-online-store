@@ -34,6 +34,10 @@ export const Menu = styled.nav`
   flex-direction: column;
   margin-top: 45px;
   /* background-color: red; */
+
+  @media only screen and (max-width: 340px) {
+    margin-top: 25px;
+  }
 `;
 
 export const Option = styled.a`
@@ -63,20 +67,12 @@ export const Brand = styled(Logo)`
 
 export const CloseIcon = styled(X)``;
 
-export const InstaIcon = styled(Insta)``;
+export const InstaIcon = styled(Insta)`
+  margin-right: 13px;
+`;
 
 export const FacebookIcon = styled(Fb)``;
 
 export const SocialWrap = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 20%;
-
-  @media only screen and (min-width: 600px) {
-    width: 12%;
-  }
-
-  @media only screen and (min-width: 800px) {
-    width: 10%;
-  }
 `;

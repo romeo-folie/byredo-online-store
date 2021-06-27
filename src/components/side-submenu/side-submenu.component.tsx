@@ -5,6 +5,7 @@ import {
   TitleWrap,
   ArrowIcon,
   Title,
+  Menu,
 } from "./side-submenu.styles";
 import {CloseIcon} from "../side-menu/side-menu.styles";
 import {
@@ -12,6 +13,7 @@ import {
   TOGGLE_MENU,
   TOGGLE_SUBMENU,
 } from "../../context/sidemenu.state";
+import CategoryList from "../category-list/category-list.component";
 
 const SideSubMenu = () => {
   const {state, dispatch} = useContext(MenuContext);
@@ -30,6 +32,11 @@ const SideSubMenu = () => {
         </TitleWrap>
         <CloseIcon onClick={handleSubMenuClose} />
       </Header>
+      <Menu>
+        {state.categories.map((cat, idx) => (
+          <CategoryList title={cat.title} items={cat.items} key={idx} />
+        ))}
+      </Menu>
     </Container>
   );
 };

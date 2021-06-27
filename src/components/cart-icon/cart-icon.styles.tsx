@@ -19,9 +19,9 @@ export const Count = styled.span`
     font-size: 0.7rem;
   }
 
-  @media only screen and (max-width: 1024px) {
+  /* @media only screen and (max-width: 1024px) {
     font-size: 0.55rem;
-  }
+  } */
 `;
 
 export const Bag = styled(Cart)`
@@ -31,7 +31,7 @@ export const Bag = styled(Cart)`
     width: 30px;
   }
 
-  @media only screen and (max-width: 1024px) {
+  /* @media only screen and (max-width: 1024px) {
     width: 20px;
-  }
+  } */
 `;
