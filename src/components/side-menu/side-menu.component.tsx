@@ -1,4 +1,4 @@
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import {
   Container,
   Header,
@@ -11,7 +11,12 @@ import {
   InstaIcon,
   FacebookIcon,
 } from "./side-menu.styles";
-import {MenuContext} from "../../context/sidemenu.state";
+import {
+  MenuContext,
+  TOGGLE_MENU,
+  TOGGLE_SUBMENU,
+} from "../../context/sidemenu.state";
+import Link from "next/link";
 
 const navOptions = [
   "Leather",
@@ -24,17 +29,21 @@ const navOptions = [
 ];
 
 const SideMenu = () => {
-  const {isOpen, toggleMenu} = useContext(MenuContext);
+  const {state, dispatch} = useContext(MenuContext);
 
   return (
-    <Container isOpen={isOpen}>
+    <Container isOpen={state.isMenuOpen}>
       <Header>
         <Brand />
-        <CloseIcon onClick={toggleMenu} />
+        <CloseIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
       </Header>
       <Menu>
         {navOptions.map((opt, idx) => (
-          <Option key={idx}>{opt}</Option>
+          <Link passHref key={idx} href="#" replace>
+            <Option onClick={() => dispatch({type: TOGGLE_SUBMENU})}>
+              {opt}
+            </Option>
+          </Link>
         ))}
       </Menu>
       <Footer>
