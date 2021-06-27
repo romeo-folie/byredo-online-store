@@ -3,7 +3,7 @@ import {Item} from "./category-item.styles";
 
 interface Props {
   handleClick: (e: MouseEvent<HTMLLIElement>) => void;
-  active?: boolean;
+  active: boolean;
 }
 
 const CategoryItem: React.FC<Props> = ({children, active, handleClick}) => {

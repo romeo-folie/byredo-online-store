@@ -12,19 +12,9 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import NavItem from "../nav-item/nav-item.component";
 import {MenuContext, TOGGLE_MENU} from "../../context/sidemenu.state";
 
-const navOptions = [
-  "Leather",
-  "Eyewear",
-  "Perfume",
-  "Body care",
-  "Home fragrance",
-  "Accessories",
-  "About",
-];
-
 const Header = () => {
   const [activeOption, setActiveOption] = useState("Perfume");
-  const {dispatch} = useContext(MenuContext);
+  const {state, dispatch} = useContext(MenuContext);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -40,7 +30,7 @@ const Header = () => {
         </a>
       </Link>
       <Menu>
-        {navOptions.map((opt, idx) => (
+        {state.navOptions.map((opt, idx) => (
           <NavItem
             key={idx}
             onClick={handleClick}

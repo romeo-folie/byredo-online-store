@@ -1,3 +1,4 @@
+import {useContext} from "react";
 import CategoryList from "../components/category-list/category-list.component";
 import {
   Container,
@@ -8,35 +9,7 @@ import {
 } from "../pageStyles/index.styles";
 import Product from "../components/product/product.component";
 import Selector from "../components/selector/selector.component";
-
-const categories = [
-  {title: "Explore", items: ["Best Sellers", "New Arrivals", "Gift Cards"]},
-  {
-    title: "Personal Fragrances",
-    items: [
-      "Perfumes",
-      "Travel editions",
-      "Hair Perfumes",
-      "Roll-on perfumed oils",
-      "Perfume extracts",
-    ],
-  },
-  {
-    title: "Scents",
-    items: [
-      "Bal d'afrique",
-      "Biblioteque",
-      "Blanche",
-      "Eleventh Hour",
-      "Gypsy Water",
-      "La Tulipe",
-      "Mojave Ghost",
-      "Rose of No Man's Land",
-      "Super Cedar",
-      "Velvet Haze",
-    ],
-  },
-];
+import {MenuContext} from "../context/sidemenu.state";
 
 const products = [
   {
@@ -124,10 +97,12 @@ const products = [
 ];
 
 const Home: React.FC = () => {
+  const {state} = useContext(MenuContext);
+
   return (
     <Container>
       <CategorySection>
-        {categories.map((cat, idx) => (
+        {state.categories.map((cat, idx) => (
           <CategoryList title={cat.title} items={cat.items} key={idx} />
         ))}
       </CategorySection>

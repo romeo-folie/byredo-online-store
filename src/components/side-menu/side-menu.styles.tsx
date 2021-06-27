@@ -6,13 +6,15 @@ import Fb from "../../../public/vectors/facebook.svg";
 
 export const Container = styled.div<{isOpen: boolean}>`
   height: 100vh;
-  width: 100%;
   padding: 15px;
   background-color: ${({theme}) => theme.primary};
   position: absolute;
   overflow: hidden;
   z-index: 50;
-  display: ${({isOpen}) => (isOpen ? "block" : "none")};
+  width: ${({isOpen}) => (isOpen ? "100%" : "0")};
+  display: ${({isOpen}) => (isOpen ? "block" : "hidden")};
+  left: ${({isOpen}) => (isOpen ? "0" : "-50px")};
+  transition: all 0.5s;
 
   @media only screen and (min-width: 1000px) {
     display: none;
@@ -34,11 +36,10 @@ export const Menu = styled.nav`
   /* background-color: red; */
 `;
 
-export const Option = styled.a<{active?: boolean}>`
-  font-size: ${({active}) => (active ? "1.3rem" : "1.25rem")};
-  font-weight: ${({active}) => (active ? "bold" : "normal")};
-  color: ${({active, theme}) => (active ? theme.accent : "rgba(0, 0, 0, 0.6)")};
-  transition: font-size 1s;
+export const Option = styled.a`
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.6);
 
   &:not(:last-of-type) {
     margin-bottom: 25px;

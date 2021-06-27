@@ -5,6 +5,7 @@ import Arrow from "../../../public/vectors/arrow-left.svg";
 
 export const Container = styled(MContainer)`
   background-color: ${({theme}) => theme.secondary};
+  transition: none;
 `;
 
 export const Header = styled(MHeader)``;
@@ -14,14 +15,12 @@ export const TitleWrap = styled.div`
   justify-content: space-between;
   padding-top: 2px;
   align-items: center;
-  width: 35%;
 `;
 
 export const Title = styled.span`
-  padding-top: 2px;
-  font-size: 1.3rem;
+  padding-top: 3px;
+  font-size: 1.25rem;
+  margin-left: 15px;
 `;
 
-export const ArrowIcon = styled(Arrow)`
-  margin-bottom: 2px;
-`;
+export const ArrowIcon = styled(Arrow)``;

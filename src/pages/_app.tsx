@@ -31,6 +31,7 @@ body {
     Ubuntu, Cantarell, Segoe UI, Fira Sans, Droid Sans, sans-serif;
   position: relative;
   font-size: 15px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {

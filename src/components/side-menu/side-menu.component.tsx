@@ -40,7 +40,9 @@ const SideMenu = () => {
       <Menu>
         {navOptions.map((opt, idx) => (
           <Link passHref key={idx} href="#" replace>
-            <Option onClick={() => dispatch({type: TOGGLE_SUBMENU})}>
+            <Option
+              onClick={() => dispatch({type: TOGGLE_SUBMENU, payload: opt})}
+            >
               {opt}
             </Option>
           </Link>
