@@ -22,9 +22,9 @@ export const TitleWrap = styled.div`
 `;
 
 export const Title = styled.span`
-  padding-top: 3px;
+  padding-top: 4px;
   font-size: 1.3rem;
-  margin-left: 15px;
+  margin-left: 25px;
 `;
 
 export const ArrowIcon = styled(Arrow)``;
@@ -32,5 +32,5 @@ export const ArrowIcon = styled(Arrow)``;
 export const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
+  padding-left: 50px;
 `;

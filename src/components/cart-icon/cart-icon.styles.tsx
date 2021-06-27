@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Cart from "../../../public/vectors/shopping-bag.svg";
+import Cart from "../../../public/vectors/bag.svg";
 
 export const Container = styled.div`
   position: relative;
@@ -12,7 +12,8 @@ export const Container = styled.div`
 export const Count = styled.span`
   position: absolute;
   font-size: 0.6rem;
-  bottom: 2px;
+  bottom: 3px;
+  color: ${({theme}) => theme.secondary};
 
   @media only screen and (min-width: 1600px) {
     bottom: 3px;
