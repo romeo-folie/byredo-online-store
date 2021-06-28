@@ -75,9 +75,10 @@ export const ProdDesc = styled.p`
 export const ProductSection = styled.div`
   width: 55%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+  overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -95,20 +96,29 @@ export const ProductSection = styled.div`
   @media only screen and (max-width: 1000px) {
     width: 100%;
     height: 70%;
+    flex-direction: row;
+    justify-content: center;
+    overflow-y: hidden;
+    overflow-x: auto;
     /* padding-top: 80px; */
   }
 `;
 
 export const ProdImage = styled.img`
-  /* max-width: 100%; */
-  width: 60%;
+  width: 70%;
   filter: drop-shadow(30px 15px 4px rgba(0, 0, 0, 0.1));
+  margin: 100px 0;
 
   @media only screen and (max-width: 1024px) {
     width: 80%;
+    /* margin: auto 10%; */
+    /* margin: 0 100px; */
   }
+`;
 
-  
+export const ImageWrap = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 export const DetailSection = styled.div`
@@ -202,3 +212,5 @@ export const CartButton = styled.button`
   margin-bottom: 30px;
   cursor: pointer;
 `;
+
+

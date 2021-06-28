@@ -17,7 +17,9 @@ import {
   Name,
   Type,
   Row,
+  ImageWrap,
 } from "../../pageStyles/products/product.styles";
+import ColoredCircle from "../../components/colored-circle/colored-circle.component";
 
 const productDetails = [
   {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
@@ -39,17 +41,22 @@ const ProductPage = () => {
         </ProdDesc>
       </DescSection>
       <ProductSection>
-        <ProdImage src="/images/products/mob_blanche-body-wash_1-removebg-preview.png" />
+        <ProdImage src="/images/products/isono_byredo_210414-215_kopia__1440x16401500x1680-removebg-preview.png" />
       </ProductSection>
       <DetailSection>
         {/* Add name and prod type here. Hide till we're in mobile mode */}
-        <Type>Body Wash</Type>
-        <Name>{"Bal d'Afrique"}</Name>
+        <Type>Eyewear</Type>
+        <Name>The Bohemian</Name>
         <PriceRow>
-          <Price>{"$ 40"}</Price>
+          <Price>{"$ 140"}</Price>
           <Row>
-            <Size>225 ml</Size>
-            <Size>450 ml</Size>
+            {/* <Size>225 ml</Size>
+            <Size>450 ml</Size> */}
+            <ColoredCircle color="#d6cf86" active />
+            <ColoredCircle color="#9bafd0" />
+            <ColoredCircle color="#414345" />
+            <ColoredCircle color="#b29495" />
+            <ColoredCircle color="#9bafd4" />
           </Row>
         </PriceRow>
         {productDetails.map((det) => (
