@@ -6,6 +6,7 @@ import {
   ProductSection,
   Grid,
   FilterSection,
+  Title,
 } from "../pageStyles/index.styles";
 import Product from "../components/product/product.component";
 import Selector from "../components/selector/selector.component";
@@ -122,6 +123,7 @@ const Home: React.FC = () => {
         <Selector name="Filter" />
         <Selector name="Sort" />
       </FilterSection>
+      <Title>Perfume / New arrivals</Title>
     </Container>
   );
 };

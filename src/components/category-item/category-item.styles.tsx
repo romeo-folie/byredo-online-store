@@ -10,7 +10,7 @@ export const Item = styled.li<Props>`
   font-weight: ${({active}) => (active ? "bold" : "normal")};
   cursor: pointer;
   color: ${({active}) => (active ? "black" : "rgba(0, 0, 0, 0.6)")};
-  transition: padding 1s;
+  transition: padding 0.5s;
   font-size: 1rem;
 
   @media only screen and (min-width: 1600px) {

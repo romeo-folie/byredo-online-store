@@ -10,8 +10,8 @@ export const Container = styled.div`
     margin-bottom: 10px;
   } */
   @media only screen and (max-width: 1000px) {
-    width: 42%;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 48%;
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
   }
 `;
 

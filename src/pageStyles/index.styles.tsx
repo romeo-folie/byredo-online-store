@@ -84,8 +84,25 @@ export const FilterSection = styled.div`
     display: flex;
     flex-direction: row;
     padding-left: 15px;
-    padding-right: 25px;
-    justify-content: space-around;
-    padding-top: 85px;
+    /* padding-right: 25px; */
+    justify-content: space-between;
+    padding-top: 0;
+    /* padding-top: 85px; */
+  }
+`;
+
+export const Title = styled.h3`
+  font-weight: normal;
+  font-size: 1.4rem;
+  margin-top: 75px;
+  padding-left: 15px;
+  /* text-align: center; */
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1.2rem;
+  }
+
+  @media only screen and (min-width: 1000px) {
+    display: none;
   }
 `;

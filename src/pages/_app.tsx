@@ -32,6 +32,7 @@ body {
   position: relative;
   font-size: 15px;
   -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
 }
 
 a {
