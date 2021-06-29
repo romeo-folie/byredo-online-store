@@ -14,6 +14,7 @@ export const Container = styled.div<{active?: boolean}>`
   height: 18px;
   width: 18px;
   background: transparent;
+  cursor: pointer;
   /* padding: 5px; */
 
   &:not(:last-of-type) {

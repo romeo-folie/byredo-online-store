@@ -107,7 +107,7 @@ export const ProductSection = styled.div`
 export const ProdImage = styled.img`
   width: 70%;
   filter: drop-shadow(30px 15px 4px rgba(0, 0, 0, 0.1));
-  margin: 100px 0;
+  /* margin: 100px 0; */
 
   @media only screen and (max-width: 1024px) {
     width: 80%;

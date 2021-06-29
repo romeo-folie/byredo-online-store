@@ -19,7 +19,7 @@ import {
   Row,
   ImageWrap,
 } from "../../pageStyles/products/product.styles";
-import ColoredCircle from "../../components/colored-circle/colored-circle.component";
+import ColorSelector from "../../components/color-selector/color-selector.component";
 
 const productDetails = [
   {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
@@ -27,6 +27,8 @@ const productDetails = [
   {name: "Base", desc: "Black Amber, Moroccan Cedarwood, Musk, Vetiver"},
   {name: "Shipping", desc: "Enter zip code"},
 ];
+
+const colors = ["#d6cf86", "#9bafd0", "#414345", "#b29495", "#9bafd4"];
 
 const ProductPage = () => {
   return (
@@ -52,17 +54,13 @@ const ProductPage = () => {
           <Row>
             {/* <Size>225 ml</Size>
             <Size>450 ml</Size> */}
-            <ColoredCircle color="#d6cf86" active />
-            <ColoredCircle color="#9bafd0" />
-            <ColoredCircle color="#414345" />
-            <ColoredCircle color="#b29495" />
-            <ColoredCircle color="#9bafd4" />
+            <ColorSelector colors={colors} />
           </Row>
         </PriceRow>
-        {productDetails.map((det) => (
-          <DetailRow key={det.name}>
-            <DetailName>{det.name}</DetailName>
-            <DetailDesc>{det.desc}</DetailDesc>
+        {productDetails.map((detail) => (
+          <DetailRow key={detail.name}>
+            <DetailName>{detail.name}</DetailName>
+            <DetailDesc>{detail.desc}</DetailDesc>
           </DetailRow>
         ))}
         <CartButton>Add To Cart</CartButton>
