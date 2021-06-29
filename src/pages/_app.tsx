@@ -5,6 +5,7 @@ import Head from "next/head";
 import SideMenu from "../components/side-menu/side-menu.component";
 import SideMenuState from "../context/sidemenu.state";
 import SideSubMenu from "../components/side-submenu/side-submenu.component";
+import Cart from "../components/cart/cart.component";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -79,6 +80,7 @@ function MyApp({Component, pageProps}: AppProps) {
           <SideMenu />
           <SideSubMenu />
         </SideMenuState>
+        <Cart />
         <Component {...pageProps} />
       </ThemeProvider>
     </>

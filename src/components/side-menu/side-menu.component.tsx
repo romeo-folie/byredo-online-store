@@ -28,12 +28,12 @@ const SideMenu = () => {
         <CloseIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
       </Header>
       <Menu>
-        {state.navOptions.map((opt, idx) => (
+        {state.navOptions.map((option, idx) => (
           <Link passHref key={idx} href="#" replace>
             <Option
-              onClick={() => dispatch({type: TOGGLE_SUBMENU, payload: opt})}
+              onClick={() => dispatch({type: TOGGLE_SUBMENU, payload: option})}
             >
-              {opt}
+              {option}
             </Option>
           </Link>
         ))}
