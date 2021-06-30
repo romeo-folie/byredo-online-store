@@ -25,23 +25,24 @@ import {
   Table,
   Upper,
 } from "./cart.styles";
-import Link from "next/link";
 import CartItem from "../cart-item/cart-item.component";
 import {CloseIcon} from "../side-menu/side-menu.styles";
+import {useContext} from "react";
+import {MenuContext, TOGGLE_CART} from "../../context/menu.state";
 
 const Cart = () => {
+  const {state, dispatch} = useContext(MenuContext);
+
   return (
     <>
-      <Overlay isOpen />
-      <Container isOpen>
+      <Overlay isOpen={state.isCartOpen} />
+      <Container isOpen={state.isCartOpen}>
         <ItemSection>
           <Row>
-            <Link href="#" passHref>
-              <BackLink>
-                <BackIcon />
-                <BackText>Back to store</BackText>
-              </BackLink>
-            </Link>
+            <BackLink onClick={() => dispatch({type: TOGGLE_CART})}>
+              <BackIcon />
+              <BackText>Back to store</BackText>
+            </BackLink>
           </Row>
           <TitleRow>
             <ItemSectionTitle>Shopping cart</ItemSectionTitle>
@@ -117,7 +118,7 @@ const Cart = () => {
         </ItemSection>
         <SummarySection>
           <CloseRow>
-            <CloseIcon />
+            <CloseIcon onClick={() => dispatch({type: TOGGLE_CART})} />
           </CloseRow>
           <TitleRow>
             <SummarySectionTitle>Summary</SummarySectionTitle>

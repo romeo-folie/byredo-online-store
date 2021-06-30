@@ -15,7 +15,7 @@ import {
   MenuContext,
   TOGGLE_MENU,
   TOGGLE_SUBMENU,
-} from "../../context/sidemenu.state";
+} from "../../context/menu.state";
 import Link from "next/link";
 
 const SideMenu = () => {

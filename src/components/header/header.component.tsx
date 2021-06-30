@@ -10,7 +10,7 @@ import {useState, MouseEvent, useContext} from "react";
 import Link from "next/link";
 import CartIcon from "../cart-icon/cart-icon.component";
 import NavItem from "../nav-item/nav-item.component";
-import {MenuContext, TOGGLE_MENU} from "../../context/sidemenu.state";
+import {MenuContext, TOGGLE_MENU, TOGGLE_CART} from "../../context/menu.state";
 
 const Header = () => {
   const [activeOption, setActiveOption] = useState("Perfume");
@@ -43,7 +43,7 @@ const Header = () => {
       <Menu>
         <SearchIcon />
         <UserIcon />
-        <CartIcon />
+        <CartIcon onClick={() => dispatch({type: TOGGLE_CART})}/>
       </Menu>
     </Container>
   );

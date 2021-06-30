@@ -3,7 +3,7 @@ import {createGlobalStyle, ThemeProvider} from "styled-components";
 import Header from "../components/header/header.component";
 import Head from "next/head";
 import SideMenu from "../components/side-menu/side-menu.component";
-import SideMenuState from "../context/sidemenu.state";
+import MenuState from "../context/menu.state";
 import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
 
@@ -34,6 +34,10 @@ body {
   font-size: 15px;
   -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 a {
@@ -75,12 +79,12 @@ function MyApp({Component, pageProps}: AppProps) {
             crossOrigin=""
           />
         </Head>
-        <SideMenuState>
+        <MenuState>
           <Header />
           <SideMenu />
           <SideSubMenu />
-        </SideMenuState>
-        <Cart />
+          <Cart />
+        </MenuState>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

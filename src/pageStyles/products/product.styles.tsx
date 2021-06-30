@@ -212,5 +212,3 @@ export const CartButton = styled.button`
   margin-bottom: 30px;
   cursor: pointer;
 `;
-
-

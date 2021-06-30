@@ -10,7 +10,7 @@ import {
 } from "../pageStyles/index.styles";
 import Product from "../components/product/product.component";
 import Selector from "../components/selector/selector.component";
-import {MenuContext} from "../context/sidemenu.state";
+import {MenuContext} from "../context/menu.state";
 
 const products = [
   {

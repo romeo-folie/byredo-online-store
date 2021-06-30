@@ -65,7 +65,9 @@ export const Brand = styled(Logo)`
   width: 80px;
 `;
 
-export const CloseIcon = styled(X)``;
+export const CloseIcon = styled(X)`
+  cursor: pointer;
+`;
 
 export const InstaIcon = styled(Insta)`
   margin-right: 13px;

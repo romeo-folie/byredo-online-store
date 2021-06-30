@@ -23,6 +23,10 @@ export const Container = styled.div<{isOpen?: boolean}>`
   transition: all 0.5s;
   background-color: #ffffff;
   display: flex;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media only screen and (max-width: 1024px) {
     width: ${({isOpen}) => (isOpen ? "100%" : "0")};
@@ -61,6 +65,7 @@ export const BackLink = styled.a`
   text-transform: uppercase;
   display: inherit;
   align-items: inherit;
+  cursor: pointer;
 `;
 
 export const BackText = styled.span`
@@ -80,7 +85,7 @@ export const ItemSectionTitle = styled.h3`
   font-weight: normal;
   margin: 0;
 
-  @media only screen and (min-width: 1600px){
+  @media only screen and (min-width: 1600px) {
     font-size: 2.5rem;
   }
 `;
@@ -127,7 +132,7 @@ export const SummarySectionTitle = styled.h3`
   font-weight: normal;
   margin: 0;
 
-  @media only screen and (min-width: 1600px){
+  @media only screen and (min-width: 1600px) {
     font-size: 1.7rem;
   }
 `;

@@ -12,7 +12,7 @@ import {
   MenuContext,
   TOGGLE_MENU,
   TOGGLE_SUBMENU,
-} from "../../context/sidemenu.state";
+} from "../../context/menu.state";
 import CategoryList from "../category-list/category-list.component";
 
 const SideSubMenu = () => {

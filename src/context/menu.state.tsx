@@ -4,6 +4,7 @@ import {ICategory} from "../types";
 interface IMenu {
   isMenuOpen: boolean;
   isSubMenuOpen: boolean;
+  isCartOpen: boolean;
   title?: string;
   navOptions: string[];
   categories: ICategory[];
@@ -16,10 +17,12 @@ interface ContextType {
 
 export const TOGGLE_MENU = "toggleMenu";
 export const TOGGLE_SUBMENU = "toggleSubMenu";
+export const TOGGLE_CART = "toggleCart";
 
 const initialState = {
   isMenuOpen: false,
   isSubMenuOpen: false,
+  isCartOpen: false,
   title: "",
   navOptions: [
     "Leather",
@@ -62,7 +65,8 @@ const initialState = {
 
 type MenuAction =
   | {type: typeof TOGGLE_MENU}
-  | {type: typeof TOGGLE_SUBMENU; payload?: string};
+  | {type: typeof TOGGLE_SUBMENU; payload?: string}
+  | {type: typeof TOGGLE_CART};
 
 export const MenuContext = createContext<ContextType>({
   state: initialState,
@@ -82,12 +86,17 @@ const MenuReducer = (state: IMenu, action: MenuAction): IMenu => {
         isSubMenuOpen: !state.isSubMenuOpen,
         title: action.payload,
       };
+    case TOGGLE_CART:
+      return {
+        ...state,
+        isCartOpen: !state.isCartOpen,
+      };
     default:
       return state;
   }
 };
 
-const SideMenuState: React.FC = ({children}) => {
+const MenuState: React.FC = ({children}) => {
   const [state, dispatch] = useReducer(MenuReducer, initialState);
 
   return (
@@ -97,4 +106,4 @@ const SideMenuState: React.FC = ({children}) => {
   );
 };
 
-export default SideMenuState;
+export default MenuState;
