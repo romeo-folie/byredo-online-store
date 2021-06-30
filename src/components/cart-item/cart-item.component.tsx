@@ -10,22 +10,32 @@ import {
   Price,
   QtyBtn,
 } from "./cart-item.styles";
+import {RemoveIcon} from "./cart-item.styles";
 
-const CartItem = () => {
+interface Props {
+  imagePath: string;
+  name: string;
+  type: string;
+  size: string;
+  price: string;
+}
+
+const CartItem: React.FC<Props> = ({imagePath, name, type, size, price}) => {
   return (
     <Container>
-      <Thumbnail src="/images/products/1996-removebg-preview.png" />
+      <Thumbnail src={imagePath} />
       <Description>
-        <ProdName>1996</ProdName>
-        <ProdType>Body Wash</ProdType>
+        <ProdName>{name}</ProdName>
+        <ProdType>{type}</ProdType>
       </Description>
-      <ProdSize>225ml</ProdSize>
+      <ProdSize>{size}</ProdSize>
       <ProdQty>
         <QtyBtn>-</QtyBtn>
         <Qty>2</Qty>
         <QtyBtn>+</QtyBtn>
       </ProdQty>
-      <Price>$50</Price>
+      <Price>${price}</Price>
+      <RemoveIcon />
     </Container>
   );
 };
