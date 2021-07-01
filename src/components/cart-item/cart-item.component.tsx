@@ -9,6 +9,14 @@ import {
   Qty,
   Price,
   QtyBtn,
+  Row,
+  ProdNameM,
+  RemoveIconM,
+  SpacedRow,
+  ProdSizeM,
+  ProdTypeM,
+  ProdQtyM,
+  PriceM,
 } from "./cart-item.styles";
 import {RemoveIcon} from "./cart-item.styles";
 
@@ -27,6 +35,25 @@ const CartItem: React.FC<Props> = ({imagePath, name, type, size, price}) => {
       <Description>
         <ProdName>{name}</ProdName>
         <ProdType>{type}</ProdType>
+
+        {/* Mobile */}
+        <SpacedRow>
+          <ProdNameM>{name}</ProdNameM>
+          <RemoveIconM />
+        </SpacedRow>
+        <Row>
+          <ProdSizeM>{size}</ProdSizeM>
+          <ProdTypeM>{type}</ProdTypeM>
+        </Row>
+        <SpacedRow>
+          <ProdQtyM>
+            <QtyBtn>-</QtyBtn>
+            <Qty>2</Qty>
+            <QtyBtn>+</QtyBtn>
+          </ProdQtyM>
+          <PriceM>${price}</PriceM>
+        </SpacedRow>
+        {/* Mobile */}
       </Description>
       <ProdSize>{size}</ProdSize>
       <ProdQty>
