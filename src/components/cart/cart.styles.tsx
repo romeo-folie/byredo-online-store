@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Back from "../../../public/vectors/chevron-left.svg";
+import X from "../../../public/vectors/x.svg";
 import {CartButton} from "../../pageStyles/products/product.styles";
 
 export const Overlay = styled.div<{isOpen?: boolean}>`
@@ -31,6 +32,10 @@ export const Container = styled.div<{isOpen?: boolean}>`
   @media only screen and (max-width: 1024px) {
     width: ${({isOpen}) => (isOpen ? "100%" : "0")};
   }
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const ItemSection = styled.div`
@@ -40,6 +45,11 @@ export const ItemSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+    min-height: 60%;
+  }
 `;
 
 export const SummarySection = styled.div`
@@ -50,11 +60,22 @@ export const SummarySection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+    height: 40%;
+  }
 `;
 
 export const Row = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const BackRow = styled(Row)`
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const BackIcon = styled(Back)`
@@ -68,6 +89,12 @@ export const BackLink = styled.a`
   cursor: pointer;
 `;
 
+export const BackLinkM = styled(BackLink)`
+  @media only screen and (min-width: 1000px) {
+    display: none;
+  }
+`;
+
 export const BackText = styled.span`
   padding-top: 4px;
   font-size: 0.9rem;
@@ -78,6 +105,10 @@ export const BackText = styled.span`
 export const TitleRow = styled(Row)`
   align-items: baseline;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const ItemSectionTitle = styled.h3`
@@ -87,6 +118,22 @@ export const ItemSectionTitle = styled.h3`
 
   @media only screen and (min-width: 1600px) {
     font-size: 2.5rem;
+  }
+`;
+
+export const SectionTitleM = styled(ItemSectionTitle)`
+  margin-bottom: 15px;
+
+  @media only screen and (min-width: 1000px) {
+    display: none;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 2rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    font-size: 1.8rem;
   }
 `;
 
@@ -101,6 +148,10 @@ export const ItemCount = styled.span`
 
 export const TableRow = styled(Row)`
   margin-bottom: 10px;
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const THeader = styled.span<{flex: number}>`
@@ -125,6 +176,11 @@ export const Items = styled.div`
 export const Note = styled.div`
   margin-top: 10px;
   color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 1000px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const SummarySectionTitle = styled.h3`
@@ -140,6 +196,10 @@ export const SummarySectionTitle = styled.h3`
 export const CloseRow = styled(Row)`
   justify-content: flex-end;
   margin-bottom: 16px;
+
+  @media only screen and (max-width: 1000px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const CostRow = styled(Row)`
@@ -158,11 +218,29 @@ export const CostRow = styled(Row)`
   }
 `;
 
+export const PromoCodeRow = styled(CostRow)`
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+export const TotalCostRow = styled(CostRow)`
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
 export const CostDetails = styled.div`
   height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  /* @media only screen and (max-width: 1000px) {
+    &:last-child {
+      display: none;
+    }
+  } */
 `;
 
 export const DetName = styled.span`
@@ -202,12 +280,39 @@ export const TotalSect = styled.div`
 
 export const Table = styled.div`
   height: 70%;
+
+  @media only screen and (max-width: 1000px) {
+    height: 83%;
+  }
 `;
 
 export const CheckoutBtn = styled(CartButton)`
   background-color: ${({theme}) => theme.accent};
   color: ${({theme}) => theme.secondary};
   margin: 0;
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+export const CheckoutBtnM = styled(CheckoutBtn)`
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (min-width: 1000px) {
+    display: none;
+  }
+`;
+
+export const Amt = styled.span`
+  text-transform: capitalize;
 `;
 
 export const Upper = styled.div``;
+
+export const CloseIcon = styled(X)`
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
+`;

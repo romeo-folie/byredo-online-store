@@ -28,12 +28,14 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Roboto,Oxygen,Acumin,Helvetica Neue, -apple-system, BlinkMacSystemFont, 
+  font-family: Acumin,Helvetica Neue,Roboto,Oxygen, -apple-system, BlinkMacSystemFont, 
     Ubuntu, Cantarell, Segoe UI, Fira Sans, Droid Sans, sans-serif;
   position: relative;
   font-size: 15px;
   -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
+  overflow: hidden;
+  -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

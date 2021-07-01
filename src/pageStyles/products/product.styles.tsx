@@ -78,12 +78,13 @@ export const ProductSection = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-  overflow-y: auto;
+  justify-content: center;
+  /* overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
-  }
+  } */
 
   @media only screen and (min-width: 1600px) {
     width: 60%;
@@ -207,7 +208,7 @@ export const CartButton = styled.button`
   background-color: transparent;
   border: 1px solid ${({theme}) => theme.accent};
   text-transform: uppercase;
-  padding: 15px 0;
+  padding: 15px;
   margin-top: auto;
   margin-bottom: 30px;
   cursor: pointer;

@@ -22,7 +22,7 @@ export const TOGGLE_CART = "toggleCart";
 const initialState = {
   isMenuOpen: false,
   isSubMenuOpen: false,
-  isCartOpen: false,
+  isCartOpen: true,
   title: "",
   navOptions: [
     "Leather",

@@ -4,11 +4,14 @@ import {
   ItemSection,
   SummarySection,
   Row,
+  BackRow,
   BackIcon,
   BackLink,
+  BackLinkM,
   BackText,
   TitleRow,
   ItemSectionTitle,
+  SectionTitleM,
   ItemCount,
   TableRow,
   THeader,
@@ -20,13 +23,17 @@ import {
   DetName,
   DetValue,
   CostRow,
+  PromoCodeRow,
+  TotalCostRow,
+  Amt,
   PromoCodeInput,
   CheckoutBtn,
+  CheckoutBtnM,
   Table,
   Upper,
 } from "./cart.styles";
 import CartItem from "../cart-item/cart-item.component";
-import {CloseIcon} from "../side-menu/side-menu.styles";
+import {CloseIcon} from "./cart.styles";
 import {useContext} from "react";
 import {MenuContext, TOGGLE_CART} from "../../context/menu.state";
 
@@ -38,12 +45,12 @@ const Cart = () => {
       <Overlay isOpen={state.isCartOpen} />
       <Container isOpen={state.isCartOpen}>
         <ItemSection>
-          <Row>
+          <BackRow>
             <BackLink onClick={() => dispatch({type: TOGGLE_CART})}>
               <BackIcon />
               <BackText>Back to store</BackText>
             </BackLink>
-          </Row>
+          </BackRow>
           <TitleRow>
             <ItemSectionTitle>Shopping cart</ItemSectionTitle>
             <ItemCount>6 Items</ItemCount>
@@ -114,12 +121,21 @@ const Cart = () => {
               />
             </Items>
           </Table>
+          <CheckoutBtnM>
+            Checkout
+            <Amt>Total: $330.00</Amt>
+          </CheckoutBtnM>
           <Note>Free shipping for all orders over $50</Note>
         </ItemSection>
         <SummarySection>
           <CloseRow>
+            <BackLinkM onClick={() => dispatch({type: TOGGLE_CART})}>
+              <BackIcon />
+              <BackText>Back to store</BackText>
+            </BackLinkM>
             <CloseIcon onClick={() => dispatch({type: TOGGLE_CART})} />
           </CloseRow>
+          <SectionTitleM>Shopping Cart</SectionTitleM>
           <TitleRow>
             <SummarySectionTitle>Summary</SummarySectionTitle>
           </TitleRow>
@@ -137,15 +153,15 @@ const Cart = () => {
                 <DetName>Tax</DetName>
                 <DetValue>$ 30.50</DetValue>
               </CostRow>
-              <CostRow>
+              <PromoCodeRow>
                 <DetName>Promo code</DetName>
                 <PromoCodeInput placeholder="enter code" />
-              </CostRow>
+              </PromoCodeRow>
             </Upper>
-            <CostRow>
+            <TotalCostRow>
               <DetName>Total</DetName>
               <DetValue>$ 330.50</DetValue>
-            </CostRow>
+            </TotalCostRow>
           </CostDetails>
           <CheckoutBtn>Checkout</CheckoutBtn>
         </SummarySection>
