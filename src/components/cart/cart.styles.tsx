@@ -324,6 +324,7 @@ export const Amt = styled.span`
 export const Upper = styled.div``;
 
 export const CloseIcon = styled(X)`
+  cursor: pointer;
   @media only screen and (max-width: 1000px) {
     display: none;
   }
