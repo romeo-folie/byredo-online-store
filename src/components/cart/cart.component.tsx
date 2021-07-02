@@ -74,16 +74,17 @@ const Cart = () => {
                 price="50"
               />
               <CartItem
-                name="Blanche"
-                imagePath="/images/products/mob_blanche-hand-cream-30-ml-removebg-preview.png"
+                name="Tulipmania"
+                imagePath="/images/products/mob_tulipmania-rinse-free-removebg-preview.png"
                 type="Hand Cream"
                 size="30ml"
                 price="30"
               />
+
               <CartItem
-                name="Casablancalily"
-                imagePath="/images/products/mob-casablancalily-removebg-preview.png"
-                type="eau de parfum"
+                name="Bal d'Afrique"
+                imagePath="/images/products/mob_bal-d-afrique-perfumed-oil-7-5-ml_1-removebg-preview.png"
+                type="Roll-on perfumed oil"
                 size="15ml"
                 price="20"
               />
@@ -91,32 +92,8 @@ const Cart = () => {
               <CartItem
                 name="Casablancalily"
                 imagePath="/images/products/mob-casablancalily-removebg-preview.png"
-                type="eau de parfum"
-                size="15ml"
-                price="20"
-              />
-
-              <CartItem
-                name="Casablancalily"
-                imagePath="/images/products/mob-casablancalily-removebg-preview.png"
-                type="eau de parfum"
-                size="15ml"
-                price="20"
-              />
-
-              <CartItem
-                name="Casablancalily"
-                imagePath="/images/products/mob-casablancalily-removebg-preview.png"
-                type="eau de parfum"
-                size="15ml"
-                price="20"
-              />
-
-              <CartItem
-                name="Casablancalily"
-                imagePath="/images/products/mob-casablancalily-removebg-preview.png"
-                type="eau de parfum"
-                size="15ml"
+                type="Eau de parfum"
+                size="20ml"
                 price="20"
               />
             </Items>

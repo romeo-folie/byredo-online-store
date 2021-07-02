@@ -80,6 +80,7 @@ export const BackRow = styled(Row)`
 
 export const BackIcon = styled(Back)`
   stroke: rgba(0, 0, 0, 0.5);
+  margin-left: -6px;
 `;
 
 export const BackLink = styled.a`
