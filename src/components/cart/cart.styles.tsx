@@ -137,7 +137,7 @@ export const SectionTitleM = styled(ItemSectionTitle)`
   }
 
   @media only screen and (max-width: 480px) {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 `;
 
@@ -260,7 +260,7 @@ export const DetName = styled.span`
 `;
 
 export const DetValue = styled.span`
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 1.1rem;
 
   @media only screen and (min-width: 1600px) {

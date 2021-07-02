@@ -143,15 +143,15 @@ const Cart = () => {
             <Upper>
               <CostRow>
                 <DetName>Subtotal</DetName>
-                <DetValue>$ 300.00</DetValue>
+                <DetValue>$300.00</DetValue>
               </CostRow>
               <CostRow>
                 <DetName>Shipping</DetName>
-                <DetValue>$ 0.00</DetValue>
+                <DetValue>$0.00</DetValue>
               </CostRow>
               <CostRow>
                 <DetName>Tax</DetName>
-                <DetValue>$ 30.50</DetValue>
+                <DetValue>$30.50</DetValue>
               </CostRow>
               <PromoCodeRow>
                 <DetName>Promo code</DetName>
@@ -160,7 +160,7 @@ const Cart = () => {
             </Upper>
             <TotalCostRow>
               <DetName>Total</DetName>
-              <DetValue>$ 330.50</DetValue>
+              <DetValue>$330.50</DetValue>
             </TotalCostRow>
           </CostDetails>
           <CheckoutBtn>Checkout</CheckoutBtn>
