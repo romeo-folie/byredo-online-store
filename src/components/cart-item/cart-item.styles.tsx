@@ -211,6 +211,7 @@ export const RemoveIcon = styled(X)`
 `;
 
 export const RemoveIconM = styled(X)`
+  margin-bottom: 5px;
   @media only screen and (min-width: 541px) {
     display: none;
   }

@@ -101,6 +101,10 @@ export const BackText = styled.span`
   font-size: 0.9rem;
   margin-left: 5px;
   color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const TitleRow = styled(Row)`
@@ -185,6 +189,7 @@ export const Note = styled.div`
   @media only screen and (max-width: 1000px) {
     display: flex;
     justify-content: center;
+    font-size: 0.9rem;
   }
 `;
 
