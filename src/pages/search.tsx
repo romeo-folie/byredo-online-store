@@ -18,12 +18,12 @@ const Search = () => {
           <Input placeholder="Search" />
         </InputWrap>
         <Items>
-          <Message>Sorry, no results found</Message>
-          {/* <SearchItem />
+          {/* <Message>Sorry, no results found</Message> */}
           <SearchItem />
           <SearchItem />
           <SearchItem />
-          <SearchItem /> */}
+          <SearchItem />
+          <SearchItem />
         </Items>
       </ContentWrap>
     </Container>

@@ -12,9 +12,8 @@ export const Container = styled.div<{isOpen: boolean}>`
   overflow: hidden;
   z-index: 50;
   width: ${({isOpen}) => (isOpen ? "100%" : "0")};
-  display: ${({isOpen}) => (isOpen ? "block" : "hidden")};
   left: ${({isOpen}) => (isOpen ? "0" : "-50px")};
-  transition: all 0.5s;
+  transition: all 0.3s;
 
   @media only screen and (min-width: 1000px) {
     display: none;
@@ -33,7 +32,6 @@ export const Menu = styled.nav`
   display: flex;
   flex-direction: column;
   margin-top: 45px;
-  /* background-color: red; */
 
   @media only screen and (max-width: 340px) {
     margin-top: 25px;

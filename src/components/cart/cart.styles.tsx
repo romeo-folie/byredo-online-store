@@ -10,7 +10,7 @@ export const Overlay = styled.div<{isOpen?: boolean}>`
   z-index: 60;
   background-color: rgba(0, 0, 0, 0.5);
   display: ${({isOpen}) => (isOpen ? "block" : "none")};
-  transition: all 0.5s;
+  transition: all 0.3s;
 `;
 
 export const Container = styled.div<{isOpen?: boolean}>`
@@ -19,9 +19,8 @@ export const Container = styled.div<{isOpen?: boolean}>`
   z-index: 70;
   position: absolute;
   overflow: hidden;
-  display: ${({isOpen}) => (isOpen ? "block" : "hidden")};
   right: ${({isOpen}) => (isOpen ? "0" : "-50px")};
-  transition: all 0.5s;
+  transition: all 0.3s;
   background-color: #ffffff;
   display: flex;
   scrollbar-width: none;
