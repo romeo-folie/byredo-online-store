@@ -317,6 +317,7 @@ export const CheckoutBtn = styled(CartButton)`
 export const CheckoutBtnM = styled(CheckoutBtn)`
   display: flex;
   justify-content: space-between;
+  font-size: 0.9rem;
 
   @media only screen and (min-width: 1000px) {
     display: none;
@@ -325,6 +326,7 @@ export const CheckoutBtnM = styled(CheckoutBtn)`
 
 export const Amt = styled.span`
   text-transform: capitalize;
+  font-size: 0.95rem;
 `;
 
 export const Upper = styled.div``;
