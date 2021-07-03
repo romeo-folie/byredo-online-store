@@ -15,6 +15,9 @@ export const ContentWrap = styled.div`
   width: 55%;
   height: 80%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* background-color: red; */
 
   @media only screen and (max-width: 1024px) {
@@ -48,6 +51,7 @@ export const InputWrap = styled.div`
 
   @media only screen and (max-width: 480px) {
     height: 45px;
+    width: 95%;
   }
 `;
 

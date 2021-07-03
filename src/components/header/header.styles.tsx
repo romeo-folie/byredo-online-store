@@ -55,6 +55,7 @@ export const SearchIcon = styled(Search)`
   width: 25px;
   margin-right: 18px;
   margin-top: 5px;
+  cursor: pointer;
 
   @media only screen and (min-width: 1600px) {
     width: 30px;

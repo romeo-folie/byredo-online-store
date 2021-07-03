@@ -41,7 +41,9 @@ const Header = () => {
         ))}
       </Menu>
       <Menu>
-        <SearchIcon />
+        <Link href="/search" passHref>
+          <SearchIcon />
+        </Link>
         <UserIcon />
         <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
       </Menu>
