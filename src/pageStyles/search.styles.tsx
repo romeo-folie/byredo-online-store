@@ -18,16 +18,15 @@ export const ContentWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: red; */
 
   @media only screen and (max-width: 1024px) {
-    height: 87%;
+    height: 85%;
     width: 75%;
   }
 
-  @media only screen and (max-width: 1000px) {
+  /* @media only screen and (max-width: 1000px) {
     height: 90%;
-  }
+  } */
 
   @media only screen and (max-width: 768px) {
     width: 80%;
@@ -48,10 +47,10 @@ export const InputWrap = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 
   @media only screen and (max-width: 480px) {
     height: 45px;
-    width: 95%;
   }
 `;
 
@@ -83,5 +82,14 @@ export const Items = styled.div`
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+`;
+
+export const Message = styled.div`
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.4rem;
   }
 `;
