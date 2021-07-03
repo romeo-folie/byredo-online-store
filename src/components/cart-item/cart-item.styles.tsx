@@ -30,6 +30,7 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-left: 10px;
 
   @media only screen and (max-width: 540px) {
     width: 60%;
