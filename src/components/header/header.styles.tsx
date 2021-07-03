@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logo from "../../../public/vectors/logo.svg";
 import Person from "../../../public/vectors/person-outline.svg";
-import Search from "../../../public/vectors/search-outline.svg";
+import Search from "../../../public/vectors/search.svg";
 import MIcon from "../../../public/vectors/menu.svg";
 
 export const Container = styled.div`
@@ -13,7 +13,6 @@ export const Container = styled.div`
   height: 70px;
   align-items: center;
   padding: 15px;
-  /* padding-right: 15px; */
   z-index: 20;
 `;
 
@@ -40,7 +39,7 @@ export const Menu = styled.nav`
 
 export const UserIcon = styled(Person)`
   width: 25px;
-  margin-right: 20px;
+  margin-right: 18px;
   margin-top: 3px;
 
   @media only screen and (min-width: 1600px) {
@@ -54,7 +53,7 @@ export const UserIcon = styled(Person)`
 
 export const SearchIcon = styled(Search)`
   width: 25px;
-  margin-right: 20px;
+  margin-right: 18px;
   margin-top: 5px;
 
   @media only screen and (min-width: 1600px) {
