@@ -15,10 +15,10 @@ export const Thumbnail = styled.img`
   width: 15%;
   filter: drop-shadow(12px 8px 4px rgba(0, 0, 0, 0.2));
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     width: 30%;
   }
-/* 
+  /* 
   @media only screen and (max-width: 480px) {
     width: 40%;
   } */
@@ -31,7 +31,7 @@ export const Description = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     width: 60%;
   }
 
@@ -48,7 +48,7 @@ export const ProdName = styled.span`
     font-size: 1.4rem;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -56,7 +56,7 @@ export const ProdName = styled.span`
 export const ProdNameM = styled.span`
   font-size: 1.1rem;
 
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 541px) {
     display: none;
   }
 
@@ -85,7 +85,7 @@ export const ProdType = styled.span`
     font-size: 1rem;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -93,7 +93,7 @@ export const ProdType = styled.span`
 export const ProdTypeM = styled.span`
   font-size: 0.9rem;
 
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 541px) {
     display: none;
   }
 
@@ -110,7 +110,7 @@ export const ProdSize = styled.span`
     font-size: 1.3rem;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -118,7 +118,7 @@ export const ProdSize = styled.span`
 export const ProdSizeM = styled.span`
   font-size: 0.9rem;
   margin-right: 10px;
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 541px) {
     display: none;
   }
 
@@ -137,7 +137,7 @@ export const ProdQty = styled.span`
     font-size: 1.3rem;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -147,7 +147,7 @@ export const ProdQtyM = styled.span`
   align-items: center;
   font-size: 1rem;
 
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 541px) {
     display: none;
   }
 
@@ -166,7 +166,7 @@ export const QtyBtn = styled.div`
   justify-content: center;
   cursor: pointer;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     width: 14px;
     height: 14px;
   }
@@ -184,7 +184,7 @@ export const Price = styled.span`
     font-size: 1.3rem;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
@@ -192,7 +192,7 @@ export const Price = styled.span`
 export const PriceM = styled.span`
   font-size: 1rem;
 
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 541px) {
     display: none;
   }
 
@@ -205,13 +205,13 @@ export const RemoveIcon = styled(X)`
   margin-bottom: 4px;
   cursor: pointer;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 540px) {
     display: none;
   }
 `;
 
 export const RemoveIconM = styled(X)`
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 541px) {
     display: none;
   }
 `;

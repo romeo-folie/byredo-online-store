@@ -34,8 +34,8 @@ const ProductPage = () => {
   return (
     <Container>
       <DescSection>
-        <ProdType>Body Wash</ProdType>
-        <ProdName>{"Bal d'Afrique"}</ProdName>
+        <ProdType>Eyewear</ProdType>
+        <ProdName>{"The Bohemian"}</ProdName>
         <ProdDesc>
           {
             "A warm and romantic vetiver inspired by Paris in the late 20's and it's infatuation with African culture, art, music and dance. A mix of Parisian avantgardism and African culture shaped a unique and vibrant expression. The intense life, the excess and euphoria is illustrated by Bal d'Afrique's neroli, African marigold and Moroccan cedarwood."

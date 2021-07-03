@@ -13,7 +13,7 @@ import NavItem from "../nav-item/nav-item.component";
 import {MenuContext, TOGGLE_MENU, TOGGLE_CART} from "../../context/menu.state";
 
 const Header = () => {
-  const [activeOption, setActiveOption] = useState("Perfume");
+  const [activeOption, setActiveOption] = useState("Eyewear");
   const {state, dispatch} = useContext(MenuContext);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -43,7 +43,7 @@ const Header = () => {
       <Menu>
         <SearchIcon />
         <UserIcon />
-        <CartIcon onClick={() => dispatch({type: TOGGLE_CART})}/>
+        <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
       </Menu>
     </Container>
   );
