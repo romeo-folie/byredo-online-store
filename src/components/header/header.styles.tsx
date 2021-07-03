@@ -14,6 +14,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 15px;
   z-index: 20;
+  cursor: pointer;
 `;
 
 export const Brand = styled(Logo)`

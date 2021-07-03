@@ -24,7 +24,9 @@ const SideMenu = () => {
   return (
     <Container isOpen={state.isMenuOpen}>
       <Header>
-        <Brand />
+        <Link href="/" passHref replace>
+          <Brand />
+        </Link>
         <CloseIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
       </Header>
       <Menu>

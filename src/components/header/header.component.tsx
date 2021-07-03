@@ -25,9 +25,7 @@ const Header = () => {
     <Container>
       <MenuIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
       <Link href="/" passHref replace>
-        <a>
           <Brand />
-        </a>
       </Link>
       <Menu>
         {state.navOptions.map((opt, idx) => (

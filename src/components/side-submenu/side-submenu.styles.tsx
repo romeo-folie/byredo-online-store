@@ -5,7 +5,6 @@ import Arrow from "../../../public/vectors/arrow-left.svg";
 
 export const Container = styled(MContainer)`
   background-color: ${({theme}) => theme.secondary};
-  /* transition: none; */
   overflow-x: hidden;
   overflow-y: auto;
 `;
