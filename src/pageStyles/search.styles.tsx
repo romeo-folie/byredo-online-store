@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Search from "../../public/vectors/search-xl.svg";
+import Search from "../../public/vectors/search-outline.svg";
 
 export const Container = styled.div`
   height: 100vh;

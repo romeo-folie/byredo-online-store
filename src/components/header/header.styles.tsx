@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logo from "../../../public/vectors/logo.svg";
 import Person from "../../../public/vectors/person-outline.svg";
-import Search from "../../../public/vectors/search.svg";
+import Search from "../../../public/vectors/search-outline.svg";
 import MIcon from "../../../public/vectors/menu.svg";
 
 export const Container = styled.div`
