@@ -10,11 +10,16 @@ import {useState, MouseEvent, useContext} from "react";
 import Link from "next/link";
 import CartIcon from "../cart-icon/cart-icon.component";
 import NavItem from "../nav-item/nav-item.component";
-import {MenuContext, TOGGLE_MENU, TOGGLE_CART} from "../../context/menu.state";
+import {
+  NavContext,
+  TOGGLE_MENU,
+  TOGGLE_CART,
+  TOGGLE_SEARCH,
+} from "../../context/nav.state";
 
 const Header = () => {
   const [activeOption, setActiveOption] = useState("Eyewear");
-  const {state, dispatch} = useContext(MenuContext);
+  const {state, dispatch} = useContext(NavContext);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -39,9 +44,7 @@ const Header = () => {
         ))}
       </Menu>
       <Menu>
-        <Link href="/search" passHref>
-          <SearchIcon />
-        </Link>
+        <SearchIcon onClick={() => dispatch({type: TOGGLE_SEARCH})} />
         <UserIcon />
         <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
       </Menu>

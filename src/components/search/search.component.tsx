@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {MenuContext} from "../../context/menu.state";
+import {NavContext, TOGGLE_SEARCH} from "../../context/nav.state";
 import {
   Container,
   ContentWrap,
@@ -10,21 +10,22 @@ import {
   Message,
   Header,
   Menu,
+  Brand,
 } from "./search.styles";
-import {Brand, CloseIcon} from "../side-menu/side-menu.styles";
+import {CloseIcon} from "../side-menu/side-menu.styles";
 import SearchItem from "../search-item/search-item.component";
 import NavItem from "../nav-item/nav-item.component";
 import Link from "next/link";
 
 const Search = () => {
-  const {state, dispatch} = useContext(MenuContext);
+  const {state, dispatch} = useContext(NavContext);
 
   return (
-    <Container isOpen>
+    <Container isOpen={state.isSearchOpen}>
       {/* Header here */}
       <Header>
         <Link href="/" passHref replace>
-          <Brand />
+          <Brand onClick={() => dispatch({type: TOGGLE_SEARCH})} />
         </Link>
 
         <Menu>
@@ -39,7 +40,7 @@ const Search = () => {
           ))}
         </Menu>
 
-        <CloseIcon />
+        <CloseIcon onClick={() => dispatch({type: TOGGLE_SEARCH})} />
       </Header>
       <ContentWrap>
         <InputWrap>

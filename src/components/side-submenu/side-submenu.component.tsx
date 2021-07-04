@@ -9,14 +9,14 @@ import {
 } from "./side-submenu.styles";
 import {CloseIcon} from "../side-menu/side-menu.styles";
 import {
-  MenuContext,
+  NavContext,
   TOGGLE_MENU,
   TOGGLE_SUBMENU,
-} from "../../context/menu.state";
+} from "../../context/nav.state";
 import CategoryList from "../category-list/category-list.component";
 
 const SideSubMenu = () => {
-  const {state, dispatch} = useContext(MenuContext);
+  const {state, dispatch} = useContext(NavContext);
 
   const handleSubMenuClose = () => {
     dispatch({type: TOGGLE_MENU});

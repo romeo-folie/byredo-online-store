@@ -35,10 +35,10 @@ import {
 import CartItem from "../cart-item/cart-item.component";
 import {CloseIcon} from "./cart.styles";
 import {useContext} from "react";
-import {MenuContext, TOGGLE_CART} from "../../context/menu.state";
+import {NavContext, TOGGLE_CART} from "../../context/nav.state";
 
 const Cart = () => {
-  const {state, dispatch} = useContext(MenuContext);
+  const {state, dispatch} = useContext(NavContext);
 
   return (
     <>

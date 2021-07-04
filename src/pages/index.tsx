@@ -10,7 +10,7 @@ import {
 } from "../pageStyles/index.styles";
 import Product from "../components/product/product.component";
 import Selector from "../components/selector/selector.component";
-import {MenuContext} from "../context/menu.state";
+import {NavContext} from "../context/nav.state";
 
 const products = [
   {
@@ -98,7 +98,7 @@ const products = [
 ];
 
 const Home: React.FC = () => {
-  const {state} = useContext(MenuContext);
+  const {state} = useContext(NavContext);
 
   return (
     <Container>

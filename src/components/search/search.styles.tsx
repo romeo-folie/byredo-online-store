@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Search from "../../../public/vectors/search-outline.svg";
+import Logo from "../../../public/vectors/logo.svg";
 import {Header as MHeader} from "../side-menu/side-menu.styles";
-import {Menu as MMenu} from "../header/header.styles";
+import {Menu as MMenu, Brand as MBrand} from "../header/header.styles";
 
 export const Container = styled.div<{isOpen?: boolean}>`
   height: 100vh;
   width: 100%;
+  top: ${({isOpen}) => (isOpen ? "0" : "-100%")};
   padding: 15px;
   background-color: ${({theme}) => theme.secondary};
   flex-direction: column;
@@ -13,10 +15,18 @@ export const Container = styled.div<{isOpen?: boolean}>`
   position: absolute;
   transition: all 0.3s;
   z-index: 150;
-  display: ${({isOpen}) => (isOpen ? "flex" : "none")};
+  display: flex;
 `;
 
 export const Header = styled(MHeader)``;
+
+export const Brand = styled(Logo)`
+  width: 100px;
+
+  @media only screen and (max-width: 1000px) {
+    width: 80px;
+  }
+`;
 
 export const Menu = styled(MMenu)`
   @media only screen and (max-width: 1023px) {

@@ -3,7 +3,7 @@ import {createGlobalStyle, ThemeProvider} from "styled-components";
 import Header from "../components/header/header.component";
 import Head from "next/head";
 import SideMenu from "../components/side-menu/side-menu.component";
-import MenuState from "../context/menu.state";
+import NavState from "../context/nav.state";
 import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
 import Search from "../components/search/search.component";
@@ -82,14 +82,14 @@ function MyApp({Component, pageProps}: AppProps) {
             crossOrigin=""
           />
         </Head>
-        <MenuState>
+        <NavState>
           <Header />
           <SideMenu />
           <SideSubMenu />
           <Cart />
           <Search />
-        </MenuState>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
+        </NavState>
       </ThemeProvider>
     </>
   );

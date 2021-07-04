@@ -1,28 +1,37 @@
 import {createContext, useReducer, Dispatch} from "react";
 import {ICategory} from "../types";
 
-interface IMenu {
+interface INav {
   isMenuOpen: boolean;
   isSubMenuOpen: boolean;
   isCartOpen: boolean;
+  isSearchOpen: boolean;
   title?: string;
   navOptions: string[];
   categories: ICategory[];
 }
 
-interface ContextType {
-  state: IMenu;
-  dispatch: Dispatch<MenuAction>;
-}
-
 export const TOGGLE_MENU = "toggleMenu";
 export const TOGGLE_SUBMENU = "toggleSubMenu";
 export const TOGGLE_CART = "toggleCart";
+export const TOGGLE_SEARCH = "toggleSearch";
+
+type NavAction =
+  | {type: typeof TOGGLE_MENU}
+  | {type: typeof TOGGLE_SUBMENU; payload?: string}
+  | {type: typeof TOGGLE_CART}
+  | {type: typeof TOGGLE_SEARCH};
+
+interface ContextType {
+  state: INav;
+  dispatch: Dispatch<NavAction>;
+}
 
 const initialState = {
   isMenuOpen: false,
   isSubMenuOpen: false,
   isCartOpen: false,
+  isSearchOpen: false,
   title: "",
   navOptions: [
     "Leather",
@@ -63,17 +72,12 @@ const initialState = {
   ],
 };
 
-type MenuAction =
-  | {type: typeof TOGGLE_MENU}
-  | {type: typeof TOGGLE_SUBMENU; payload?: string}
-  | {type: typeof TOGGLE_CART};
-
-export const MenuContext = createContext<ContextType>({
+export const NavContext = createContext<ContextType>({
   state: initialState,
   dispatch: () => initialState,
 });
 
-const MenuReducer = (state: IMenu, action: MenuAction): IMenu => {
+const NavReducer = (state: INav, action: NavAction): INav => {
   switch (action.type) {
     case TOGGLE_MENU:
       return {
@@ -91,19 +95,24 @@ const MenuReducer = (state: IMenu, action: MenuAction): IMenu => {
         ...state,
         isCartOpen: !state.isCartOpen,
       };
+    case TOGGLE_SEARCH:
+      return {
+        ...state,
+        isSearchOpen: !state.isSearchOpen,
+      };
     default:
       return state;
   }
 };
 
-const MenuState: React.FC = ({children}) => {
-  const [state, dispatch] = useReducer(MenuReducer, initialState);
+const NavState: React.FC = ({children}) => {
+  const [state, dispatch] = useReducer(NavReducer, initialState);
 
   return (
-    <MenuContext.Provider value={{state, dispatch}}>
+    <NavContext.Provider value={{state, dispatch}}>
       {children}
-    </MenuContext.Provider>
+    </NavContext.Provider>
   );
 };
 
-export default MenuState;
+export default NavState;

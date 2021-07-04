@@ -12,14 +12,14 @@ import {
   FacebookIcon,
 } from "./side-menu.styles";
 import {
-  MenuContext,
+  NavContext,
   TOGGLE_MENU,
   TOGGLE_SUBMENU,
-} from "../../context/menu.state";
+} from "../../context/nav.state";
 import Link from "next/link";
 
 const SideMenu = () => {
-  const {state, dispatch} = useContext(MenuContext);
+  const {state, dispatch} = useContext(NavContext);
 
   return (
     <Container isOpen={state.isMenuOpen}>
