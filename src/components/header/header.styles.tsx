@@ -13,7 +13,7 @@ export const Container = styled.div`
   height: 70px;
   align-items: center;
   padding: 15px;
-  z-index: 20;
+  z-index: 50;
   cursor: pointer;
 `;
 
@@ -42,6 +42,7 @@ export const UserIcon = styled(Person)`
   width: 25px;
   margin-right: 18px;
   margin-top: 3px;
+  z-index: 18;
 
   @media only screen and (min-width: 1600px) {
     width: 30px;

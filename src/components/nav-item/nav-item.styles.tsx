@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Option = styled.a<{active: boolean}>`
+export const Option = styled.a<{active?: boolean}>`
   font-size: ${({active}) => (active ? "1.2rem" : "1.18rem")};
   font-weight: ${({active}) => (active ? "bold" : "normal")};
   color: ${({active, theme}) => (active ? theme.accent : "rgba(0, 0, 0, 0.6)")};

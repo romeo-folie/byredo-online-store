@@ -3,8 +3,8 @@ import {MouseEvent} from "react";
 import {Option} from "./nav-item.styles";
 
 interface Props {
-  onClick: (e: MouseEvent<HTMLAnchorElement>) => void;
-  active: boolean;
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
+  active?: boolean;
 }
 
 const NavItem: React.FC<Props> = ({children, onClick, active}) => {

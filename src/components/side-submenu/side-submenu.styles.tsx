@@ -7,10 +7,11 @@ export const Container = styled(MContainer)`
   background-color: ${({theme}) => theme.secondary};
   overflow-x: hidden;
   overflow-y: auto;
+  z-index: 200;
 `;
 
 export const Header = styled(MHeader)`
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 `;
 
 export const TitleWrap = styled.div`

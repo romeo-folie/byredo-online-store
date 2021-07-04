@@ -6,6 +6,7 @@ import SideMenu from "../components/side-menu/side-menu.component";
 import MenuState from "../context/menu.state";
 import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
+import Search from "../components/search/search.component";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -86,6 +87,7 @@ function MyApp({Component, pageProps}: AppProps) {
           <SideMenu />
           <SideSubMenu />
           <Cart />
+          <Search />
         </MenuState>
         <Component {...pageProps} />
       </ThemeProvider>

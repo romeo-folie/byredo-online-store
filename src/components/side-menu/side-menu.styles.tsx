@@ -10,7 +10,7 @@ export const Container = styled.div<{isOpen: boolean}>`
   background-color: ${({theme}) => theme.primary};
   position: absolute;
   overflow: hidden;
-  z-index: 50;
+  z-index: 150;
   width: ${({isOpen}) => (isOpen ? "100%" : "0")};
   left: ${({isOpen}) => (isOpen ? "0" : "-50px")};
   transition: all 0.3s;
@@ -25,7 +25,8 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  height: 35px;
+  margin-bottom: 15px;
 `;
 
 export const Menu = styled.nav`

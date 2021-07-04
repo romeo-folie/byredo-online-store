@@ -7,7 +7,7 @@ export const Overlay = styled.div<{isOpen?: boolean}>`
   width: 100%;
   height: 100vh;
   position: absolute;
-  z-index: 60;
+  z-index: 70;
   background-color: rgba(0, 0, 0, 0.5);
   display: ${({isOpen}) => (isOpen ? "block" : "none")};
   transition: all 0.3s;
@@ -16,12 +16,12 @@ export const Overlay = styled.div<{isOpen?: boolean}>`
 export const Container = styled.div<{isOpen?: boolean}>`
   height: 100vh;
   width: ${({isOpen}) => (isOpen ? "80%" : "0")};
-  z-index: 70;
+  z-index: 80;
   position: absolute;
   overflow: hidden;
   right: ${({isOpen}) => (isOpen ? "0" : "-50px")};
   transition: all 0.3s;
-  background-color: #ffffff;
+  background-color: ${({theme}) => theme.secondary};
   display: flex;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -102,7 +102,7 @@ export const BackText = styled.span`
   color: rgba(0, 0, 0, 0.5);
 
   @media only screen and (max-width: 1000px) {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 `;
 

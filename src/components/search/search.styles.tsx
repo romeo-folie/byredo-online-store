@@ -1,14 +1,27 @@
 import styled from "styled-components";
-import Search from "../../public/vectors/search-outline.svg";
+import Search from "../../../public/vectors/search-outline.svg";
+import {Header as MHeader} from "../side-menu/side-menu.styles";
+import {Menu as MMenu} from "../header/header.styles";
 
-export const Container = styled.div`
+export const Container = styled.div<{isOpen?: boolean}>`
   height: 100vh;
   width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
   background-color: ${({theme}) => theme.secondary};
-  display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  transition: all 0.3s;
+  z-index: 150;
+  display: ${({isOpen}) => (isOpen ? "flex" : "none")};
+`;
+
+export const Header = styled(MHeader)``;
+
+export const Menu = styled(MMenu)`
+  @media only screen and (max-width: 1023px) {
+    display: none;
+  }
 `;
 
 export const ContentWrap = styled.div`
@@ -20,7 +33,7 @@ export const ContentWrap = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 1024px) {
-    height: 85%;
+    height: 87%;
     width: 75%;
   }
 
