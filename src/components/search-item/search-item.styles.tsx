@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
 `;
 
 export const SpacedRow = styled(Row)`
@@ -59,7 +59,7 @@ export const ProdName = styled.span`
   }
 
   @media only screen and (max-width: 480px) {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 `;
 
@@ -72,7 +72,7 @@ export const ProdType = styled.span`
   }
 
   @media only screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -92,7 +92,7 @@ export const ProdSize = styled.span`
 export const ProdSizeM = styled.span`
   color: rgba(0, 0, 0, 0.5);
   margin-right: 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   @media only screen and (min-width: 481px) {
     display: none;

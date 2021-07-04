@@ -28,7 +28,7 @@ const SideSubMenu = () => {
       <Header>
         <TitleWrap>
           <ArrowIcon onClick={() => dispatch({type: TOGGLE_SUBMENU})} />
-          <Title>{state.title}</Title>
+          <Title>{state.activeNavOption}</Title>
         </TitleWrap>
         <CloseIcon onClick={handleSubMenuClose} />
       </Header>

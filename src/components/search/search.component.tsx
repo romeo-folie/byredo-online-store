@@ -1,5 +1,9 @@
-import {useContext} from "react";
-import {NavContext, TOGGLE_SEARCH} from "../../context/nav.state";
+import {useContext, MouseEvent} from "react";
+import {
+  NavContext,
+  TOGGLE_SEARCH,
+  SET_NAV_OPTION,
+} from "../../context/nav.state";
 import {
   Container,
   ContentWrap,
@@ -20,9 +24,13 @@ import Link from "next/link";
 const Search = () => {
   const {state, dispatch} = useContext(NavContext);
 
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    const {innerText} = e.target as HTMLAnchorElement;
+    dispatch({type: SET_NAV_OPTION, payload: innerText});
+  };
+
   return (
     <Container isOpen={state.isSearchOpen}>
-      {/* Header here */}
       <Header>
         <Link href="/" passHref replace>
           <Brand onClick={() => dispatch({type: TOGGLE_SEARCH})} />
@@ -32,8 +40,8 @@ const Search = () => {
           {state.navOptions.map((opt, idx) => (
             <NavItem
               key={idx}
-              // onClick={handleClick}
-              // active={activeOption === opt}
+              onClick={handleClick}
+              active={state.activeNavOption === opt}
             >
               {opt}
             </NavItem>
@@ -48,11 +56,7 @@ const Search = () => {
           <Input placeholder="Search" />
         </InputWrap>
         <Items>
-          {/* <Message>Sorry, no results found</Message> */}
-          <SearchItem />
-          <SearchItem />
-          <SearchItem />
-          <SearchItem />
+          {/* <Message>No results found</Message> */}
           <SearchItem />
         </Items>
       </ContentWrap>

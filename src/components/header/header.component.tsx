@@ -15,15 +15,15 @@ import {
   TOGGLE_MENU,
   TOGGLE_CART,
   TOGGLE_SEARCH,
+  SET_NAV_OPTION,
 } from "../../context/nav.state";
 
 const Header = () => {
-  const [activeOption, setActiveOption] = useState("Eyewear");
   const {state, dispatch} = useContext(NavContext);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
-    setActiveOption(innerText);
+    dispatch({type: SET_NAV_OPTION, payload: innerText});
   };
 
   return (
@@ -37,7 +37,7 @@ const Header = () => {
           <NavItem
             key={idx}
             onClick={handleClick}
-            active={activeOption === opt}
+            active={state.activeNavOption === opt}
           >
             {opt}
           </NavItem>

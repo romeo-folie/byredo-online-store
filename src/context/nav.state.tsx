@@ -6,7 +6,8 @@ interface INav {
   isSubMenuOpen: boolean;
   isCartOpen: boolean;
   isSearchOpen: boolean;
-  title?: string;
+  activeNavOption: string;
+  subMenuTitle?: string;
   navOptions: string[];
   categories: ICategory[];
 }
@@ -15,12 +16,14 @@ export const TOGGLE_MENU = "toggleMenu";
 export const TOGGLE_SUBMENU = "toggleSubMenu";
 export const TOGGLE_CART = "toggleCart";
 export const TOGGLE_SEARCH = "toggleSearch";
+export const SET_NAV_OPTION = "setNavOption";
 
 type NavAction =
   | {type: typeof TOGGLE_MENU}
-  | {type: typeof TOGGLE_SUBMENU; payload?: string}
+  | {type: typeof TOGGLE_SUBMENU}
   | {type: typeof TOGGLE_CART}
-  | {type: typeof TOGGLE_SEARCH};
+  | {type: typeof TOGGLE_SEARCH}
+  | {type: typeof SET_NAV_OPTION; payload: string};
 
 interface ContextType {
   state: INav;
@@ -32,7 +35,7 @@ const initialState = {
   isSubMenuOpen: false,
   isCartOpen: false,
   isSearchOpen: false,
-  title: "",
+  activeNavOption: "",
   navOptions: [
     "Leather",
     "Eyewear",
@@ -88,7 +91,6 @@ const NavReducer = (state: INav, action: NavAction): INav => {
       return {
         ...state,
         isSubMenuOpen: !state.isSubMenuOpen,
-        title: action.payload,
       };
     case TOGGLE_CART:
       return {
@@ -99,6 +101,11 @@ const NavReducer = (state: INav, action: NavAction): INav => {
       return {
         ...state,
         isSearchOpen: !state.isSearchOpen,
+      };
+    case SET_NAV_OPTION:
+      return {
+        ...state,
+        activeNavOption: action.payload,
       };
     default:
       return state;
