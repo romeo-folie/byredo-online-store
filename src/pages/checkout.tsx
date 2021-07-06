@@ -10,8 +10,15 @@ import {
   Row,
   Wrap,
   Button,
+  ItemSectionTitle,
+  CartLink,
+  Items,
+  DetName,
+  DetValue,
+  PromoCodeInput,
 } from "../pageStyles/checkout.styles";
 import Input from "../components/input/input.component";
+import CheckoutItem from "../components/checkout-item/checkout-item.component";
 
 interface FormValues {
   firstname: string;
@@ -86,7 +93,25 @@ const Checkout = () => {
           <Button>Proceed To Shipping</Button>
         </Form>
       </FormSection>
-      <ItemSection />
+      <ItemSection>
+        <Row>
+          <ItemSectionTitle>Items</ItemSectionTitle>
+          <CartLink>Edit cart</CartLink>
+        </Row>
+        <Items>
+          <CheckoutItem />
+          <CheckoutItem />
+          <CheckoutItem />
+        </Items>
+        <Row>
+          <DetName>Promocode</DetName>
+          <PromoCodeInput placeholder="enter code" />
+        </Row>
+        <Row>
+          <DetName>Total</DetName>
+          <DetValue>$330.50</DetValue>
+        </Row>
+      </ItemSection>
     </Container>
   );
 };

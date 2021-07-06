@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 `;
 
 export const Wrap = styled.div`
@@ -33,6 +34,10 @@ export const ItemSection = styled.div`
   width: 30%;
   background-color: ${({theme}) => theme.secondary};
   z-index: 150;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const PageTitle = styled.h3`
@@ -53,9 +58,8 @@ export const Form = styled.form`
   padding-top: 50px;
 `;
 
-
 export const Button = styled.button`
-  width: 46%;
+  width: 200px;
   padding: 15px;
   border: 1px solid ${({theme}) => theme.accent};
   background-color: ${({theme}) => theme.accent};
@@ -63,4 +67,45 @@ export const Button = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   margin-top: 25px;
+`;
+
+export const ItemSectionTitle = styled.span`
+  font-size: 1.25rem;
+`;
+
+export const CartLink = styled.a`
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.95rem;
+`;
+
+export const Items = styled.div`
+  height: 80%;
+  padding-top: 10px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const DetName = styled.span`
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+export const DetValue = styled.span`
+  font-size: 1.2rem;
+`;
+
+export const PromoCodeInput = styled.input`
+  border: none;
+  outline: none;
+  width: 90px;
+  background: transparent;
+  padding-left: 8px;
+  font-size: 1.1rem;
+
+  @media only screen and (min-width: 1600px) {
+    width: 95px;
+    font-size: 1.2rem;
+  }
 `;
