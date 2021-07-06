@@ -30,7 +30,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Acumin,Helvetica Neue,Roboto,Oxygen, -apple-system, BlinkMacSystemFont, 
+  font-family: Acumin, Helvetica Neue, Roboto, Oxygen, -apple-system, BlinkMacSystemFont, 
     Ubuntu, Cantarell, Segoe UI, Fira Sans, Droid Sans, sans-serif;
   position: relative;
   font-size: 15px;

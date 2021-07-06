@@ -20,25 +20,44 @@ export const SpacedRow = styled(Row)`
 export const Name = styled.span`
   font-size: 1.1rem;
   color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.25rem;
+  }
 `;
 
 export const Qty = styled.span`
   /* font-size: 0.9rem; */
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Price = styled.span`
   margin-left: 20px;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Size = styled.span`
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.5);
   margin-right: 10px;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Type = styled.span`
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Column = styled.div`

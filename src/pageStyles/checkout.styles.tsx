@@ -13,8 +13,8 @@ export const Row = styled.div`
   align-items: baseline;
 `;
 
-export const Wrap = styled.div`
-  width: 46%;
+export const Wrap = styled.div<{width?: number}>`
+  width: ${({width}) => (width ? `${width}%` : "46%")};
 `;
 
 export const TitleSection = styled.div`
@@ -23,11 +23,23 @@ export const TitleSection = styled.div`
   padding-top: 120px;
 `;
 
-export const FormSection = styled.div`
+export const Forms = styled.div`
   width: 50%;
   z-index: 150;
   background-color: ${({theme}) => theme.primary};
   padding-top: 120px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const FormSection = styled.section`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ItemSection = styled.div`
@@ -43,6 +55,10 @@ export const ItemSection = styled.div`
 export const PageTitle = styled.h3`
   font-size: 1.3rem;
   margin: 0;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const FormTitle = styled.h3`
@@ -56,6 +72,10 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding-top: 50px;
+
+  @media only screen and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 export const Button = styled.button`
@@ -71,11 +91,19 @@ export const Button = styled.button`
 
 export const ItemSectionTitle = styled.span`
   font-size: 1.25rem;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const CartLink = styled.a`
   color: rgba(0, 0, 0, 0.5);
   font-size: 0.95rem;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const Items = styled.div`
@@ -90,10 +118,18 @@ export const Items = styled.div`
 
 export const DetName = styled.span`
   color: rgba(0, 0, 0, 0.5);
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const DetValue = styled.span`
   font-size: 1.2rem;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.45rem;
+  }
 `;
 
 export const PromoCodeInput = styled.input`
