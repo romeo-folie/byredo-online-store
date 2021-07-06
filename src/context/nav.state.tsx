@@ -7,7 +7,6 @@ interface INav {
   isCartOpen: boolean;
   isSearchOpen: boolean;
   activeNavOption: string;
-  subMenuTitle?: string;
   navOptions: string[];
   categories: ICategory[];
 }

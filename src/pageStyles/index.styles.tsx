@@ -67,13 +67,13 @@ export const Grid = styled.div`
 `;
 
 export const FilterSection = styled.div`
-  padding-top: 70px;
-  padding-right: 15px;
+  padding-top: 80px;
+  /* padding-right: 15px; */
   width: 15%;
   display: flex;
   flex-direction: column;
   /* align-items: flex-end; */
-  /* background-color: white; */
+  /* background-color: green; */
 
   @media only screen and (min-width: 1600px) {
     padding-top: 90px;

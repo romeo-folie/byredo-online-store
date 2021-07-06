@@ -1,3 +1,4 @@
+import React from "react";
 import type {AppProps} from "next/app";
 import {createGlobalStyle, ThemeProvider} from "styled-components";
 import Header from "../components/header/header.component";
@@ -64,6 +65,15 @@ const theme = {
 };
 
 function MyApp({Component, pageProps}: AppProps) {
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles !== null) {
+      // @ts-ignore: Object is possibly 'null'.
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
     <>
       <GlobalStyle />
