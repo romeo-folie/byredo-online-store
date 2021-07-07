@@ -13,14 +13,14 @@ export const Row = styled.div`
   align-items: baseline;
 `;
 
-export const Wrap = styled.div<{width?: number}>`
-  width: ${({width}) => (width ? `${width}%` : "46%")};
-`;
-
 export const TitleSection = styled.div`
   width: 20%;
   padding-left: 15px;
   padding-top: 120px;
+
+  @media only screen and (min-width: 1600px) {
+    padding-top: 180px;
+  }
 `;
 
 export const Forms = styled.div`
@@ -33,13 +33,10 @@ export const Forms = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-`;
 
-export const FormSection = styled.section`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  @media only screen and (min-width: 1600px) {
+    padding-top: 180px;
+  }
 `;
 
 export const ItemSection = styled.div`
@@ -59,34 +56,6 @@ export const PageTitle = styled.h3`
   @media only screen and (min-width: 1600px) {
     font-size: 1.5rem;
   }
-`;
-
-export const FormTitle = styled.h3`
-  font-size: 2.2rem;
-  font-weight: normal;
-  margin: 0;
-`;
-
-export const Form = styled.form`
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 50px;
-
-  @media only screen and (max-width: 1024px) {
-    width: 80%;
-  }
-`;
-
-export const Button = styled.button`
-  width: 200px;
-  padding: 15px;
-  border: 1px solid ${({theme}) => theme.accent};
-  background-color: ${({theme}) => theme.accent};
-  color: ${({theme}) => theme.secondary};
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 25px;
 `;
 
 export const ItemSectionTitle = styled.span`
