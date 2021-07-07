@@ -8,6 +8,7 @@ import {
   Button,
 } from "./user-detail-form.styles";
 import Input from "../input/input.component";
+import {useForm, Controller, SubmitHandler} from "react-hook-form";
 
 interface FormValues {
   firstname: string;
@@ -22,59 +23,70 @@ const initialValues = {
 };
 
 const UserDetailForm = () => {
-  const [values, setValues] = useState<FormValues>(initialValues);
-  const [errors, setErrors] = useState<FormValues>(initialValues);
+  const {
+    handleSubmit,
+    control,
+    formState: {errors},
+  } = useForm<FormValues>();
 
-  const handleSubmit = (event: FormEvent): void => {
-    event.preventDefault();
-    console.log("values ", values);
+  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+    console.log(data);
   };
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const {name, value} = event.target;
-
-    setValues({
-      ...values,
-      [name as string]: value,
-    });
-
-    // validate({[name as string]: value});
-  };
+  console.log("errors ", errors);
 
   return (
     <FormSection>
       <FormTitle>Who is placing this order?</FormTitle>
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <Input
-          label="Email address"
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <Controller
           name="email"
-          onChange={handleInputChange}
-          value={values.email}
-          error={errors.email}
+          control={control}
+          defaultValue={initialValues.email}
+          rules={{required: "This field is required"}}
+          render={({field}) => (
+            <Input
+              label="Email address"
+              {...field}
+              error={errors?.email?.message}
+            />
+          )}
         />
 
         <Row>
           <Wrap>
-            <Input
-              label="First name"
+            <Controller
               name="firstname"
-              onChange={handleInputChange}
-              value={values.firstname}
-              error={errors.firstname}
+              control={control}
+              defaultValue={initialValues.firstname}
+              rules={{required: "This field is required"}}
+              render={({field}) => (
+                <Input
+                  label="First Name"
+                  {...field}
+                  error={errors?.firstname?.message}
+                />
+              )}
             />
           </Wrap>
 
           <Wrap>
-            <Input
-              label="Last name"
+            <Controller
               name="lastname"
-              onChange={handleInputChange}
-              value={values.lastname}
-              error={errors.lastname}
+              control={control}
+              defaultValue={initialValues.lastname}
+              rules={{required: "This field is required"}}
+              render={({field}) => (
+                <Input
+                  label="Last Name"
+                  {...field}
+                  error={errors?.lastname?.message}
+                />
+              )}
             />
           </Wrap>
         </Row>
-        <Button>Proceed To Shipping</Button>
+        <Button type="submit">Proceed To Shipping</Button>
       </Form>
     </FormSection>
   );

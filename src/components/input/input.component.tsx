@@ -10,12 +10,12 @@ import {Visibility, VisibilityOff} from "@material-ui/icons";
 
 interface Iprops {
   name: string;
-  value: string;
+  value?: string;
   label: string;
-  error: string;
+  error?: string;
   showPassword?: boolean;
   onShowPasswordClick?: () => void;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const useStyles = makeStyles({
