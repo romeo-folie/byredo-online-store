@@ -105,7 +105,7 @@ const Cart = () => {
               />
             </Items>
           </Table>
-          <CheckoutBtnM>
+          <CheckoutBtnM onClick={handleCheckout}>
             Checkout
             <Amt>Total: $330.00</Amt>
           </CheckoutBtnM>
