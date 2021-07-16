@@ -34,8 +34,9 @@ const initialState = {
   isSubMenuOpen: false,
   isCartOpen: false,
   isSearchOpen: false,
-  activeNavOption: "",
+  activeNavOption: "All",
   navOptions: [
+    "All",
     "Leather",
     "Eyewear",
     "Perfume",

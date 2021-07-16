@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const FormSection = styled.section`
   width: 100%;
@@ -17,7 +17,7 @@ export const Form = styled.form`
   width: 60%;
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  padding: 50px 0;
 
   @media only screen and (max-width: 1024px) {
     width: 80%;
@@ -47,4 +47,9 @@ export const Row = styled.div`
 
 export const Wrap = styled.div<{width?: number}>`
   width: ${({width}) => (width ? `${width}%` : "46%")};
+`;
+
+export const FormSectionTitle = styled.span`
+  font-size: 1.15rem;
+  margin-bottom: 10px;
 `;

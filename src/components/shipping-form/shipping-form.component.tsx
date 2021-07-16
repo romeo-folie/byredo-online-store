@@ -6,112 +6,99 @@ import {
   Wrap,
   Row,
   Button,
+  FormSectionTitle,
 } from "./shipping-form.styles";
 import Input from "../input/input.component";
+import RadioBtn from "../radio-btn/radio-btn.component";
+import {
+  RadioGroup,
+  FormControl,
+  FormControlLabel,
+} from "@material-ui/core";
+import {useForm, Controller, SubmitHandler} from "react-hook-form";
 
 interface FormValues {
-  firstname: string;
-  lastname: string;
-  email: string;
+  country: string;
+  address: string;
+  city: string;
+  zipCode: string;
+  stateOrProvince: string;
+  countryCode: string;
+  phoneNumber: string;
+  deliveryOption: string;
 }
 
 const initialValues = {
-  firstname: "",
-  lastname: "",
-  email: "",
+  country: "",
+  address: "",
+  city: "",
+  zipCode: "",
+  stateOrProvince: "",
+  countryCode: "",
+  phoneNumber: "",
+  deliveryOption: "",
 };
 
 const ShippingForm = () => {
-  const [values, setValues] = useState<FormValues>(initialValues);
-  const [errors, setErrors] = useState<FormValues>(initialValues);
+  const [deliveryOption, setDeliveryOption] = useState<string>("standard");
 
-  const handleSubmit = (event: FormEvent): void => {
-    event.preventDefault();
-    console.log("values ", values);
-  };
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const {name, value} = event.target;
-
-    setValues({
-      ...values,
-      [name as string]: value,
-    });
-
-    // validate({[name as string]: value});
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setDeliveryOption(event.target.value);
   };
 
   return (
     <FormSection>
       <FormTitle>Where would you like your order sent?</FormTitle>
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <Input
-          label="Country"
-          name="country"
-          onChange={handleInputChange}
-          value={values.email}
-          error={errors.email}
-        />
+      <Form autoComplete="off">
+        <Input label="Country" name="country" />
 
-        <Input
-          label="Address"
-          name="address"
-          onChange={handleInputChange}
-          value={values.email}
-          error={errors.email}
-        />
+        <Input label="Address" name="address" />
 
         <Row>
           <Wrap width={66}>
-            <Input
-              label="City"
-              name="city"
-              onChange={handleInputChange}
-              value={values.firstname}
-              error={errors.firstname}
-            />
+            <Input label="City" name="city" />
           </Wrap>
 
           <Wrap width={26}>
-            <Input
-              label="Zip Code"
-              name="zipcode"
-              onChange={handleInputChange}
-              value={values.lastname}
-              error={errors.lastname}
-            />
+            <Input label="Zip Code" name="zipCode" />
           </Wrap>
         </Row>
 
-        <Input
-          label="State/Province"
-          name="state_or_province"
-          onChange={handleInputChange}
-          value={values.email}
-          error={errors.email}
-        />
+        <Input label="State/Province" name="stateOrProvince" />
 
         <Row>
           <Wrap width={26}>
-            <Input
-              label="Country code"
-              name="country_code"
-              onChange={handleInputChange}
-              value={values.firstname}
-              error={errors.firstname}
-            />
+            <Input label="Country code" name="countryCode" />
           </Wrap>
 
           <Wrap width={66}>
-            <Input
-              label="Phone number"
-              name="phone_number"
-              onChange={handleInputChange}
-              value={values.lastname}
-              error={errors.lastname}
-            />
+            <Input label="Phone number" name="phoneNumber" />
           </Wrap>
         </Row>
+
+        <Row>
+          <FormSectionTitle>Delivery options</FormSectionTitle>
+        </Row>
+
+        <FormControl component="fieldset">
+          <RadioGroup
+            aria-label="delivery options"
+            name="deliveryOptions"
+            value={deliveryOption}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="standard"
+              control={<RadioBtn />}
+              label="Europe Standard (3-4 business days)"
+            />
+            <FormControlLabel
+              value="express"
+              control={<RadioBtn />}
+              label="Europe Express (1-2 business days)"
+            />
+          </RadioGroup>
+        </FormControl>
 
         <Button>Proceed To Payment</Button>
       </Form>
