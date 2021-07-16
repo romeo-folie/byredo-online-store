@@ -253,7 +253,7 @@ export const CostDetails = styled.div`
 `;
 
 export const DetName = styled.span`
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 
   @media only screen and (min-width: 1600px) {
     font-size: 1.3rem;

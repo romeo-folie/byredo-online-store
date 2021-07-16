@@ -4,9 +4,9 @@ import {
   Form,
   Wrap,
   Row,
-} from "./user-detail-form.styles";
+  Button,
+} from "../form/form.styles";
 import Input from "../input/input.component";
-import Button from "../submit-btn/submit-btn.styles";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 
 interface FormValues {
@@ -31,8 +31,6 @@ const UserDetailForm = () => {
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     console.log(data);
   };
-
-  console.log("errors ", errors);
 
   return (
     <FormSection>

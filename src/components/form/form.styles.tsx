@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const Button = styled.button`
+  width: 200px;
+  padding: 15px;
+  border: 1px solid ${({theme}) => theme.accent};
+  background-color: ${({theme}) => theme.accent};
+  color: ${({theme}) => theme.secondary};
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 25px;
+
+  @media only screen and (min-width: 1600px) {
+    width: 230px;
+  }
+`;
+
 export const FormSection = styled.section`
   width: 100%;
   height: 100%;
@@ -17,7 +32,7 @@ export const Form = styled.form`
   width: 60%;
   display: flex;
   flex-direction: column;
-  padding: 50px 0;
+  padding: 50px 0 30px;
 
   @media only screen and (max-width: 1024px) {
     width: 80%;

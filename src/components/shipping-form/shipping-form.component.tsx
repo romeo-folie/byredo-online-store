@@ -1,13 +1,12 @@
-import {useState, FormEvent, ChangeEvent} from "react";
 import {
   FormSection,
   FormTitle,
   Form,
   Wrap,
   Row,
+  Button,
   FormSectionTitle,
-} from "./shipping-form.styles";
-import Button from "../submit-btn/submit-btn.styles";
+} from "../form/form.styles";
 import Input from "../input/input.component";
 import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
