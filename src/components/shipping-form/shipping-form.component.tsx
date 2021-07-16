@@ -22,7 +22,7 @@ interface FormValues {
   deliveryOption: string;
 }
 
-const initialValues = {
+const initialValues: FormValues = {
   country: "",
   address: "",
   city: "",

@@ -10,7 +10,7 @@ export const Container = styled.div<{isOpen: boolean}>`
   background-color: ${({theme}) => theme.primary};
   position: absolute;
   overflow: hidden;
-  z-index: 150;
+  z-index: 200;
   width: ${({isOpen}) => (isOpen ? "100%" : "0")};
   left: ${({isOpen}) => (isOpen ? "0" : "-50px")};
   transition: all 0.3s;

@@ -14,18 +14,22 @@ export const Row = styled.div`
 `;
 
 export const TitleSection = styled.div`
-  width: 20%;
+  width: 18%;
   padding-left: 15px;
   padding-top: 120px;
 
   @media only screen and (min-width: 1600px) {
     padding-top: 180px;
   }
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const Forms = styled.div`
-  width: 50%;
-  z-index: 150;
+  width: 52%;
+  z-index: 120;
   background-color: ${({theme}) => theme.primary};
   padding-top: 120px;
   overflow-y: auto;
@@ -37,16 +41,29 @@ export const Forms = styled.div`
   @media only screen and (min-width: 1600px) {
     padding-top: 180px;
   }
+
+  @media only screen and (max-width: 1000px) {
+    width: 65%;
+    padding-left: 50px;
+  }
+
+  @media only screen and (max-width: 640px) {
+    padding-left: 35px;
+  }
 `;
 
 export const ItemSection = styled.div`
-  width: 30%;
+  width: 35%;
   background-color: ${({theme}) => theme.secondary};
-  z-index: 150;
+  z-index: 120;
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1000px) {
+    padding: 20px 15px;
+  }
 `;
 
 export const PageTitle = styled.h3`

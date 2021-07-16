@@ -15,6 +15,7 @@ import {
 import CheckoutItem from "../components/checkout-item/checkout-item.component";
 import UserDetailForm from "../components/user-detail-form/user-detail-form.component";
 import ShippingForm from "../components/shipping-form/shipping-form.component";
+import PaymentForm from "../components/payment-form/payment-form.component";
 
 const Checkout = () => {
   return (
@@ -25,6 +26,7 @@ const Checkout = () => {
       <Forms>
         <UserDetailForm />
         <ShippingForm />
+        <PaymentForm />
       </Forms>
       <ItemSection>
         <Row>

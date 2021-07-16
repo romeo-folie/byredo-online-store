@@ -15,7 +15,7 @@ interface FormValues {
   email: string;
 }
 
-const initialValues = {
+const initialValues: FormValues = {
   firstname: "",
   lastname: "",
   email: "",
