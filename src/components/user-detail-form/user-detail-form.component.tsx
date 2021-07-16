@@ -1,13 +1,12 @@
-import {useState, FormEvent, ChangeEvent} from "react";
 import {
   FormSection,
   FormTitle,
   Form,
   Wrap,
   Row,
-  Button,
 } from "./user-detail-form.styles";
 import Input from "../input/input.component";
+import Button from "../submit-btn/submit-btn.styles";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 
 interface FormValues {

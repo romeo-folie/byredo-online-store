@@ -94,7 +94,7 @@ export const DetName = styled.span`
 `;
 
 export const DetValue = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
   @media only screen and (min-width: 1600px) {
     font-size: 1.45rem;

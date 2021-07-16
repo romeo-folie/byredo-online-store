@@ -36,9 +36,16 @@ import CartItem from "../cart-item/cart-item.component";
 import {CloseIcon} from "./cart.styles";
 import {useContext} from "react";
 import {NavContext, TOGGLE_CART} from "../../context/nav.state";
+import {useRouter} from "next/router";
 
 const Cart = () => {
   const {state, dispatch} = useContext(NavContext);
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    dispatch({type: TOGGLE_CART});
+    router.push("/checkout");
+  };
 
   return (
     <>
@@ -140,7 +147,7 @@ const Cart = () => {
               <DetValue>$330.50</DetValue>
             </TotalCostRow>
           </CostDetails>
-          <CheckoutBtn>Checkout</CheckoutBtn>
+          <CheckoutBtn onClick={handleCheckout}>Checkout</CheckoutBtn>
         </SummarySection>
       </Container>
     </>
