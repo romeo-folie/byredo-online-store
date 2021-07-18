@@ -21,10 +21,6 @@ export const FormTitle = styled.h3`
   @media only screen and (max-width: 1000px) {
     font-size: 1.8rem;
   }
-
-  /* @media only screen and (max-width: 600px) {
-    font-size: 1.6rem;
-  } */
 `;
 
 export const Form = styled.form`

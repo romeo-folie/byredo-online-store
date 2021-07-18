@@ -52,29 +52,119 @@ const radioProps = {
 };
 
 const PaymentForm = () => {
+  const {
+    handleSubmit,
+    control,
+    formState: {errors},
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+    console.log(data);
+  };
+
   return (
     <FormSection>
       <FormTitle>How would you like to pay?</FormTitle>
-      <Form autoComplete="off">
-        <RadioBtnGroup {...radioProps} />
+      <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+        <Controller
+          name="paymentType"
+          control={control}
+          defaultValue={initialValues.paymentType}
+          rules={{required: "This field is required"}}
+          render={({field}) => (
+            <RadioBtnGroup
+              {...field}
+              {...radioProps}
+              error={errors?.paymentType?.message}
+            />
+          )}
+        />
 
-        <Input label="Name on card" name="name" />
+        <Controller
+          name="name"
+          control={control}
+          defaultValue={initialValues.name}
+          rules={{required: "This field is required"}}
+          render={({field}) => (
+            <Input
+              label="Name on card"
+              {...field}
+              error={errors?.name?.message}
+            />
+          )}
+        />
 
-        <Input label="Card number" name="cardNumber" />
+        <Controller
+          name="cardNumber"
+          control={control}
+          defaultValue={initialValues.cardNumber}
+          rules={{required: "This field is required"}}
+          render={({field}) => (
+            <Input
+              label="Card number"
+              {...field}
+              error={errors?.cardNumber?.message}
+            />
+          )}
+        />
 
         <Row>
           <Wrap>
-            <Input label="Expiration" name="expiration" />
+            <Controller
+              name="expiration"
+              control={control}
+              defaultValue={initialValues.expiration}
+              rules={{required: "This field is required"}}
+              render={({field}) => (
+                <Input
+                  label="Expiration"
+                  {...field}
+                  error={errors?.expiration?.message}
+                />
+              )}
+            />
           </Wrap>
 
           <Wrap>
-            <Input label="CVV" name="cvv" />
+            <Controller
+              name="cvv"
+              control={control}
+              defaultValue={initialValues.cvv}
+              rules={{required: "This field is required"}}
+              render={({field}) => (
+                <Input label="CVV" {...field} error={errors?.cvv?.message} />
+              )}
+            />
           </Wrap>
         </Row>
 
-        <Check label="Use shipping address as billing address" name="billingAddress" />
+        <Controller
+          name="billingAddress"
+          control={control}
+          defaultValue={initialValues.billingAddress}
+          rules={{required: "This field is required"}}
+          render={({field}) => (
+            <Check
+              {...field}
+              label="Use shipping address as billing address"
+              error={errors?.billingAddress?.message}
+            />
+          )}
+        />
 
-        <Check label="I accept Byredo Terms & Conditions" name="acceptTerms" />
+        <Controller
+          name="acceptTerms"
+          control={control}
+          defaultValue={initialValues.acceptTerms}
+          rules={{required: "This field is required"}}
+          render={({field}) => (
+            <Check
+              {...field}
+              label="I accept Byredo Terms & Conditions"
+              error={errors?.acceptTerms?.message}
+            />
+          )}
+        />
 
         <Button>Complete Purchase</Button>
       </Form>
