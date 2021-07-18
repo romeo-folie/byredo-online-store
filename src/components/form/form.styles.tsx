@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const FormSection = styled.section`
-  width: 100%;
+  width: 90%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 
   &:nth-of-type(2) {
     margin-bottom: 40%;
@@ -19,6 +21,10 @@ export const FormTitle = styled.h3`
   @media only screen and (max-width: 1000px) {
     font-size: 1.8rem;
   }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -32,7 +38,7 @@ export const Form = styled.form`
   }
 
   @media only screen and (max-width: 640px) {
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -67,5 +73,6 @@ export const Button = styled.button`
 
   @media only screen and (max-width: 1000px) {
     width: 200px;
+    font-size: 0.9rem;
   }
 `;

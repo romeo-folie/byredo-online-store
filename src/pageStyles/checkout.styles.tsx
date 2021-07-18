@@ -44,15 +44,10 @@ export const Forms = styled.div`
 
   @media only screen and (max-width: 1000px) {
     width: 65%;
-    padding-left: 50px;
   }
 
   @media only screen and (max-width: 700px) {
     width: 100%;
-  }
-
-  @media only screen and (max-width: 640px) {
-    padding-left: 35px;
   }
 `;
 
