@@ -64,4 +64,8 @@ export const Button = styled.button`
   @media only screen and (min-width: 1600px) {
     width: 230px;
   }
+
+  @media only screen and (max-width: 1000px) {
+    width: 200px;
+  }
 `;

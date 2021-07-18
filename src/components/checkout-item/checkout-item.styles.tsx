@@ -24,6 +24,10 @@ export const Name = styled.span`
   @media only screen and (min-width: 1600px) {
     font-size: 1.25rem;
   }
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Qty = styled.span`

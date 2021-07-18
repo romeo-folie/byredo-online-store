@@ -47,6 +47,10 @@ export const Forms = styled.div`
     padding-left: 50px;
   }
 
+  @media only screen and (max-width: 700px) {
+    width: 100%;
+  }
+
   @media only screen and (max-width: 640px) {
     padding-left: 35px;
   }
@@ -63,6 +67,10 @@ export const ItemSection = styled.div`
 
   @media only screen and (max-width: 1000px) {
     padding: 20px 15px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    display: none;
   }
 `;
 
@@ -111,10 +119,14 @@ export const DetName = styled.span`
 `;
 
 export const DetValue = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 
   @media only screen and (min-width: 1600px) {
-    font-size: 1.45rem;
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 1.25rem;
   }
 `;
 
@@ -129,5 +141,9 @@ export const PromoCodeInput = styled.input`
   @media only screen and (min-width: 1600px) {
     width: 95px;
     font-size: 1.2rem;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 1.1rem;
   }
 `;
