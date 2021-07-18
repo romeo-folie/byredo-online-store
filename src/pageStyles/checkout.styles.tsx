@@ -14,7 +14,7 @@ export const Row = styled.div`
 `;
 
 export const TitleSection = styled.div`
-  width: 18%;
+  width: 15%;
   padding-left: 15px;
   padding-top: 120px;
 
@@ -28,7 +28,7 @@ export const TitleSection = styled.div`
 `;
 
 export const Forms = styled.div`
-  width: 52%;
+  width: 55%;
   z-index: 120;
   background-color: ${({theme}) => theme.primary};
   padding-top: 120px;

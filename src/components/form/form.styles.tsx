@@ -22,9 +22,9 @@ export const FormTitle = styled.h3`
     font-size: 1.8rem;
   }
 
-  @media only screen and (max-width: 600px) {
-    font-size: 1.5rem;
-  }
+  /* @media only screen and (max-width: 600px) {
+    font-size: 1.6rem;
+  } */
 `;
 
 export const Form = styled.form`
