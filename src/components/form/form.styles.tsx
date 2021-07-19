@@ -33,7 +33,7 @@ export const Form = styled.form`
     width: 80%;
   }
 
-  @media only screen and (max-width: 640px) {
+  @media only screen and (max-width: 700px) {
     width: 100%;
   }
 `;

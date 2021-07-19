@@ -10,7 +10,7 @@ import {
 import Input from "../input/input.component";
 import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
-import FormSelector from "../form-selector/form-selector.component";
+// import FormSelector from "../form-selector/form-selector.component";
 
 interface FormValues {
   country: string;
