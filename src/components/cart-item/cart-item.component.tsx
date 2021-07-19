@@ -24,7 +24,7 @@ interface Props {
   imagePath: string;
   name: string;
   type: string;
-  size: string;
+  size?: string;
   price: string;
 }
 

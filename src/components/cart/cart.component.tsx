@@ -80,7 +80,7 @@ const Cart = () => {
                 size="225ml"
                 price="50"
               />
-              
+
               <CartItem
                 name="Tulipmania"
                 imagePath="/images/products/mob_tulipmania-rinse-free-removebg-preview.png"
@@ -103,6 +103,37 @@ const Cart = () => {
                 type="Eau de parfum"
                 size="20ml"
                 price="20"
+              />
+
+              <CartItem
+                name="EDP TRVX"
+                imagePath="/images/products/edp_trvx_1500x1680-removebg-preview.png"
+                type="Eau de parfum"
+                size="20ml"
+                price="20"
+              />
+
+              <CartItem
+                name="Biblioteque"
+                imagePath="/images/products/mob_bibliothequeandle-240-g_1-removebg-preview.png"
+                type="Scented Candle"
+                size="20ml"
+                price="20"
+              />
+
+              <CartItem
+                name="Isono"
+                imagePath="/images/products/isono_byredo_210414-215_kopia__1440x16401500x1680-removebg-preview.png"
+                type="Glasses"
+                price="20"
+              />
+
+              <CartItem
+                name="Black Saffron"
+                imagePath="/images/products/mob_blacksaffron_hp-removebg-preview.png"
+                type="Parfum pour chevaux"
+                size="75ml"
+                price="50"
               />
             </Items>
           </Table>
