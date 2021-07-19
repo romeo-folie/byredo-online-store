@@ -7,7 +7,7 @@ export const Overlay = styled.div<{isOpen?: boolean}>`
   width: 100%;
   height: 100vh;
   position: absolute;
-  z-index: 70;
+  z-index: 170;
   background-color: rgba(0, 0, 0, 0.5);
   display: ${({isOpen}) => (isOpen ? "block" : "none")};
   transition: all 0.3s;
@@ -16,7 +16,7 @@ export const Overlay = styled.div<{isOpen?: boolean}>`
 export const Container = styled.div<{isOpen?: boolean}>`
   height: 100vh;
   width: ${({isOpen}) => (isOpen ? "80%" : "0")};
-  z-index: 80;
+  z-index: 180;
   position: absolute;
   overflow: hidden;
   right: ${({isOpen}) => (isOpen ? "0" : "-50px")};
@@ -72,6 +72,8 @@ export const Row = styled.div`
 `;
 
 export const BackRow = styled(Row)`
+  padding-top: 8px;
+
   @media only screen and (max-width: 1000px) {
     display: none;
   }
@@ -205,6 +207,7 @@ export const SummarySectionTitle = styled.h3`
 export const CloseRow = styled(Row)`
   justify-content: flex-end;
   margin-bottom: 16px;
+  padding-top: 8px;
 
   @media only screen and (max-width: 1000px) {
     justify-content: flex-start;

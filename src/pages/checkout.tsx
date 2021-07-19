@@ -22,7 +22,7 @@ import {useContext} from "react";
 import {NavContext, TOGGLE_CART} from "../context/nav.state";
 
 const Checkout = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {dispatch} = useContext(NavContext);
 
   const handleCartEdit = () => {
     dispatch({type: TOGGLE_CART});

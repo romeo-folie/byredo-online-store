@@ -80,6 +80,7 @@ const Cart = () => {
                 size="225ml"
                 price="50"
               />
+              
               <CartItem
                 name="Tulipmania"
                 imagePath="/images/products/mob_tulipmania-rinse-free-removebg-preview.png"

@@ -15,7 +15,6 @@ export const Container = styled.div`
   align-items: center;
   padding: 15px;
   z-index: 50;
-  cursor: pointer;
 `;
 
 // eslint-disable-next-line react/display-name
@@ -25,6 +24,7 @@ export const Container = styled.div`
 
 export const Brand = styled(Logo)`
   width: 100px;
+  cursor: pointer;
 
   @media only screen and (min-width: 1600px) {
     width: 130px;

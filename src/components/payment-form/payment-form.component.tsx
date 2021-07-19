@@ -10,6 +10,7 @@ import Input from "../input/input.component";
 import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import Check from "../check/check.component";
+import {useRouter} from "next/router";
 
 interface FormValues {
   paymentType: string;
@@ -57,9 +58,11 @@ const PaymentForm = () => {
     control,
     formState: {errors},
   } = useForm<FormValues>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     console.log(data);
+    router.push("/complete");
   };
 
   return (
@@ -166,7 +169,7 @@ const PaymentForm = () => {
           )}
         />
 
-        <Button>Complete Purchase</Button>
+        <Button type="submit">Complete Purchase</Button>
       </Form>
     </FormSection>
   );

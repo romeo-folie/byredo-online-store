@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Item = styled.li<Props>`
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding-left: ${({active}) => (active ? "8px" : 0)};
   font-weight: ${({active}) => (active ? "bold" : "normal")};
   cursor: pointer;

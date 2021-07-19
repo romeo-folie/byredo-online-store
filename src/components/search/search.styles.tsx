@@ -14,7 +14,7 @@ export const Container = styled.div<{isOpen?: boolean}>`
   justify-content: space-between;
   position: absolute;
   transition: all 0.3s;
-  z-index: 150;
+  z-index: 180;
   display: flex;
 `;
 

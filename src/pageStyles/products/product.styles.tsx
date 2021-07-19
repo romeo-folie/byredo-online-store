@@ -206,7 +206,7 @@ export const DetailDesc = styled.span`
 export const CartButton = styled.button`
   width: 100%;
   background-color: transparent;
-  border: 1px solid ${({theme}) => theme.accent};
+  border: 2px solid ${({theme}) => theme.accent};
   text-transform: uppercase;
   padding: 15px;
   margin-top: auto;
