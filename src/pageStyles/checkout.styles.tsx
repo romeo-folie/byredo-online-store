@@ -48,6 +48,7 @@ export const Forms = styled.div`
 
   @media only screen and (max-width: 700px) {
     width: 100%;
+    padding-top: 0;
   }
 `;
 
@@ -88,10 +89,10 @@ export const ItemSectionTitle = styled.span`
 
 export const CartLink = styled.a`
   color: rgba(0, 0, 0, 0.5);
-  font-size: 0.95rem;
+  font-size: 1rem;
 
   @media only screen and (min-width: 1600px) {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -140,5 +141,19 @@ export const PromoCodeInput = styled.input`
 
   @media only screen and (max-width: 1000px) {
     font-size: 1.1rem;
+  }
+`;
+
+export const BackRow = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  margin-bottom: 100px;
+
+  @media only screen and (min-width: 701px) {
+    display: none;
   }
 `;

@@ -3,6 +3,7 @@ import Logo from "../../../public/vectors/logo.svg";
 import Person from "../../../public/vectors/person-outline.svg";
 import Search from "../../../public/vectors/search-outline.svg";
 import MIcon from "../../../public/vectors/menu.svg";
+import React from "react";
 
 export const Container = styled.div`
   position: absolute;
@@ -16,6 +17,11 @@ export const Container = styled.div`
   z-index: 50;
   cursor: pointer;
 `;
+
+// eslint-disable-next-line react/display-name
+// export const Brand = React.forwardRef((props, ref) => (
+//   <StyledBrand {...props} ref={ref} />
+// ));
 
 export const Brand = styled(Logo)`
   width: 100px;

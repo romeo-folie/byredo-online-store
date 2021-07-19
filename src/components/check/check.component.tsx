@@ -21,6 +21,7 @@ const StyledCheck = withStyles({
       backgroundColor: "#000000",
     },
   },
+  checked: {},
 })(Checkbox);
 
 const Check: React.FC<ICheckProps> = ({label, error, ...otherProps}) => {
