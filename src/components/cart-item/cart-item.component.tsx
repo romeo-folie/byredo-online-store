@@ -42,7 +42,7 @@ const CartItem: React.FC<Props> = ({imagePath, name, type, size, price}) => {
           <RemoveIconM />
         </SpacedRow>
         <Row>
-          <ProdSizeM>{size}</ProdSizeM>
+          {size ? <ProdSizeM>{size}</ProdSizeM> : null}
           <ProdTypeM>{type}</ProdTypeM>
         </Row>
         <SpacedRow>
