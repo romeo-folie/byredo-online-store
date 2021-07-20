@@ -15,7 +15,11 @@ export const Image = styled.img`
   width: 50%;
 `;
 
-export const Col = styled.div``;
+export const Col = styled.div`
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.3rem;
+  }
+`;
 
 export const Row = styled.div`
   display: flex;
@@ -32,6 +36,11 @@ export const Span = styled.span`
 
 export const Price = styled(Span)`
   color: ${({theme}) => theme.accent};
+  font-size: 1.1rem;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const Size = styled(Span)`

@@ -39,6 +39,13 @@ export const BaseRow = styled(Row)`
 `;
 
 export const MessageRow = styled(BaseRow)`
+  @media only screen and (min-width: 1600px) {
+    & > div span,
+    & > div p {
+      font-size: 1.3rem;
+    }
+  }
+
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: flex-end;
@@ -61,6 +68,10 @@ export const Detail = styled(Row)`
 
   & > span:nth-of-type(2) {
     width: 45%;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.3rem;
   }
 `;
 
@@ -168,6 +179,10 @@ export const SummaryTitle = styled.h3`
   font-weight: normal;
   font-size: 1.4rem;
   margin-bottom: 50px;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 1.6rem;
+  }
 
   @media only screen and (max-width: 380px) {
     font-size: 1.3rem;
