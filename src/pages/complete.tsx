@@ -16,6 +16,7 @@ import {
   P,
   Button,
   BaseRow,
+  MessageRow,
   Detail,
   Items,
   SummaryTitle,
@@ -63,7 +64,7 @@ const Complete = () => {
         </Wrap>
 
         <Wrap>
-          <BaseRow>
+          <MessageRow>
             <Wrap width={40}>
               <Span>Hello, John Appleseed</Span>
               <P>
@@ -75,7 +76,7 @@ const Complete = () => {
               <Span>BYREDO</Span>
             </Wrap>
             <Button onClick={() => router.replace("/")}>Back to store</Button>
-          </BaseRow>
+          </MessageRow>
         </Wrap>
       </MainSection>
       <SummarySection>

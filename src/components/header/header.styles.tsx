@@ -78,7 +78,7 @@ export const MenuIcon = styled(MIcon)`
   width: 30px;
   cursor: pointer;
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 1001px) {
     display: none;
   }
 `;
