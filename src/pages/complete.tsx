@@ -11,11 +11,13 @@ import {
   MainTitle,
   SubTitle,
   Wrap,
+  Spacer,
   Span,
   P,
   Button,
   BaseRow,
   Detail,
+  Items,
   SummaryTitle,
   SummarySection,
 } from "../pageStyles/complete.styles";
@@ -28,6 +30,7 @@ import {
   TOGGLE_SEARCH,
 } from "../context/nav.state";
 import {useRouter} from "next/router";
+import SummaryItem from "../components/summary-item/summary-item.component";
 
 const Complete = () => {
   const {state, dispatch} = useContext(NavContext);
@@ -78,34 +81,55 @@ const Complete = () => {
       <SummarySection>
         <SummaryTitle>Order summary</SummaryTitle>
 
-        <Detail>
-          <Span>Order No</Span>
-          <Span>9PM2EQ</Span>
-          <Span />
-        </Detail>
+        <Wrap>
+          <Detail>
+            <Span bold>Order No</Span>
+            <Span>9PM2EQ</Span>
+          </Detail>
+
+          <Detail>
+            <Span bold>Est delivery date</Span>
+            <Span>06.08.19</Span>
+          </Detail>
+
+          <Detail>
+            <Span bold>Shipping details</Span>
+            <Span>
+              John Appleseed
+              <br />
+              194 Ferry St London, 07015
+              <br />
+              Europe Standard
+            </Span>
+          </Detail>
+        </Wrap>
 
         <Detail>
-          <Span>Est delivery date</Span>
-          <Span>06.08.19</Span>
-          <Span />
+          <Spacer width={40} />
+          <BaseRow>
+            <Span bold>Total</Span>
+            <Span bold>$330.00</Span>
+          </BaseRow>
         </Detail>
 
-        <Detail>
-          <Span>Shipping details</Span>
-          <Span>
-            John Appleseed
-            <br />
-            194 Ferry St London, 07015
-            <br />
-            Europe Standard
-          </Span>
-          <Span />
-        </Detail>
+        <Items>
+          <SummaryItem />
+          {/* <SummaryItem />
+          <SummaryItem />
+          <SummaryItem />
+          <SummaryItem />
+          <SummaryItem />
+          <SummaryItem />
+          <SummaryItem />
+          <SummaryItem /> */}
+        </Items>
 
         <Detail>
-          <Span />
-          <Span>Total</Span>
-          <Span>$330.00</Span>
+          <Spacer width={40} />
+          <BaseRow>
+            <Span>Shipping</Span>
+            <Span>$0.00</Span>
+          </BaseRow>
         </Detail>
       </SummarySection>
     </Container>

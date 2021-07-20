@@ -19,8 +19,9 @@ export const Row = styled.div`
   align-items: center;
 `;
 
-export const Span = styled.span`
+export const Span = styled.span<{bold?: boolean}>`
   color: rgba(0, 0, 0, 0.7);
+  font-weight: ${({bold}) => (bold ? "bold" : "normal")};
 `;
 
 export const P = styled.p`
@@ -30,14 +31,32 @@ export const P = styled.p`
 export const BaseRow = styled(Row)`
   justify-content: space-between;
   align-items: baseline;
+  width: 100%;
 `;
 
-export const Detail = styled(BaseRow)`
+export const Detail = styled(Row)`
   margin-bottom: 30px;
+  align-items: baseline;
+
+  & > span:first-of-type {
+    width: 40%;
+  }
+
+  & > span:nth-of-type(2) {
+    width: 45%;
+  }
 `;
 
 export const Wrap = styled.div<{width?: number}>`
   width: ${({width}) => (width ? `${width}%` : "100%")};
+`;
+
+export const Spacer = styled.div<{width?: number}>`
+  min-width: ${({width}) => (width ? `${width}%` : "100%")};
+`;
+
+export const Items = styled.div`
+  margin-bottom: 30px;
 `;
 
 export const MainSection = styled.div`
@@ -66,7 +85,12 @@ export const SummarySection = styled.div`
   width: 30%;
   z-index: 100;
   background-color: ${({theme}) => theme.primary};
-  padding: 70px 20px 20px;
+  padding: 50px 20px 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const SummaryTitle = styled.h3`
