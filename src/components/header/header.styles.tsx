@@ -53,10 +53,6 @@ export const UserIcon = styled(Person)`
   @media only screen and (min-width: 1600px) {
     width: 30px;
   }
-
-  /* @media only screen and (max-width: 1024px) {
-    width: 20px;
-  } */
 `;
 
 export const SearchIcon = styled(Search)`
@@ -68,10 +64,6 @@ export const SearchIcon = styled(Search)`
   @media only screen and (min-width: 1600px) {
     width: 30px;
   }
-
-  /* @media only screen and (max-width: 1024px) {
-    width: 20px;
-  } */
 `;
 
 export const MenuIcon = styled(MIcon)`

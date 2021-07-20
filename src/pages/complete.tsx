@@ -34,7 +34,7 @@ import {useRouter} from "next/router";
 import SummaryItem from "../components/summary-item/summary-item.component";
 
 const Complete = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {dispatch} = useContext(NavContext);
   const router = useRouter();
 
   return (

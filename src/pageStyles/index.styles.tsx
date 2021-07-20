@@ -61,7 +61,7 @@ export const Grid = styled.div`
   justify-content: center;
 
   @media only screen and (min-width: 1600px) {
-    grid-column-gap: 30px;
+    grid-column-gap: 130px;
     grid-row-gap: 20px;
   }
 `;
