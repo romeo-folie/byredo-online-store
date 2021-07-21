@@ -28,7 +28,7 @@ export const Forms = styled.div`
   width: 80%;
   display: flex;
   margin: 0 auto;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 
   @media only screen and (max-width: 1024px) {
     width: 100%;
