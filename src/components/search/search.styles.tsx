@@ -22,6 +22,7 @@ export const Header = styled(MHeader)``;
 
 export const Brand = styled(Logo)`
   width: 100px;
+  cursor: pointer;
 
   @media only screen and (max-width: 1000px) {
     width: 80px;

@@ -49,6 +49,7 @@ export const UserIcon = styled(Person)`
   margin-right: 18px;
   margin-top: 3px;
   z-index: 18;
+  cursor: pointer;
 
   @media only screen and (min-width: 1600px) {
     width: 30px;

@@ -20,9 +20,11 @@ import {CloseIcon} from "../side-menu/side-menu.styles";
 import SearchItem from "../search-item/search-item.component";
 import NavItem from "../nav-item/nav-item.component";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const Search = () => {
   const {state, dispatch} = useContext(NavContext);
+  const router = useRouter();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -32,9 +34,14 @@ const Search = () => {
   return (
     <Container isOpen={state.isSearchOpen}>
       <Header>
-        <Link href="/" passHref replace>
-          <Brand onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-        </Link>
+        {/* <Link href="/" passHref replace> */}
+        <Brand
+          onClick={() => {
+            dispatch({type: TOGGLE_SEARCH});
+            router.replace("/");
+          }}
+        />
+        {/* </Link> */}
 
         <Menu>
           {state.navOptions.map((opt, idx) => (

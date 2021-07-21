@@ -41,13 +41,13 @@ const Complete = () => {
     <Container>
       <Header>
         <Menu onClick={() => dispatch({type: TOGGLE_MENU})} />
-        <Link href="/" passHref replace>
-          <Brand />
-        </Link>
+        {/* <Link href="/" passHref replace> */}
+        <Brand onClick={() => router.replace("/")} />
+        {/* </Link> */}
 
         <Row>
           <Search onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-          <User />
+          <User onClick={() => router.replace("/auth")} />
           <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
         </Row>
       </Header>
