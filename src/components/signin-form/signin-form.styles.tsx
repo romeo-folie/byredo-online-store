@@ -6,10 +6,22 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+
+    &:first-of-type {
+      margin-bottom: 150px;
+    }
+  }
 `;
 
 export const Form = styled.form`
   width: 60%;
+
+  @media only screen and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 export const Title = styled.div`
