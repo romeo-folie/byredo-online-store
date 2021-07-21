@@ -18,9 +18,11 @@ import {
   SET_NAV_OPTION,
 } from "../../context/nav.state";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const SideMenu = () => {
   const {state, dispatch} = useContext(NavContext);
+  const router = useRouter();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -31,9 +33,12 @@ const SideMenu = () => {
   return (
     <Container isOpen={state.isMenuOpen}>
       <Header>
-        <Link href="/" passHref replace>
-          <Brand onClick={() => dispatch({type: TOGGLE_MENU})} />
-        </Link>
+        <Brand
+          onClick={() => {
+            router.replace("/");
+            dispatch({type: TOGGLE_MENU});
+          }}
+        />
         <CloseIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
       </Header>
       <Menu>

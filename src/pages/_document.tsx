@@ -37,13 +37,18 @@ MyDocument.getInitialProps = async (ctx) => {
 
     return {
       ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {sheet.getStyleElement()}
-          {sheets.getStyleElement()}
-        </>
-      ),
+      styles: [
+        ...React.Children.toArray(initialProps.styles),
+        sheet.getStyleElement(),
+        sheets.getStyleElement(),
+      ],
+      // styles: (
+      //   <>
+      //     {initialProps.styles}
+      //     {sheet.getStyleElement()}
+      //     {sheets.getStyleElement()}
+      //   </>
+      // ),
     };
   } finally {
     sheet.seal();
@@ -58,6 +63,6 @@ MyDocument.getInitialProps = async (ctx) => {
   // return {
   //   ...initialProps,
   //   // Styles fragment is rendered after the app and page rendering finish.
-  //   styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+  // styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
   // };
 };

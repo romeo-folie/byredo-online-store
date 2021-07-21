@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <Container>
       <MenuIcon onClick={() => dispatch({type: TOGGLE_MENU})} />
-        <Brand onClick={() => router.replace("/")}/>
+      <Brand onClick={() => router.replace("/")} />
       <Menu>
         {state.navOptions.map((opt, idx) => (
           <NavItem
@@ -44,7 +44,7 @@ const Header = () => {
       </Menu>
       <Menu>
         <SearchIcon onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-        <UserIcon onClick={() => router.replace("/auth")}/>
+        <UserIcon onClick={() => router.replace("/auth")} />
         <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
       </Menu>
     </Container>

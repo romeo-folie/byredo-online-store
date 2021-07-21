@@ -8,11 +8,7 @@ import {
   Menu,
 } from "./side-submenu.styles";
 import {CloseIcon} from "../side-menu/side-menu.styles";
-import {
-  NavContext,
-  TOGGLE_MENU,
-  TOGGLE_SUBMENU,
-} from "../../context/nav.state";
+import {NavContext, TOGGLE_MENU, TOGGLE_SUBMENU} from "../../context/nav.state";
 import CategoryList from "../category-list/category-list.component";
 
 const SideSubMenu = () => {

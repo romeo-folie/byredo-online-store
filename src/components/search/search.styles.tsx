@@ -7,7 +7,7 @@ import {Menu as MMenu, Brand as MBrand} from "../header/header.styles";
 export const Container = styled.div<{isOpen?: boolean}>`
   height: 100vh;
   width: ${({isOpen}) => (isOpen ? "100%" : "0")};
-  right: ${({isOpen}) => (isOpen ? "0" : "-50px")};
+  right: ${({isOpen}) => (isOpen ? "0" : "-150px")};
   padding: 15px;
   background-color: ${({theme}) => theme.secondary};
   flex-direction: column;
