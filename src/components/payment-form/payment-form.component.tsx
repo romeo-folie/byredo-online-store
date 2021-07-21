@@ -73,7 +73,7 @@ const PaymentForm = () => {
           name="paymentType"
           control={control}
           defaultValue={initialValues.paymentType}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <RadioBtnGroup
               {...field}
@@ -87,7 +87,7 @@ const PaymentForm = () => {
           name="name"
           control={control}
           defaultValue={initialValues.name}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Input
               label="Name on card"
@@ -101,7 +101,7 @@ const PaymentForm = () => {
           name="cardNumber"
           control={control}
           defaultValue={initialValues.cardNumber}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Input
               label="Card number"
@@ -117,7 +117,7 @@ const PaymentForm = () => {
               name="expiration"
               control={control}
               defaultValue={initialValues.expiration}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input
                   label="Expiration"
@@ -133,7 +133,7 @@ const PaymentForm = () => {
               name="cvv"
               control={control}
               defaultValue={initialValues.cvv}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input label="CVV" {...field} error={errors?.cvv?.message} />
               )}
@@ -145,7 +145,7 @@ const PaymentForm = () => {
           name="billingAddress"
           control={control}
           defaultValue={initialValues.billingAddress}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Check
               {...field}
@@ -159,7 +159,7 @@ const PaymentForm = () => {
           name="acceptTerms"
           control={control}
           defaultValue={initialValues.acceptTerms}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Check
               {...field}

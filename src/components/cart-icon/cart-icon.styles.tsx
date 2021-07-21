@@ -12,11 +12,11 @@ export const Container = styled.div`
 export const Count = styled.span`
   position: absolute;
   font-size: 0.6rem;
-  bottom: 2px;
+  bottom: 3px;
   color: ${({theme}) => theme.primary};
 
   @media only screen and (min-width: 1600px) {
-    bottom: 3px;
+    bottom: 4px;
     font-size: 0.7rem;
   }
 
