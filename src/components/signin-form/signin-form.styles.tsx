@@ -26,6 +26,10 @@ export const Form = styled.form`
 export const Title = styled.div`
   font-size: 2rem;
   margin-bottom: 20px;
+
+  @media only screen and (max-width: 1000px){
+    font-size: 1.8rem;
+  }
 `;
 
 export const Row = styled.div`
