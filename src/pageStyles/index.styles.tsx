@@ -84,7 +84,7 @@ export const FilterSection = styled.div`
     display: flex;
     flex-direction: row;
     padding-left: 15px;
-    /* padding-right: 25px; */
+    padding-right: 15px;
     justify-content: space-between;
     padding-top: 0;
     /* padding-top: 85px; */

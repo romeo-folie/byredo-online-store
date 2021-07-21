@@ -50,7 +50,7 @@ const ProductPage = () => {
         <Type>Eyewear</Type>
         <Name>The Bohemian</Name>
         <PriceRow>
-          <Price>{"$ 140"}</Price>
+          <Price>{"$140"}</Price>
           <Row>
             {/* <Size>225 ml</Size>
             <Size>450 ml</Size> */}

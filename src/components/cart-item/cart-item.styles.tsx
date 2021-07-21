@@ -168,8 +168,8 @@ export const QtyBtn = styled.div`
   cursor: pointer;
 
   @media only screen and (max-width: 540px) {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 `;
 
