@@ -17,7 +17,11 @@ export const Content = styled.div`
     display: none;
   }
 
-  padding-top: 100px;
+  @media only screen and (min-width: 1001px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Forms = styled.div`
@@ -28,11 +32,9 @@ export const Forms = styled.div`
 
   @media only screen and (max-width: 1024px) {
     width: 100%;
-    padding-top: 80px;
   }
 
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
-    padding-top: 50px;
   }
 `;

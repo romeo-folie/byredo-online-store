@@ -9,10 +9,8 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 1000px) {
     width: 100%;
-
-    &:first-of-type {
-      margin-bottom: 150px;
-    }
+    height: 100vh;
+    justify-content: center;
   }
 `;
 
