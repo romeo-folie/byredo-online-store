@@ -11,7 +11,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
     justify-content: center;
-    padding: 30px 0 20px;
+    padding: 50px 0 20px;
   }
 `;
 

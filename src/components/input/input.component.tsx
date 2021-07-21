@@ -76,6 +76,7 @@ const Input: React.FC<Iprops> = (props) => {
       {...(error && {error: true, helperText: error})}
       InputProps={{
         className: styles.input,
+        autoComplete: "off",
       }}
       {...(name === "password" && {
         InputProps: {
