@@ -6,7 +6,7 @@ import {
   makeStyles,
   withStyles,
 } from "@material-ui/core";
-import {Visibility, VisibilityOff} from "@material-ui/icons";
+import {Visibility, VisibilityOff, CreditCard} from "@material-ui/icons";
 
 interface Iprops {
   name: string;
@@ -78,7 +78,7 @@ const Input: React.FC<Iprops> = (props) => {
         className: styles.input,
         autoComplete: "off",
       }}
-      {...(name === "password" && {
+      {...((name === "password" || name === "confirmPassword") && {
         InputProps: {
           endAdornment: (
             <InputAdornment position="end">
@@ -92,6 +92,17 @@ const Input: React.FC<Iprops> = (props) => {
             </InputAdornment>
           ),
           type: showPassword ? "text" : "password",
+        },
+      })}
+      {...(name === "cardNumber" && {
+        InputProps: {
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton aria-label="credit card icon" edge="end">
+                <CreditCard />
+              </IconButton>
+            </InputAdornment>
+          ),
         },
       })}
     />
