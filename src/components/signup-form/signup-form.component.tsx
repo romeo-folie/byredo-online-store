@@ -13,7 +13,7 @@ const Signup = () => {
   return (
     <Container>
       <Form autoComplete="off">
-        <Title>Register</Title>
+        <Title>Create Account</Title>
         <Input label="Full name" name="fullName" />
         <Input label="Email address" name="email" />
         <Input label="Password" name="password" />

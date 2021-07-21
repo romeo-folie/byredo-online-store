@@ -7,7 +7,7 @@ const Signin = () => {
   return (
     <Container>
       <Form autoComplete="off">
-        <Title>Login</Title>
+        <Title>Welcome back</Title>
         <Input label="Email address" name="email" />
         <Input label="Password" name="password" />
         <Row>
