@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {
   TextField,
   InputAdornment,
@@ -13,8 +13,6 @@ interface Iprops {
   value?: string;
   label: string;
   error?: string;
-  showPassword?: boolean;
-  onShowPasswordClick?: () => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -58,16 +56,14 @@ const Field = withStyles({
 })(TextField);
 
 const Input: React.FC<Iprops> = (props) => {
-  const {
-    name,
-    value,
-    onChange,
-    label,
-    error,
-    showPassword,
-    onShowPasswordClick,
-  } = props;
+  const {name, value, onChange, label, error} = props;
+
   const styles = useStyles();
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleShowPasswordClick = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <Field
@@ -88,7 +84,7 @@ const Input: React.FC<Iprops> = (props) => {
               <IconButton
                 aria-label="toggle password visibility"
                 edge="end"
-                onClick={onShowPasswordClick}
+                onClick={handleShowPasswordClick}
               >
                 {showPassword ? <VisibilityOff /> : <Visibility />}
               </IconButton>
