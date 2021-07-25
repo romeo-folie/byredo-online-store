@@ -19,7 +19,11 @@ import {
   TOGGLE_CART,
   TOGGLE_SEARCH,
 } from "../context/nav.state";
-import {withAuthUser, withAuthUserSSR, AuthAction} from "next-firebase-auth";
+import {
+  withAuthUser,
+  withAuthUserTokenSSR,
+  AuthAction,
+} from "next-firebase-auth";
 
 const Auth = () => {
   const {dispatch} = useContext(NavContext);
@@ -46,7 +50,7 @@ const Auth = () => {
   );
 };
 
-export const getServerSideProps = withAuthUserSSR({
+export const getServerSideProps = withAuthUserTokenSSR({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
 })();
 

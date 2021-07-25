@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import admin from 'firebase-admin'
 
 const clientConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY || "",
@@ -15,7 +14,5 @@ if (!firebase.apps.length) {
 }
 
 export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-export const firebaseAdmin = admin.apps[0];
 
 export default firebase;

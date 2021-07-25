@@ -23,7 +23,7 @@ import {
 import {
   useAuthUser,
   withAuthUser,
-  withAuthUserSSR,
+  withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
 
@@ -74,7 +74,7 @@ const Checkout = () => {
   );
 };
 
-export const getServerSideProps = withAuthUserSSR({
+export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })();
 
