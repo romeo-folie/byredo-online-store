@@ -1,4 +1,10 @@
 import React, {useContext} from "react";
+import CartIcon from "../components/cart-icon/cart-icon.component";
+import Link from "next/link";
+import {Container, Content, Forms} from "../pageStyles/auth.styles";
+import Signin from "../components/signin-form/signin-form.component";
+import Signup from "../components/signup-form/signup-form.component";
+import {useRouter} from "next/router";
 import {
   Header,
   Brand,
@@ -13,12 +19,7 @@ import {
   TOGGLE_CART,
   TOGGLE_SEARCH,
 } from "../context/nav.state";
-import CartIcon from "../components/cart-icon/cart-icon.component";
-import Link from "next/link";
-import {Container, Content, Forms} from "../pageStyles/auth.styles";
-import Signin from "../components/signin-form/signin-form.component";
-import Signup from "../components/signup-form/signup-form.component";
-import {useRouter} from "next/router";
+import {withAuthUser, withAuthUserSSR, AuthAction} from "next-firebase-auth";
 
 const Auth = () => {
   const {dispatch} = useContext(NavContext);
@@ -29,10 +30,7 @@ const Auth = () => {
       <Content>
         <Header>
           <Menu onClick={() => dispatch({type: TOGGLE_MENU})} />
-          {/* <Link href="/" passHref replace> */}
           <Brand onClick={() => router.replace("/")} />
-          {/* </Link> */}
-
           <Row>
             <Search onClick={() => dispatch({type: TOGGLE_SEARCH})} />
             <User onClick={() => router.replace("/auth")} />
@@ -48,4 +46,8 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export const getServerSideProps = withAuthUserSSR({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+})();
+
+export default withAuthUser({whenAuthed: AuthAction.REDIRECT_TO_APP})(Auth);

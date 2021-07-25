@@ -43,13 +43,11 @@ const products = [
     title: "Bal d'afrique",
     price: "50",
   },
-
   {
     path: "/images/products/isono_byredo_210414-215_kopia__1440x16401500x1680-removebg-preview.png",
     title: "Isono",
     price: "80",
   },
-
   {
     path: "/images/products/1996-removebg-preview.png",
     title: "1996",

@@ -8,6 +8,9 @@ import NavState from "../context/nav.state";
 import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
 import Search from "../components/search/search.component";
+import initAuth from "../services/firebase/initAuth";
+
+initAuth();
 
 const GlobalStyle = createGlobalStyle`
 @font-face {

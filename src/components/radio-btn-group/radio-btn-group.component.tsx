@@ -28,7 +28,6 @@ const Row = styled.div`
 `;
 
 const Price = styled.span`
-  font-size: 1.2rem;
   margin-left: 30px;
 `;
 

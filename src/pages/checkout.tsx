@@ -1,3 +1,10 @@
+import CheckoutItem from "../components/checkout-item/checkout-item.component";
+import UserDetailForm from "../components/user-detail-form/user-detail-form.component";
+import ShippingForm from "../components/shipping-form/shipping-form.component";
+import PaymentForm from "../components/payment-form/payment-form.component";
+import Link from "next/link";
+import {useContext} from "react";
+import {NavContext, TOGGLE_CART} from "../context/nav.state";
 import {
   Container,
   TitleSection,
@@ -13,13 +20,12 @@ import {
   PromoCodeInput,
   Forms,
 } from "../pageStyles/checkout.styles";
-import CheckoutItem from "../components/checkout-item/checkout-item.component";
-import UserDetailForm from "../components/user-detail-form/user-detail-form.component";
-import ShippingForm from "../components/shipping-form/shipping-form.component";
-import PaymentForm from "../components/payment-form/payment-form.component";
-import Link from "next/link";
-import {useContext} from "react";
-import {NavContext, TOGGLE_CART} from "../context/nav.state";
+import {
+  useAuthUser,
+  withAuthUser,
+  withAuthUserSSR,
+  AuthAction,
+} from "next-firebase-auth";
 
 const Checkout = () => {
   const {dispatch} = useContext(NavContext);
@@ -68,4 +74,10 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export const getServerSideProps = withAuthUserSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})();
+
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+})(Checkout);
