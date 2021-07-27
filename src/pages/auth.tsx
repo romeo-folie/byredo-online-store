@@ -1,6 +1,5 @@
 import React, {useContext} from "react";
 import CartIcon from "../components/cart-icon/cart-icon.component";
-import Link from "next/link";
 import {Container, Content, Forms} from "../pageStyles/auth.styles";
 import Signin from "../components/signin-form/signin-form.component";
 import Signup from "../components/signup-form/signup-form.component";
@@ -52,6 +51,7 @@ const Auth = () => {
 
 export const getServerSideProps = withAuthUserTokenSSR({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthed: AuthAction.RENDER,
 })();
 
 export default withAuthUser({whenAuthed: AuthAction.REDIRECT_TO_APP})(Auth);
