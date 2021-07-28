@@ -5,6 +5,7 @@ import {
   UserIcon,
   SearchIcon,
   MenuIcon,
+  ExitIcon,
 } from "./header.styles";
 import {MouseEvent, useContext} from "react";
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -17,10 +18,12 @@ import {
   SET_NAV_OPTION,
 } from "../../context/nav.state";
 import {useRouter} from "next/router";
+import {useAuthUser, withAuthUser} from "next-firebase-auth";
 
 const Header = () => {
   const {state, dispatch} = useContext(NavContext);
   const router = useRouter();
+  const AuthUser = useAuthUser();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -44,11 +47,15 @@ const Header = () => {
       </Menu>
       <Menu>
         <SearchIcon onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-        <UserIcon onClick={() => router.replace("/auth")} />
+        {AuthUser.id ? (
+          <ExitIcon onClick={() => AuthUser.signOut()} />
+        ) : (
+          <UserIcon onClick={() => router.replace("/auth")} />
+        )}
         <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
       </Menu>
     </Container>
   );
 };
 
-export default Header;
+export default withAuthUser()(Header);

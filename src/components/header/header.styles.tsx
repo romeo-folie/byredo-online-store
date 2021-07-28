@@ -3,7 +3,7 @@ import Logo from "../../../public/vectors/logo.svg";
 import Person from "../../../public/vectors/person-outline.svg";
 import Search from "../../../public/vectors/search-outline.svg";
 import MIcon from "../../../public/vectors/menu.svg";
-import React from "react";
+import Exit from "../../../public/vectors/log-out.svg";
 
 export const Container = styled.div`
   position: absolute;
@@ -16,11 +16,6 @@ export const Container = styled.div`
   padding: 15px;
   z-index: 50;
 `;
-
-// eslint-disable-next-line react/display-name
-// export const Brand = React.forwardRef((props, ref) => (
-//   <StyledBrand {...props} ref={ref} />
-// ));
 
 export const Brand = styled(Logo)`
   width: 100px;
@@ -47,6 +42,18 @@ export const Menu = styled.nav`
 export const UserIcon = styled(Person)`
   width: 25px;
   margin-right: 18px;
+  margin-top: 3px;
+  z-index: 18;
+  cursor: pointer;
+
+  @media only screen and (min-width: 1600px) {
+    width: 30px;
+  }
+`;
+
+export const ExitIcon = styled(Exit)`
+  width: 25px;
+  margin-right: 15px;
   margin-top: 3px;
   z-index: 18;
   cursor: pointer;
