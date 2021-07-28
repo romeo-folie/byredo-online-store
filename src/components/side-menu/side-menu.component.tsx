@@ -1,4 +1,4 @@
-import {useContext, MouseEvent} from "react";
+import {MouseEvent} from "react";
 import {
   Container,
   Header,
@@ -12,7 +12,7 @@ import {
   FacebookIcon,
 } from "./side-menu.styles";
 import {
-  NavContext,
+  useNavState,
   TOGGLE_MENU,
   TOGGLE_SUBMENU,
   SET_NAV_OPTION,
@@ -21,7 +21,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 
 const SideMenu = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {state, dispatch} = useNavState();
   const router = useRouter();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {

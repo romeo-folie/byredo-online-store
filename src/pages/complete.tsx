@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import {
   Container,
   Header,
@@ -22,32 +22,37 @@ import {
   SummaryTitle,
   SummarySection,
 } from "../pageStyles/complete.styles";
+import {ExitIcon} from "../components/header/header.styles";
 import CartIcon from "../components/cart-icon/cart-icon.component";
 import Link from "next/link";
 import {
-  NavContext,
+  useNavState,
   TOGGLE_MENU,
   TOGGLE_CART,
   TOGGLE_SEARCH,
 } from "../context/nav.state";
 import {useRouter} from "next/router";
 import SummaryItem from "../components/summary-item/summary-item.component";
+import {useAuthUser, withAuthUser} from "next-firebase-auth";
 
 const Complete = () => {
-  const {dispatch} = useContext(NavContext);
+  const {dispatch} = useNavState();
   const router = useRouter();
+  const AuthUser = useAuthUser();
 
   return (
     <Container>
       <Header>
         <Menu onClick={() => dispatch({type: TOGGLE_MENU})} />
-        {/* <Link href="/" passHref replace> */}
         <Brand onClick={() => router.replace("/")} />
-        {/* </Link> */}
 
         <Row>
           <Search onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-          <User onClick={() => router.replace("/auth")} />
+          {AuthUser.id ? (
+            <ExitIcon onClick={() => AuthUser.signOut()} />
+          ) : (
+            <User onClick={() => router.replace("/auth")} />
+          )}
           <CartIcon onClick={() => dispatch({type: TOGGLE_CART})} />
         </Row>
       </Header>
@@ -137,4 +142,4 @@ const Complete = () => {
   );
 };
 
-export default Complete;
+export default withAuthUser()(Complete);

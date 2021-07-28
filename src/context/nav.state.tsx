@@ -1,4 +1,4 @@
-import {createContext, useReducer, Dispatch} from "react";
+import {createContext, useReducer, Dispatch, useContext} from "react";
 import {ICategory} from "../types";
 
 interface INav {
@@ -120,6 +120,14 @@ const NavState: React.FC = ({children}) => {
       {children}
     </NavContext.Provider>
   );
+};
+
+export const useNavState = () => {
+  const context = useContext(NavContext);
+  if (!context) {
+    throw new Error("nav state can only be accessed within navstate provider");
+  }
+  return context;
 };
 
 export default NavState;

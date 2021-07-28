@@ -1,4 +1,3 @@
-import {useContext} from "react";
 import {
   Container,
   Header,
@@ -8,11 +7,15 @@ import {
   Menu,
 } from "./side-submenu.styles";
 import {CloseIcon} from "../side-menu/side-menu.styles";
-import {NavContext, TOGGLE_MENU, TOGGLE_SUBMENU} from "../../context/nav.state";
+import {
+  useNavState,
+  TOGGLE_MENU,
+  TOGGLE_SUBMENU,
+} from "../../context/nav.state";
 import CategoryList from "../category-list/category-list.component";
 
 const SideSubMenu = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {state, dispatch} = useNavState();
 
   const handleSubMenuClose = () => {
     dispatch({type: TOGGLE_MENU});

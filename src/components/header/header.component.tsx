@@ -7,11 +7,11 @@ import {
   MenuIcon,
   ExitIcon,
 } from "./header.styles";
-import {MouseEvent, useContext} from "react";
+import {MouseEvent} from "react";
 import CartIcon from "../cart-icon/cart-icon.component";
 import NavItem from "../nav-item/nav-item.component";
 import {
-  NavContext,
+  useNavState,
   TOGGLE_MENU,
   TOGGLE_CART,
   TOGGLE_SEARCH,
@@ -21,7 +21,7 @@ import {useRouter} from "next/router";
 import {useAuthUser, withAuthUser} from "next-firebase-auth";
 
 const Header = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {state, dispatch} = useNavState();
   const router = useRouter();
   const AuthUser = useAuthUser();
 

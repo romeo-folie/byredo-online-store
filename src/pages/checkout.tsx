@@ -3,8 +3,7 @@ import UserDetailForm from "../components/user-detail-form/user-detail-form.comp
 import ShippingForm from "../components/shipping-form/shipping-form.component";
 import PaymentForm from "../components/payment-form/payment-form.component";
 import Link from "next/link";
-import {useContext} from "react";
-import {NavContext, TOGGLE_CART} from "../context/nav.state";
+import {useNavState, TOGGLE_CART} from "../context/nav.state";
 import {
   Container,
   TitleSection,
@@ -28,7 +27,7 @@ import {
 } from "next-firebase-auth";
 
 const Checkout = () => {
-  const {dispatch} = useContext(NavContext);
+  const {dispatch} = useNavState();
 
   const handleCartEdit = () => {
     dispatch({type: TOGGLE_CART});

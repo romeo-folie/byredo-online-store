@@ -1,6 +1,6 @@
-import {useContext, MouseEvent} from "react";
+import {MouseEvent} from "react";
 import {
-  NavContext,
+  useNavState,
   TOGGLE_SEARCH,
   SET_NAV_OPTION,
 } from "../../context/nav.state";
@@ -23,7 +23,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 
 const Search = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {state, dispatch} = useNavState();
   const router = useRouter();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -34,14 +34,12 @@ const Search = () => {
   return (
     <Container isOpen={state.isSearchOpen}>
       <Header>
-        {/* <Link href="/" passHref replace> */}
         <Brand
           onClick={() => {
             dispatch({type: TOGGLE_SEARCH});
             router.replace("/");
           }}
         />
-        {/* </Link> */}
 
         <Menu>
           {state.navOptions.map((opt, idx) => (

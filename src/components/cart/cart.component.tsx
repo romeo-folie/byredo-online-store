@@ -34,12 +34,11 @@ import {
 } from "./cart.styles";
 import CartItem from "../cart-item/cart-item.component";
 import {CloseIcon} from "./cart.styles";
-import {useContext} from "react";
-import {NavContext, TOGGLE_CART} from "../../context/nav.state";
+import {useNavState, TOGGLE_CART} from "../../context/nav.state";
 import {useRouter} from "next/router";
 
 const Cart = () => {
-  const {state, dispatch} = useContext(NavContext);
+  const {state, dispatch} = useNavState();
   const router = useRouter();
 
   const handleCheckout = () => {

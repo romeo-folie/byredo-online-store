@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import CartIcon from "../components/cart-icon/cart-icon.component";
 import {Container, Content, Forms} from "../pageStyles/auth.styles";
 import Signin from "../components/signin-form/signin-form.component";
@@ -13,7 +13,7 @@ import {
   Row,
 } from "../pageStyles/complete.styles";
 import {
-  NavContext,
+  useNavState,
   TOGGLE_MENU,
   TOGGLE_CART,
   TOGGLE_SEARCH,
@@ -25,7 +25,7 @@ import {
 } from "next-firebase-auth";
 
 const Auth = () => {
-  const {dispatch} = useContext(NavContext);
+  const {dispatch} = useNavState();
   const router = useRouter();
 
   return (
