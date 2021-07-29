@@ -105,10 +105,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
-  const response = await db.collection("products").doc(params?.id as string).get();
+type Params = {
+  params: {
+    id: string;
+  };
+};
 
-  const product = {id: params?.id, ...response.data()};
+export const getStaticProps = async ({params}: Params) => {
+  const response = await db.collection("products").doc(params.id).get();
+
+  const product = {id: params.id, ...response.data()};
 
   return {
     props: {product},
