@@ -36,7 +36,6 @@ interface IState {
 }
 
 export const SET_PRODUCTS = "setProducts";
-export const SET_ACTIVE_PRODUCT = "setActiveProduct";
 export const FILTER_PRODUCTS = "filterProducts";
 export const ADD_TO_CART = "addToCart";
 export const REMOVE_FROM_CART = "removeFromCart";
@@ -46,10 +45,9 @@ export const SET_LOADING = "setLoading";
 
 type ProductAction =
   | {type: typeof SET_PRODUCTS; payload: IProduct[]}
-  | {type: typeof SET_ACTIVE_PRODUCT; payload: IProduct}
   | {type: typeof FILTER_PRODUCTS; payload: string}
-  | {type: typeof ADD_TO_CART; payload: IProduct}
-  | {type: typeof REMOVE_FROM_CART; payload: IProduct}
+  | {type: typeof ADD_TO_CART; payload: IProduct | ICartItem}
+  | {type: typeof REMOVE_FROM_CART; payload: IProduct | ICartItem}
   | {type: typeof CLEAR_FROM_CART; payload: string}
   | {type: typeof CLEAR_CART}
   | {type: typeof SET_LOADING; payload: boolean};
@@ -85,11 +83,6 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
         loading: false,
         products: action.payload,
         filteredProducts: action.payload,
-      };
-    case SET_ACTIVE_PRODUCT:
-      return {
-        ...state,
-        activeProduct: action.payload,
       };
     case FILTER_PRODUCTS:
       return {

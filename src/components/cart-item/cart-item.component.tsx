@@ -19,19 +19,26 @@ import {
   PriceM,
 } from "./cart-item.styles";
 import {RemoveIcon} from "./cart-item.styles";
+import {
+  ICartItem,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  useProductState,
+  CLEAR_FROM_CART,
+} from "../../context/product.state";
 
 interface Props {
-  imagePath: string;
-  name: string;
-  type: string;
-  size?: string;
-  price: string;
+  product: ICartItem;
 }
 
-const CartItem: React.FC<Props> = ({imagePath, name, type, size, price}) => {
+const CartItem: React.FC<Props> = ({product}) => {
+  console.log("product", product);
+  const {name, type, url, size, quantity, price} = product;
+  const {productDispatch} = useProductState();
+
   return (
     <Container>
-      <Thumbnail src={imagePath} />
+      <Thumbnail src={url} />
       <Description>
         <ProdName>{name}</ProdName>
         <ProdType>{type}</ProdType>
@@ -42,27 +49,53 @@ const CartItem: React.FC<Props> = ({imagePath, name, type, size, price}) => {
           <RemoveIconM />
         </SpacedRow>
         <Row>
-          {size ? <ProdSizeM>{size}</ProdSizeM> : null}
+          {size ? <ProdSizeM>{`${size}ml`}</ProdSizeM> : <ProdSizeM />}
           <ProdTypeM>{type}</ProdTypeM>
         </Row>
         <SpacedRow>
           <ProdQtyM>
-            <QtyBtn>-</QtyBtn>
-            <Qty>2</Qty>
-            <QtyBtn>+</QtyBtn>
+            <QtyBtn
+              onClick={() =>
+                productDispatch({type: REMOVE_FROM_CART, payload: product})
+              }
+            >
+              -
+            </QtyBtn>
+            <Qty>{quantity}</Qty>
+            <QtyBtn
+              onClick={() =>
+                productDispatch({type: ADD_TO_CART, payload: product})
+              }
+            >
+              +
+            </QtyBtn>
           </ProdQtyM>
-          <PriceM>${price}</PriceM>
+          <PriceM>${price * quantity}</PriceM>
         </SpacedRow>
         {/* Mobile */}
       </Description>
-      <ProdSize>{size}</ProdSize>
+      {size ? <ProdSize>{`${size}ml`}</ProdSize> : <ProdSize />}
       <ProdQty>
-        <QtyBtn>-</QtyBtn>
-        <Qty>2</Qty>
-        <QtyBtn>+</QtyBtn>
+        <QtyBtn
+          onClick={() =>
+            productDispatch({type: REMOVE_FROM_CART, payload: product})
+          }
+        >
+          -
+        </QtyBtn>
+        <Qty>{quantity}</Qty>
+        <QtyBtn
+          onClick={() => productDispatch({type: ADD_TO_CART, payload: product})}
+        >
+          +
+        </QtyBtn>
       </ProdQty>
-      <Price>${price}</Price>
-      <RemoveIcon />
+      <Price>${price * quantity}</Price>
+      <RemoveIcon
+        onClick={() =>
+          productDispatch({type: CLEAR_FROM_CART, payload: product.id})
+        }
+      />
     </Container>
   );
 };

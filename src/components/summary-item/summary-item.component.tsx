@@ -10,26 +10,30 @@ import {
   Price,
   Size,
 } from "./summary-item.styles";
+import {ICartItem} from "../../context/product.state";
 
-const SummaryItem = () => {
+interface Props {
+  product: ICartItem;
+}
+
+const SummaryItem: React.FC<Props> = ({product}) => {
+  const {name, url, size, price, type, quantity} = product;
+
   return (
     <Container>
       <Wrap width={40}>
-        <Image
-          src="/images/products/mob_blanche-body-wash_1-removebg-preview.png"
-          alt="mob blanche body wash"
-        />
+        <Image src={url} alt={name} />
       </Wrap>
       <Wrap width={60}>
         <Row>
           <Col>
-            <Span>{"Bal d'Afrique"}</Span>
+            <Span>{name}</Span>
             <DetailRow>
-              <Size>20ml</Size>
-              <Span>Hand cream</Span>
+              {size ? <Size>{size}ml</Size> : null}
+              <Span>{type.toUpperCase()}</Span>
             </DetailRow>
           </Col>
-          <Price>$30</Price>
+          <Price>${price * quantity}</Price>
         </Row>
       </Wrap>
     </Container>

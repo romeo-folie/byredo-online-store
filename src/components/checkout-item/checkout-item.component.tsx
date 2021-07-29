@@ -8,20 +8,27 @@ import {
   Size,
   Type,
 } from "./checkout-item.styles";
+import {ICartItem} from "../../context/product.state";
 
-const CheckoutItem = () => {
+interface Props {
+  product: ICartItem;
+}
+
+const CheckoutItem: React.FC<Props> = ({product}) => {
+  const {name, quantity, size, price, type} = product;
+
   return (
     <Container>
       <SpacedRow>
-        <Name>{"Bal d'Afrique"}</Name>
+        <Name>{name}</Name>
         <Row>
-          <Qty>1x</Qty>
-          <Price>$40</Price>
+          <Qty>{`${quantity}x`}</Qty>
+          <Price>${price * quantity}</Price>
         </Row>
       </SpacedRow>
       <Row>
-        <Size>225ml</Size>
-        <Type>Body wash</Type>
+        {size ? <Size>{`${size}ml`}</Size> : null}
+        <Type>{type}</Type>
       </Row>
     </Container>
   );

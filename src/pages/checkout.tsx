@@ -25,13 +25,18 @@ import {
   withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
+import {useProductState} from "../context/product.state";
+import {getTotalPrice} from "../utils/product.util";
 
 const Checkout = () => {
   const {dispatch} = useNavState();
+  const {productState} = useProductState();
 
   const handleCartEdit = () => {
     dispatch({type: TOGGLE_CART});
   };
+
+  const total = getTotalPrice(productState.cart);
 
   return (
     <Container>
@@ -56,9 +61,9 @@ const Checkout = () => {
           </Link>
         </Row>
         <Items>
-          <CheckoutItem />
-          <CheckoutItem />
-          <CheckoutItem />
+          {productState.cart.map((item) => (
+            <CheckoutItem key={item.id} product={item} />
+          ))}
         </Items>
         <Row>
           <DetName>Promocode</DetName>
@@ -66,7 +71,14 @@ const Checkout = () => {
         </Row>
         <Row>
           <DetName>Total</DetName>
-          <DetValue>$330.50</DetValue>
+          <DetValue>
+            $
+            {total > 50
+              ? total.toFixed(2)
+              : total > 0
+              ? (total + 20).toFixed(2)
+              : total.toFixed(2)}
+          </DetValue>
         </Row>
       </ItemSection>
     </Container>

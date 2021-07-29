@@ -30,6 +30,7 @@ const SideMenu = () => {
     dispatch({type: SET_NAV_OPTION, payload: innerText});
     productDispatch({type: FILTER_PRODUCTS, payload: innerText});
     dispatch({type: TOGGLE_SUBMENU});
+    router.replace("/");
   };
 
   return (

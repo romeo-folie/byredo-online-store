@@ -66,7 +66,7 @@ const PaymentForm = () => {
   };
 
   return (
-    <FormSection>
+    <FormSection id="payment">
       <FormTitle>How would you like to pay?</FormTitle>
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <Controller

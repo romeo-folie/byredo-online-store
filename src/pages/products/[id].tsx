@@ -22,6 +22,7 @@ import {
 import ColorSelector from "../../components/color-selector/color-selector.component";
 import db from "../../services/firebase/firestore";
 import {GetStaticPaths} from "next";
+import {useProductState, ADD_TO_CART} from "../../context/product.state";
 
 const productDetails = [
   {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
@@ -33,6 +34,8 @@ const productDetails = [
 const colors = ["#d6cf86", "#9bafd0", "#414345", "#b29495", "#9bafd4"];
 
 const ProductPage = ({product}) => {
+  const {productDispatch} = useProductState();
+
   return (
     <Container>
       <DescSection>
@@ -56,8 +59,8 @@ const ProductPage = ({product}) => {
           <Row>
             {product.size ? (
               <>
-                {product.size !== "225" ? <Size>225 ml</Size> : null}
                 <Size>{product.size} ml</Size>
+                {product.size !== "225" ? <Size>225 ml</Size> : null}
               </>
             ) : (
               <ColorSelector colors={colors} />
@@ -70,7 +73,11 @@ const ProductPage = ({product}) => {
             <DetailDesc>{detail.desc}</DetailDesc>
           </DetailRow>
         ))}
-        <CartButton>Add To Cart</CartButton>
+        <CartButton
+          onClick={() => productDispatch({type: ADD_TO_CART, payload: product})}
+        >
+          Add To Cart
+        </CartButton>
       </DetailSection>
     </Container>
   );

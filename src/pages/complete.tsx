@@ -34,11 +34,21 @@ import {
 import {useRouter} from "next/router";
 import SummaryItem from "../components/summary-item/summary-item.component";
 import {useAuthUser, withAuthUser} from "next-firebase-auth";
+import {useProductState, CLEAR_CART} from "../context/product.state";
+import {getTotalPrice} from "../utils/product.util";
 
 const Complete = () => {
   const {dispatch} = useNavState();
   const router = useRouter();
   const AuthUser = useAuthUser();
+  const {productState, productDispatch} = useProductState();
+
+  const total = getTotalPrice(productState.cart);
+
+  const handleCompletion = () => {
+    router.replace("/");
+    productDispatch({type: CLEAR_CART});
+  };
 
   return (
     <Container>
@@ -64,14 +74,14 @@ const Complete = () => {
             {"You've made a great choice"}
           </MainTitle>
           <SubTitle>
-            Confirmation letter has been sent to john.appleseed@gmail.com
+            {`Confirmation letter has been sent to ${AuthUser.email}`}
           </SubTitle>
         </Wrap>
 
         <Wrap>
           <MessageRow>
             <Wrap width={40}>
-              <Span>Hello, John Appleseed</Span>
+              <Span>Hello, {`${AuthUser.displayName}`}</Span>
               <P>
                 Your order has been successfully completed and will be delivered
                 to you in the near future. You can track the delivery status in
@@ -80,7 +90,7 @@ const Complete = () => {
               </P>
               <Span>BYREDO</Span>
             </Wrap>
-            <Button onClick={() => router.replace("/")}>Back to store</Button>
+            <Button onClick={handleCompletion}>Back to store</Button>
           </MessageRow>
         </Wrap>
       </MainSection>
@@ -114,27 +124,28 @@ const Complete = () => {
           <Spacer width={40} />
           <BaseRow>
             <Span bold>Total</Span>
-            <Span bold>$330.00</Span>
+            <Span bold>
+              $
+              {total > 50
+                ? total.toFixed(2)
+                : total > 0
+                ? (total + 20).toFixed(2)
+                : total.toFixed(2)}
+            </Span>
           </BaseRow>
         </Detail>
 
         <Items>
-          <SummaryItem />
-          {/* <SummaryItem />
-          <SummaryItem />
-          <SummaryItem />
-          <SummaryItem />
-          <SummaryItem />
-          <SummaryItem />
-          <SummaryItem />
-          <SummaryItem /> */}
+          {productState.cart.map((item) => (
+            <SummaryItem product={item} key={item.id} />
+          ))}
         </Items>
 
         <Detail>
           <Spacer width={40} />
           <BaseRow>
             <Span>Shipping</Span>
-            <Span>$0.00</Span>
+            <Span>${total > 50 ? "0.00" : "20.00"}</Span>
           </BaseRow>
         </Detail>
       </SummarySection>

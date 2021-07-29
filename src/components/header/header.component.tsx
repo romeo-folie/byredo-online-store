@@ -23,7 +23,7 @@ import {useProductState, FILTER_PRODUCTS} from "../../context/product.state";
 
 const Header = () => {
   const {state, dispatch} = useNavState();
-  const {productState, productDispatch} = useProductState();
+  const {productDispatch} = useProductState();
   const router = useRouter();
   const AuthUser = useAuthUser();
 
@@ -31,6 +31,7 @@ const Header = () => {
     const {innerText} = e.target as HTMLAnchorElement;
     dispatch({type: SET_NAV_OPTION, payload: innerText});
     productDispatch({type: FILTER_PRODUCTS, payload: innerText});
+    router.replace("/");
   };
 
   return (

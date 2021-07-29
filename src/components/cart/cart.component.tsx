@@ -36,15 +36,20 @@ import CartItem from "../cart-item/cart-item.component";
 import {CloseIcon} from "./cart.styles";
 import {useNavState, TOGGLE_CART} from "../../context/nav.state";
 import {useRouter} from "next/router";
+import {useProductState} from "../../context/product.state";
+import {getTotalPrice} from "../../utils/product.util";
 
 const Cart = () => {
   const {state, dispatch} = useNavState();
   const router = useRouter();
+  const {productState} = useProductState();
 
   const handleCheckout = () => {
     dispatch({type: TOGGLE_CART});
     router.push("/checkout");
   };
+
+  const total = getTotalPrice(productState.cart);
 
   return (
     <>
@@ -59,7 +64,9 @@ const Cart = () => {
           </BackRow>
           <TitleRow>
             <ItemSectionTitle>Shopping cart</ItemSectionTitle>
-            <ItemCount>6 Items</ItemCount>
+            <ItemCount>{`${productState.cart.length} ${
+              productState.cart.length > 1 ? "items" : "item"
+            }`}</ItemCount>
           </TitleRow>
           <Table>
             <TableRow>
@@ -72,73 +79,21 @@ const Cart = () => {
               <THeader flex={2}>Price</THeader>
             </TableRow>
             <Items>
-              <CartItem
-                name="Blanche"
-                imagePath="/images/products/mob_blanche-body-wash_1-removebg-preview.png"
-                type="Body Wash"
-                size="225ml"
-                price="50"
-              />
-
-              <CartItem
-                name="Tulipmania"
-                imagePath="/images/products/mob_tulipmania-rinse-free-removebg-preview.png"
-                type="Hand Cream"
-                size="30ml"
-                price="30"
-              />
-
-              <CartItem
-                name="Bal d'Afrique"
-                imagePath="/images/products/mob_bal-d-afrique-perfumed-oil-7-5-ml_1-removebg-preview.png"
-                type="Roll-on perfumed oil"
-                size="15ml"
-                price="20"
-              />
-
-              <CartItem
-                name="Casablancalily"
-                imagePath="/images/products/mob-casablancalily-removebg-preview.png"
-                type="Eau de parfum"
-                size="20ml"
-                price="20"
-              />
-
-              <CartItem
-                name="EDP TRVX"
-                imagePath="/images/products/edp_trvx_1500x1680-removebg-preview.png"
-                type="Eau de parfum"
-                size="20ml"
-                price="20"
-              />
-
-              <CartItem
-                name="Biblioteque"
-                imagePath="/images/products/mob_bibliothequeandle-240-g_1-removebg-preview.png"
-                type="Scented Candle"
-                size="20ml"
-                price="20"
-              />
-
-              <CartItem
-                name="Isono"
-                imagePath="/images/products/isono_byredo_210414-215_kopia__1440x16401500x1680-removebg-preview.png"
-                type="Glasses"
-                price="20"
-              />
-
-              <CartItem
-                name="Black Saffron"
-                imagePath="/images/products/mob_blacksaffron_hp-removebg-preview.png"
-                type="Parfum pour chevaux"
-                size="75ml"
-                price="50"
-              />
+              {productState.cart.map((prod) => (
+                <CartItem product={prod} key={prod.id} />
+              ))}
             </Items>
           </Table>
           <CheckoutBtnM onClick={handleCheckout}>
             Checkout
-            <Amt>Total: $330.00</Amt>
+            <Amt>
+              Total: $
+              {total > 50
+                ? total.toFixed(2)
+                : total > 0
+                ? (total + 20).toFixed(2)
+                : total.toFixed(2)}
+            </Amt>
           </CheckoutBtnM>
           <Note>Free shipping for all orders over $50</Note>
         </ItemSection>
@@ -158,15 +113,15 @@ const Cart = () => {
             <Upper>
               <CostRow>
                 <DetName>Subtotal</DetName>
-                <DetValue>$300.00</DetValue>
+                <DetValue>${total.toFixed(2)}</DetValue>
               </CostRow>
               <CostRow>
                 <DetName>Shipping</DetName>
-                <DetValue>$0.00</DetValue>
+                <DetValue>${total > 50 ? "0.00" : "20.00"}</DetValue>
               </CostRow>
               <CostRow>
                 <DetName>Tax</DetName>
-                <DetValue>$30.50</DetValue>
+                <DetValue>$0.00</DetValue>
               </CostRow>
               <PromoCodeRow>
                 <DetName>Promo code</DetName>
@@ -175,7 +130,14 @@ const Cart = () => {
             </Upper>
             <TotalCostRow>
               <DetName>Total</DetName>
-              <DetValue>$330.50</DetValue>
+              <DetValue>
+                $
+                {total > 50
+                  ? total.toFixed(2)
+                  : total > 0
+                  ? (total + 20).toFixed(2)
+                  : total.toFixed(2)}
+              </DetValue>
             </TotalCostRow>
           </CostDetails>
           <CheckoutBtn onClick={handleCheckout}>Checkout</CheckoutBtn>

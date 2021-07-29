@@ -11,6 +11,7 @@ import Input from "../input/input.component";
 import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 // import FormSelector from "../form-selector/form-selector.component";
+import {useRouter} from "next/router";
 
 interface FormValues {
   country: string;
@@ -58,20 +59,22 @@ const ShippingForm = () => {
     control,
     formState: {errors},
   } = useForm<FormValues>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     console.log(data);
+    router.replace("/checkout/#payment");
   };
 
   return (
-    <FormSection>
+    <FormSection id="shipping">
       <FormTitle>Where would you like your order sent?</FormTitle>
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <Controller
           name="country"
           control={control}
           defaultValue={initialValues.country}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Input
               label="Country"
@@ -85,7 +88,7 @@ const ShippingForm = () => {
           name="address"
           control={control}
           defaultValue={initialValues.address}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Input
               label="Address"
@@ -101,7 +104,7 @@ const ShippingForm = () => {
               name="city"
               control={control}
               defaultValue={initialValues.city}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input label="City" {...field} error={errors?.city?.message} />
               )}
@@ -113,7 +116,7 @@ const ShippingForm = () => {
               name="zipCode"
               control={control}
               defaultValue={initialValues.zipCode}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input
                   label="Zip Code"
@@ -129,7 +132,7 @@ const ShippingForm = () => {
           name="stateOrProvince"
           control={control}
           defaultValue={initialValues.stateOrProvince}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Input
               label="State/Province"
@@ -145,7 +148,7 @@ const ShippingForm = () => {
               name="countryCode"
               control={control}
               defaultValue={initialValues.countryCode}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input
                   {...field}
@@ -162,7 +165,7 @@ const ShippingForm = () => {
               name="phoneNumber"
               control={control}
               defaultValue={initialValues.phoneNumber}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input
                   {...field}
@@ -182,7 +185,7 @@ const ShippingForm = () => {
           name="deliveryOption"
           control={control}
           defaultValue={initialValues.deliveryOption}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <RadioBtnGroup
               {...field}

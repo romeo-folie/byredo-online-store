@@ -58,6 +58,7 @@ export const Size = styled.span`
 export const Type = styled.span`
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
 
   @media only screen and (min-width: 1600px) {
     font-size: 1.1rem;

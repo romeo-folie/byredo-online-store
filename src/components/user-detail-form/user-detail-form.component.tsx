@@ -8,6 +8,7 @@ import {
 } from "../form/form.styles";
 import Input from "../input/input.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
+import {useRouter} from "next/router";
 
 interface FormValues {
   firstname: string;
@@ -27,9 +28,11 @@ const UserDetailForm = () => {
     control,
     formState: {errors},
   } = useForm<FormValues>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     console.log(data);
+    router.replace("/checkout/#shipping");
   };
 
   return (
@@ -40,7 +43,7 @@ const UserDetailForm = () => {
           name="email"
           control={control}
           defaultValue={initialValues.email}
-          rules={{required: "This field is required"}}
+          rules={{}}
           render={({field}) => (
             <Input
               label="Email address"
@@ -56,7 +59,7 @@ const UserDetailForm = () => {
               name="firstname"
               control={control}
               defaultValue={initialValues.firstname}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input
                   label="First Name"
@@ -72,7 +75,7 @@ const UserDetailForm = () => {
               name="lastname"
               control={control}
               defaultValue={initialValues.lastname}
-              rules={{required: "This field is required"}}
+              rules={{}}
               render={({field}) => (
                 <Input
                   label="Last Name"

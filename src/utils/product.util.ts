@@ -55,3 +55,8 @@ export const filterByCategory = (
     (item) => item.category.toLowerCase() === category.toLowerCase()
   );
 };
+
+export const getTotalPrice = (cartItems: ICartItem[]) => {
+  // add shipping to total
+  return cartItems.reduce((acc, item) => acc + (item.quantity * item.price), 0)
+}
