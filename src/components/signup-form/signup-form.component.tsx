@@ -34,11 +34,13 @@ const Signup: React.FC = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
-    // console.log(data);
-    const {email, password} = data;
+    const {fullname, email, password} = data;
     const {user} = await auth.createUserWithEmailAndPassword(email, password);
-    console.log("logged in user ", user);
-    // dispatch some kind of action to create the user
+    if (user) {
+      await user.updateProfile({
+        displayName: fullname,
+      });
+    }
   };
 
   return (

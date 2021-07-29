@@ -22,7 +22,11 @@ import {
 import ColorSelector from "../../components/color-selector/color-selector.component";
 import db from "../../services/firebase/firestore";
 import {GetStaticPaths} from "next";
-import {useProductState, ADD_TO_CART} from "../../context/product.state";
+import {
+  useProductState,
+  IProduct,
+  ADD_TO_CART,
+} from "../../context/product.state";
 
 const productDetails = [
   {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
@@ -33,7 +37,11 @@ const productDetails = [
 
 const colors = ["#d6cf86", "#9bafd0", "#414345", "#b29495", "#9bafd4"];
 
-const ProductPage = ({product}) => {
+interface Props {
+  product: IProduct;
+}
+
+const ProductPage: React.FC<Props> = ({product}) => {
   const {productDispatch} = useProductState();
 
   return (
