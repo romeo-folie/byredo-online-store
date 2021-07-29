@@ -9,6 +9,7 @@ import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
 import Search from "../components/search/search.component";
 import initAuth from "../services/firebase/initAuth";
+import ProductState from "../context/product.state";
 
 initAuth();
 
@@ -96,12 +97,14 @@ function MyApp({Component, pageProps}: AppProps) {
           />
         </Head>
         <NavState>
-          <Header />
-          <SideMenu />
-          <SideSubMenu />
-          <Cart />
-          <Search />
-          <Component {...pageProps} />
+          <ProductState>
+            <Header />
+            <SideMenu />
+            <SideSubMenu />
+            <Cart />
+            <Search />
+            <Component {...pageProps} />
+          </ProductState>
         </NavState>
       </ThemeProvider>
     </>

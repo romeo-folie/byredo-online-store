@@ -7,6 +7,7 @@ interface INav {
   isCartOpen: boolean;
   isSearchOpen: boolean;
   activeNavOption: string;
+  subMenuOption: string;
   navOptions: string[];
   categories: ICategory[];
 }
@@ -16,13 +17,16 @@ export const TOGGLE_SUBMENU = "toggleSubMenu";
 export const TOGGLE_CART = "toggleCart";
 export const TOGGLE_SEARCH = "toggleSearch";
 export const SET_NAV_OPTION = "setNavOption";
+export const SET_SUB_MENU_OPTION = "setSubMenuOption"
 
 type NavAction =
   | {type: typeof TOGGLE_MENU}
   | {type: typeof TOGGLE_SUBMENU}
   | {type: typeof TOGGLE_CART}
   | {type: typeof TOGGLE_SEARCH}
-  | {type: typeof SET_NAV_OPTION; payload: string};
+  | {type: typeof SET_NAV_OPTION; payload: string}
+  | {type: typeof SET_SUB_MENU_OPTION; payload: string};
+
 
 interface ContextType {
   state: INav;
@@ -35,6 +39,7 @@ const initialState = {
   isCartOpen: false,
   isSearchOpen: false,
   activeNavOption: "All",
+  subMenuOption: "",
   navOptions: [
     "All",
     "Leather",
@@ -107,6 +112,11 @@ const NavReducer = (state: INav, action: NavAction): INav => {
         ...state,
         activeNavOption: action.payload,
       };
+    case SET_SUB_MENU_OPTION:
+      return {
+        ...state,
+        subMenuOption: action.payload
+      }
     default:
       return state;
   }
@@ -122,12 +132,6 @@ const NavState: React.FC = ({children}) => {
   );
 };
 
-export const useNavState = () => {
-  const context = useContext(NavContext);
-  if (!context) {
-    throw new Error("nav state can only be accessed within navstate provider");
-  }
-  return context;
-};
+export const useNavState = () => useContext(NavContext);
 
 export default NavState;

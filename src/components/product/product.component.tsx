@@ -4,11 +4,11 @@ import {useRouter} from "next/router";
 
 interface Props {
   path: string;
-  title: string;
+  name: string;
   price: string | number;
 }
 
-const Product: React.FC<Props> = ({path, title, price}) => {
+const Product: React.FC<Props> = ({path, name, price}) => {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState<boolean>(false);
   
@@ -26,8 +26,8 @@ const Product: React.FC<Props> = ({path, title, price}) => {
       onMouseLeave={handleMouseLeave}
       onClick={() => router.push("/products/1")}
     >
-      <Photo src={path} alt={title} isHovered={isHovered} />
-      <Title>{title}</Title>
+      <Photo src={path} alt={name} isHovered={isHovered} />
+      <Title>{name}</Title>
       <Price>{`$${price}`}</Price>
     </Container>
   );

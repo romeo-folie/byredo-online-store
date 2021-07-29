@@ -17,16 +17,18 @@ import {
   TOGGLE_SUBMENU,
   SET_NAV_OPTION,
 } from "../../context/nav.state";
-import Link from "next/link";
 import {useRouter} from "next/router";
+import {useProductState, FILTER_PRODUCTS} from "../../context/product.state";
 
 const SideMenu = () => {
   const {state, dispatch} = useNavState();
+  const {productState, productDispatch} = useProductState();
   const router = useRouter();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
     dispatch({type: SET_NAV_OPTION, payload: innerText});
+    productDispatch({type: FILTER_PRODUCTS, payload: innerText});
     dispatch({type: TOGGLE_SUBMENU});
   };
 
@@ -43,9 +45,9 @@ const SideMenu = () => {
       </Header>
       <Menu>
         {state.navOptions.map((option, idx) => (
-          <Link passHref key={idx} href="#" replace>
-            <Option onClick={handleClick}>{option}</Option>
-          </Link>
+          <Option onClick={handleClick} key={idx}>
+            {option}
+          </Option>
         ))}
       </Menu>
       <Footer>
