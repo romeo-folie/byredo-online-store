@@ -28,11 +28,12 @@ const Home: React.FC = () => {
       </CategorySection>
       <ProductSection>
         <GridWithSpinner>
-          {productState.filteredProducts.map((prod, idx) => (
+          {productState.filteredProducts.map((prod) => (
             <Product
               path={prod.url}
               name={prod.name}
               price={prod.price}
+              id={prod.id}
               key={prod.id}
             />
           ))}

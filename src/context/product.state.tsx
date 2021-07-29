@@ -82,6 +82,7 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
     case SET_PRODUCTS:
       return {
         ...state,
+        loading: false,
         products: action.payload,
         filteredProducts: action.payload,
       };
@@ -142,7 +143,7 @@ const ProductState: React.FC = ({children}) => {
         };
       });
       dispatch({type: SET_PRODUCTS, payload: products});
-      dispatch({type: SET_LOADING, payload: false});
+      // dispatch({type: SET_LOADING, payload: false});
     }
 
     fetchData();
