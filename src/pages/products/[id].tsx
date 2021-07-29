@@ -21,7 +21,7 @@ import {
 } from "../../pageStyles/products/product.styles";
 import ColorSelector from "../../components/color-selector/color-selector.component";
 import db from "../../services/firebase/firestore";
-import {GetStaticPaths} from "next";
+import {GetStaticPaths, GetStaticProps} from "next";
 import {
   useProductState,
   IProduct,
@@ -105,10 +105,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({params}) => {
-  const response = await db.collection("products").doc(params.id).get();
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  const response = await db.collection("products").doc(params?.id as string).get();
 
-  const product = {id: params.id, ...response.data()};
+  const product = {id: params?.id, ...response.data()};
 
   return {
     props: {product},
