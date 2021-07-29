@@ -140,7 +140,9 @@ const Cart = () => {
               </DetValue>
             </TotalCostRow>
           </CostDetails>
-          <CheckoutBtn onClick={handleCheckout}>Checkout</CheckoutBtn>
+          <CheckoutBtn disabled={total < 1} onClick={handleCheckout}>
+            Checkout
+          </CheckoutBtn>
         </SummarySection>
       </Container>
     </>

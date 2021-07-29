@@ -111,7 +111,7 @@ const Complete = () => {
           <Detail>
             <Span bold>Shipping details</Span>
             <Span>
-              John Appleseed
+              {AuthUser.displayName}
               <br />
               194 Ferry St London, 07015
               <br />

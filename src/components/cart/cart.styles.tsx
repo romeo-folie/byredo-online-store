@@ -306,10 +306,12 @@ export const Table = styled.div`
   }
 `;
 
-export const CheckoutBtn = styled(CartButton)`
+export const CheckoutBtn = styled(CartButton)<{disabled: boolean}>`
   background-color: ${({theme}) => theme.accent};
   color: ${({theme}) => theme.secondary};
   margin: 0;
+  pointer-events: ${({disabled}) => (disabled ? "none" : "initial")};
+  opacity: ${({disabled}) => (disabled ? 0.4 : 1)};
 
   @media only screen and (max-width: 1000px) {
     display: none;
