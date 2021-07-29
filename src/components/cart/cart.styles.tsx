@@ -306,7 +306,7 @@ export const Table = styled.div`
   }
 `;
 
-export const CheckoutBtn = styled(CartButton)<{disabled: boolean}>`
+export const CheckoutBtn = styled(CartButton)<{disabled?: boolean}>`
   background-color: ${({theme}) => theme.accent};
   color: ${({theme}) => theme.secondary};
   margin: 0;

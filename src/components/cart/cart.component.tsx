@@ -84,7 +84,7 @@ const Cart = () => {
               ))}
             </Items>
           </Table>
-          <CheckoutBtnM onClick={handleCheckout}>
+          <CheckoutBtnM disabled={total < 1} onClick={handleCheckout}>
             Checkout
             <Amt>
               Total: $
