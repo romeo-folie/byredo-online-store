@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const CategorySection = styled.div`
   width: 20%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   /* background-color: red; */
@@ -35,6 +36,7 @@ export const CategorySection = styled.div`
 
 export const ProductSection = styled.div`
   width: 65%;
+  height: 100%;
   padding-top: 70px;
   overflow-x: hidden;
   -ms-overflow-style: none;
@@ -55,6 +57,7 @@ export const ProductSection = styled.div`
 
 export const Grid = styled.div`
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 230px));
   grid-gap: 15px;

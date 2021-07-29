@@ -43,7 +43,8 @@ const Home: React.FC = () => {
         <Selector name="Sort" />
       </FilterSection>
       <Title>
-        {state.activeNavOption} / {state.subMenuOption}
+        {state.activeNavOption}{" "}
+        {state.subMenuOption ? " / " + state.subMenuOption : ""}
       </Title>
     </Container>
   );
