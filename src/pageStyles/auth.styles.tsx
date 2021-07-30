@@ -21,6 +21,7 @@ export const Content = styled.div`
 
 export const Forms = styled.div`
   width: 80%;
+  height: 100%;
   display: flex;
   margin: 0 auto;
   overflow-y: auto;
