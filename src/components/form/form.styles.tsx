@@ -71,6 +71,11 @@ export const Button = styled.button`
   cursor: pointer;
   margin-top: 30px;
 
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
+
   @media only screen and (min-width: 1600px) {
     width: 230px;
   }

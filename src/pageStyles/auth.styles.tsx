@@ -11,11 +11,6 @@ export const Content = styled.div`
   width: 100%;
   background-color: ${({theme}) => theme.primary};
   z-index: 100;
-  overflow-y: auto;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 
   @media only screen and (min-width: 1001px) {
     display: flex;
@@ -28,6 +23,11 @@ export const Forms = styled.div`
   width: 80%;
   display: flex;
   margin: 0 auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media only screen and (max-width: 1024px) {
     width: 100%;

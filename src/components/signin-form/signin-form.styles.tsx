@@ -30,6 +30,10 @@ export const Title = styled.div`
   @media only screen and (max-width: 1000px) {
     font-size: 1.8rem;
   }
+
+  @media only screen and (max-width: 700px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const Row = styled.div`
