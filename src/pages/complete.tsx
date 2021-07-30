@@ -33,7 +33,12 @@ import {
 } from "../context/nav.state";
 import {useRouter} from "next/router";
 import SummaryItem from "../components/summary-item/summary-item.component";
-import {useAuthUser, withAuthUser} from "next-firebase-auth";
+import {
+  useAuthUser,
+  withAuthUser,
+  withAuthUserSSR,
+  AuthAction,
+} from "next-firebase-auth";
 import {useProductState, CLEAR_CART} from "../context/product.state";
 import {getTotalPrice} from "../utils/product.util";
 
@@ -153,4 +158,10 @@ const Complete = () => {
   );
 };
 
-export default withAuthUser()(Complete);
+export const getServerSideProps = withAuthUserSSR({
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})();
+
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+})(Complete);

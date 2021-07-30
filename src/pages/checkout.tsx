@@ -19,12 +19,7 @@ import {
   PromoCodeInput,
   Forms,
 } from "../pageStyles/checkout.styles";
-import {
-  useAuthUser,
-  withAuthUser,
-  withAuthUserTokenSSR,
-  AuthAction,
-} from "next-firebase-auth";
+import {withAuthUser, withAuthUserSSR, AuthAction} from "next-firebase-auth";
 import {useProductState} from "../context/product.state";
 import {getTotalPrice} from "../utils/product.util";
 
@@ -85,7 +80,7 @@ const Checkout = () => {
   );
 };
 
-export const getServerSideProps = withAuthUserTokenSSR({
+export const getServerSideProps = withAuthUserSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })();
 
