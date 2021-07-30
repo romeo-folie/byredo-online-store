@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FormSection = styled.section`
   width: 90%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   margin-left: auto;

@@ -61,8 +61,8 @@ const Search = () => {
           <Input placeholder="Search" />
         </InputWrap>
         <Items>
-          {/* <Message>No results found</Message> */}
-          <SearchItem />
+          <Message>No results</Message>
+          {/* <SearchItem /> */}
         </Items>
       </ContentWrap>
     </Container>

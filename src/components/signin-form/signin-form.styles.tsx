@@ -6,12 +6,12 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   justify-content: center;
   padding: 50px 0;
 
   &:first-of-type {
-    margin-bottom: 40%;
+    margin-bottom: 50%;
   }
 
   @media only screen and (max-width: 1000px) {

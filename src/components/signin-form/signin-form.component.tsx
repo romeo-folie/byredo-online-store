@@ -29,7 +29,7 @@ const Signin: React.FC = () => {
       email.trim(),
       password.trim()
     );
-    console.log("logged in user ", user);
+    // console.log("logged in user ", user);
     // dispatch some kind of action to create the user
   };
 
