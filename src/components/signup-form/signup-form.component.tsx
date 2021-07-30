@@ -35,7 +35,10 @@ const Signup: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     const {fullname, email, password} = data;
-    const {user} = await auth.createUserWithEmailAndPassword(email, password);
+    const {user} = await auth.createUserWithEmailAndPassword(
+      email.trim(),
+      password.trim()
+    );
     if (user) {
       await user.updateProfile({
         displayName: fullname,
@@ -47,7 +50,6 @@ const Signup: React.FC = () => {
     <Container>
       <Form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <Title>Create Account</Title>
-
         <Controller
           name="fullname"
           control={control}
