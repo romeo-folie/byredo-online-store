@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Button as FButton} from "../form/form.styles";
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@ export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
     justify-content: center;
-    padding: 50px 0 20px;
+    /* padding: 50px 0 20px; */
   }
 `;
 
@@ -27,7 +27,7 @@ export const Title = styled.div`
   font-size: 2rem;
   margin-bottom: 20px;
 
-  @media only screen and (max-width: 1000px){
+  @media only screen and (max-width: 1000px) {
     font-size: 1.8rem;
   }
 `;
