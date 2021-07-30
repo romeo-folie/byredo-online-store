@@ -8,7 +8,7 @@ export const Container = styled.section`
   align-items: center;
   min-height: 100%;
   justify-content: center;
-  padding: 50px 0;
+  padding: 80px 0 50px;
 
   &:first-of-type {
     margin-bottom: 50%;

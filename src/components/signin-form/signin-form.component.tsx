@@ -23,7 +23,6 @@ const Signin: React.FC = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
-    // console.log(data);
     const {email, password} = data;
     const {user} = await auth.signInWithEmailAndPassword(
       email.trim(),
