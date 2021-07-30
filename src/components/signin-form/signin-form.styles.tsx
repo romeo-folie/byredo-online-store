@@ -8,6 +8,7 @@ export const Container = styled.section`
   align-items: center;
   min-height: 100vh;
   justify-content: center;
+  padding: 50px 0;
 
   &:first-of-type {
     margin-bottom: 40%;
@@ -20,7 +21,6 @@ export const Container = styled.section`
 
 export const Form = styled.form`
   width: 60%;
-  padding: 50px 0 30px;
 
   @media only screen and (max-width: 1024px) {
     width: 80%;
