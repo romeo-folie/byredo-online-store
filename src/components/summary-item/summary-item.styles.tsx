@@ -16,6 +16,7 @@ export const Image = styled.img`
 `;
 
 export const Col = styled.div`
+
   @media only screen and (min-width: 1600px) {
     font-size: 1.3rem;
   }
@@ -28,10 +29,12 @@ export const Row = styled.div`
 
 export const DetailRow = styled(Row)`
   margin-top: 10px;
+  align-items: center;
 `;
 
 export const Span = styled.span`
   color: rgba(0, 0, 0, 0.5);
+  font-size: 1.1rem;
 `;
 
 export const Price = styled(Span)`
@@ -45,4 +48,8 @@ export const Price = styled(Span)`
 
 export const Size = styled(Span)`
   margin-right: 15px;
+`;
+
+export const Type = styled(Span)`
+  font-size: 0.8rem;
 `;

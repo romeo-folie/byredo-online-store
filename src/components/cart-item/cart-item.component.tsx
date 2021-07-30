@@ -32,7 +32,6 @@ interface Props {
 }
 
 const CartItem: React.FC<Props> = ({product}) => {
-  console.log("product", product);
   const {name, type, url, size, quantity, price} = product;
   const {productDispatch} = useProductState();
 
@@ -46,10 +45,14 @@ const CartItem: React.FC<Props> = ({product}) => {
         {/* Mobile */}
         <SpacedRow>
           <ProdNameM>{name}</ProdNameM>
-          <RemoveIconM />
+          <RemoveIconM
+            onClick={() =>
+              productDispatch({type: CLEAR_FROM_CART, payload: product.id})
+            }
+          />
         </SpacedRow>
         <Row>
-          {size ? <ProdSizeM>{`${size}ml`}</ProdSizeM> : <ProdSizeM />}
+          {size ? <ProdSizeM>{`${size}ml`}</ProdSizeM> : null}
           <ProdTypeM>{type}</ProdTypeM>
         </Row>
         <SpacedRow>

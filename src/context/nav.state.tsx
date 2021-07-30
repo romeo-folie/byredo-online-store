@@ -17,7 +17,7 @@ export const TOGGLE_SUBMENU = "toggleSubMenu";
 export const TOGGLE_CART = "toggleCart";
 export const TOGGLE_SEARCH = "toggleSearch";
 export const SET_NAV_OPTION = "setNavOption";
-export const SET_SUB_MENU_OPTION = "setSubMenuOption"
+export const SET_SUB_MENU_OPTION = "setSubMenuOption";
 
 type NavAction =
   | {type: typeof TOGGLE_MENU}
@@ -26,7 +26,6 @@ type NavAction =
   | {type: typeof TOGGLE_SEARCH}
   | {type: typeof SET_NAV_OPTION; payload: string}
   | {type: typeof SET_SUB_MENU_OPTION; payload: string};
-
 
 interface ContextType {
   state: INav;
@@ -48,7 +47,6 @@ const initialState = {
     "Body care",
     "Home fragrance",
     "Accessories",
-    "About",
   ],
   categories: [
     {title: "Explore", items: ["Best Sellers", "New Arrivals", "Gift Cards"]},
@@ -115,8 +113,8 @@ const NavReducer = (state: INav, action: NavAction): INav => {
     case SET_SUB_MENU_OPTION:
       return {
         ...state,
-        subMenuOption: action.payload
-      }
+        subMenuOption: action.payload,
+      };
     default:
       return state;
   }

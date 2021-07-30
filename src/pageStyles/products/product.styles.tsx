@@ -212,4 +212,8 @@ export const CartButton = styled.button`
   margin-top: auto;
   margin-bottom: 30px;
   cursor: pointer;
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
 `;

@@ -56,7 +56,7 @@ export const Size = styled.span`
 `;
 
 export const Type = styled.span`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
 

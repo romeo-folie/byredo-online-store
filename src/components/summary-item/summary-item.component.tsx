@@ -9,6 +9,7 @@ import {
   Span,
   Price,
   Size,
+  Type,
 } from "./summary-item.styles";
 import {ICartItem} from "../../context/product.state";
 
@@ -30,7 +31,7 @@ const SummaryItem: React.FC<Props> = ({product}) => {
             <Span>{name}</Span>
             <DetailRow>
               {size ? <Size>{size}ml</Size> : null}
-              <Span>{type.toUpperCase()}</Span>
+              <Type>{type.toUpperCase()}</Type>
             </DetailRow>
           </Col>
           <Price>${price * quantity}</Price>
