@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FormSection = styled.section`
   width: 90%;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin-left: auto;
@@ -10,6 +10,10 @@ export const FormSection = styled.section`
 
   &:nth-of-type(2) {
     margin-bottom: 40%;
+  }
+
+  @media only screen and (max-width: 700px) {
+    width: 85%;
   }
 `;
 
@@ -20,6 +24,10 @@ export const FormTitle = styled.h3`
 
   @media only screen and (max-width: 1000px) {
     font-size: 1.8rem;
+  }
+
+  @media only screen and (max-width: 700px) {
+    font-size: 1.6rem;
   }
 `;
 

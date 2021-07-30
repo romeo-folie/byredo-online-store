@@ -92,15 +92,12 @@ export const ProdType = styled.span`
 `;
 
 export const ProdTypeM = styled.span`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 
   @media only screen and (min-width: 541px) {
     display: none;
   }
-
-  /* @media only screen and (min-width: 480px) {
-    font-size: 0.9rem;
-  } */
 `;
 
 export const ProdSize = styled.span`

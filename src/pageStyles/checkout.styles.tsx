@@ -29,6 +29,7 @@ export const TitleSection = styled.div`
 
 export const Forms = styled.div`
   width: 55%;
+  margin: 0 auto;
   z-index: 120;
   background-color: ${({theme}) => theme.primary};
   padding-top: 120px;

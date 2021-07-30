@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 1000px) {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     padding: 50px 0 20px;
   }
