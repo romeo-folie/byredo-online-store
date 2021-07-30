@@ -12,6 +12,7 @@ import Selector from "../components/selector/selector.component";
 import {useNavState} from "../context/nav.state";
 import {useProductState} from "../context/product.state";
 import WithSpinner from "../components/with-spinner/with-spinner.component";
+import Head from "next/head";
 
 const GridWithSpinner = WithSpinner(Grid);
 
@@ -21,6 +22,9 @@ const Home: React.FC = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Shop</title>
+      </Head>
       <CategorySection>
         {state.categories.map((cat, idx) => (
           <CategoryList title={cat.title} items={cat.items} key={idx} />

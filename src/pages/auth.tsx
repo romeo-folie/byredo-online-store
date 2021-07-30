@@ -23,6 +23,7 @@ import {
   withAuthUserTokenSSR,
   AuthAction,
 } from "next-firebase-auth";
+import Head from "next/head";
 
 const Auth = () => {
   const {dispatch} = useNavState();
@@ -30,6 +31,9 @@ const Auth = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Authentication</title>
+      </Head>
       <Content>
         <Header>
           <Menu onClick={() => dispatch({type: TOGGLE_MENU})} />

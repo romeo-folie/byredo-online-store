@@ -27,6 +27,7 @@ import {
   IProduct,
   ADD_TO_CART,
 } from "../../context/product.state";
+import Head from 'next/head'
 
 const productDetails = [
   {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
@@ -46,6 +47,9 @@ const ProductPage: React.FC<Props> = ({product}) => {
 
   return (
     <Container>
+      <Head>
+        <title>{product.name}</title>
+      </Head>
       <DescSection>
         <ProdType>{product.type}</ProdType>
         <ProdName>{product.name}</ProdName>

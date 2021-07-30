@@ -22,6 +22,7 @@ import {
 import {withAuthUser, withAuthUserSSR, AuthAction} from "next-firebase-auth";
 import {useProductState} from "../context/product.state";
 import {getTotalPrice} from "../utils/product.util";
+import Head from "next/head";
 
 const Checkout = () => {
   const {dispatch} = useNavState();
@@ -35,6 +36,9 @@ const Checkout = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Checkout</title>
+      </Head>
       <TitleSection>
         <PageTitle>Checkout</PageTitle>
       </TitleSection>

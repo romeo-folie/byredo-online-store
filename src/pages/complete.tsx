@@ -41,6 +41,7 @@ import {
 } from "next-firebase-auth";
 import {useProductState, CLEAR_CART} from "../context/product.state";
 import {getTotalPrice} from "../utils/product.util";
+import Head from "next/head";
 
 const Complete = () => {
   const {dispatch} = useNavState();
@@ -57,6 +58,9 @@ const Complete = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Complete Purchase</title>
+      </Head>
       <Header>
         <Menu onClick={() => dispatch({type: TOGGLE_MENU})} />
         <Brand onClick={() => router.replace("/")} />
