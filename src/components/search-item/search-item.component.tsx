@@ -1,3 +1,4 @@
+import {IProduct} from "../../context/product.state";
 import {
   Container,
   Thumbnail,
@@ -12,22 +13,28 @@ import {
   SpacedRow,
 } from "../search-item/search-item.styles";
 
-const SearchItem = () => {
+interface Props {
+  product: IProduct;
+}
+
+const SearchItem: React.FC<Props> = ({product}) => {
+  const {name, size, type, price, url} = product;
+
   return (
     <Container>
-      <Thumbnail src="/images/products/mob_blanche-body-wash_1-removebg-preview.png" />
+      <Thumbnail src={url} />
       <Description>
-        <ProdName>{"Blanche"}</ProdName>
+        <ProdName>{name}</ProdName>
         <SpacedRow>
           <Row>
-            <ProdSizeM>25ml</ProdSizeM>
-            <ProdType>Body Wash</ProdType>
+            <ProdSizeM>{size}ml</ProdSizeM>
+            <ProdType>{type}</ProdType>
           </Row>
-          <PriceM>$25</PriceM>
+          <PriceM>${price}</PriceM>
         </SpacedRow>
       </Description>
-      <ProdSize>25ml</ProdSize>
-      <Price>$25</Price>
+      <ProdSize>{size}ml</ProdSize>
+      <Price>${price}</Price>
     </Container>
   );
 };

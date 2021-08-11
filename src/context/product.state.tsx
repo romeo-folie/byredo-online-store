@@ -10,6 +10,7 @@ import {
   removeProductFromCart,
   filterByCategory,
   clearProductFromCart,
+  filterBySearch,
 } from "../utils/product.util";
 import db from "../services/firebase/firestore";
 
@@ -30,6 +31,7 @@ export interface ICartItem extends IProduct {
 interface IState {
   products: IProduct[];
   filteredProducts: IProduct[];
+  searchResults: IProduct[];
   activeProduct: IProduct;
   cart: ICartItem[];
   loading: boolean;
@@ -42,6 +44,7 @@ export const REMOVE_FROM_CART = "removeFromCart";
 export const CLEAR_FROM_CART = "clearFromCart";
 export const CLEAR_CART = "clearCart";
 export const SET_LOADING = "setLoading";
+export const SEARCH_PRODUCTS = "searchProducts";
 
 type ProductAction =
   | {type: typeof SET_PRODUCTS; payload: IProduct[]}
@@ -50,7 +53,8 @@ type ProductAction =
   | {type: typeof REMOVE_FROM_CART; payload: IProduct | ICartItem}
   | {type: typeof CLEAR_FROM_CART; payload: string}
   | {type: typeof CLEAR_CART}
-  | {type: typeof SET_LOADING; payload: boolean};
+  | {type: typeof SET_LOADING; payload: boolean}
+  | {type: typeof SEARCH_PRODUCTS; payload: string};
 
 interface ContextType {
   productState: IState;
@@ -60,6 +64,7 @@ interface ContextType {
 const initialState: IState = {
   products: [],
   filteredProducts: [],
+  searchResults: [],
   activeProduct: {} as IProduct,
   cart: [],
   loading: false,
@@ -108,6 +113,11 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
       return {
         ...state,
         cart: [],
+      };
+    case SEARCH_PRODUCTS:
+      return {
+        ...state,
+        searchResults: filterBySearch(state.products, action.payload),
       };
     default:
       return state;

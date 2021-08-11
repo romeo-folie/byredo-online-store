@@ -10,6 +10,5 @@ Byredo no send me. Built this only because I loved Stan's redesign.
 
 ### Todo
 
-1. Write product search logic
-2. Add descriptions to products
-3. Fix auth screen scroll issues
+1. Add descriptions to products
+2. Fix auth screen scroll issues

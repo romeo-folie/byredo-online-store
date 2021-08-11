@@ -1,4 +1,4 @@
-import {MouseEvent} from "react";
+import {ChangeEvent, MouseEvent} from "react";
 import {
   useNavState,
   TOGGLE_SEARCH,
@@ -21,14 +21,20 @@ import SearchItem from "../search-item/search-item.component";
 import NavItem from "../nav-item/nav-item.component";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import {SEARCH_PRODUCTS, useProductState} from "../../context/product.state";
 
 const Search = () => {
   const {state, dispatch} = useNavState();
+  const {productState, productDispatch} = useProductState();
   const router = useRouter();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
     dispatch({type: SET_NAV_OPTION, payload: innerText});
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    productDispatch({type: SEARCH_PRODUCTS, payload: e.target.value});
   };
 
   return (
@@ -58,11 +64,16 @@ const Search = () => {
       <ContentWrap>
         <InputWrap>
           <SearchIcon />
-          <Input placeholder="Search" />
+          <Input placeholder="Search" onChange={handleChange} />
         </InputWrap>
         <Items>
-          <Message>No results</Message>
-          {/* <SearchItem /> */}
+          {productState.searchResults.length ? (
+            productState.searchResults.map((prod) => (
+              <SearchItem product={prod} key={prod.id} />
+            ))
+          ) : (
+            <Message>Nothing to show</Message>
+          )}
         </Items>
       </ContentWrap>
     </Container>
