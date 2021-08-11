@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &:not(:last-of-type) {
     margin-bottom: 15px;
