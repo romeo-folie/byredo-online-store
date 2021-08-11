@@ -19,7 +19,6 @@ import {
 import {CloseIcon} from "../side-menu/side-menu.styles";
 import SearchItem from "../search-item/search-item.component";
 import NavItem from "../nav-item/nav-item.component";
-import Link from "next/link";
 import {useRouter} from "next/router";
 import {SEARCH_PRODUCTS, useProductState} from "../../context/product.state";
 

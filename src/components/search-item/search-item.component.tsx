@@ -36,13 +36,13 @@ const SearchItem: React.FC<Props> = ({product}) => {
         <ProdName>{name}</ProdName>
         <SpacedRow>
           <Row>
-            <ProdSizeM>{size}ml</ProdSizeM>
+            {size ? <ProdSizeM>{size}ml</ProdSizeM> : null}
             <ProdType>{type}</ProdType>
           </Row>
           <PriceM>${price}</PriceM>
         </SpacedRow>
       </Description>
-      <ProdSize>{size}ml</ProdSize>
+      {size ? <ProdSize>{size}ml</ProdSize> : null}
       <Price>${price}</Price>
     </Container>
   );

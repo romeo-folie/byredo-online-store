@@ -65,8 +65,9 @@ export const ProdName = styled.span`
 `;
 
 export const ProdType = styled.span`
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
 
   @media only screen and (min-width: 1600px) {
     font-size: 1.2rem;
@@ -93,7 +94,7 @@ export const ProdSize = styled.span`
 export const ProdSizeM = styled.span`
   color: rgba(0, 0, 0, 0.5);
   margin-right: 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   @media only screen and (min-width: 481px) {
     display: none;
@@ -114,7 +115,7 @@ export const Price = styled.span`
 `;
 
 export const PriceM = styled.span`
-  font-size: 1rem;
+  font-size: 1.1rem;
 
   @media only screen and (min-width: 481px) {
     display: none;
