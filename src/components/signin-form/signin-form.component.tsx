@@ -3,6 +3,7 @@ import {Container, Form, Title, Row, Button} from "./signin-form.styles";
 import Input from "../input/input.component";
 import Check from "../check/check.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
+import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../services/firebase/firebase";
 
 interface FormValues {
@@ -24,7 +25,8 @@ const Signin: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     const {email, password} = data;
-    const {user} = await auth.signInWithEmailAndPassword(
+    const {user} = await signInWithEmailAndPassword(
+      auth,
       email.trim(),
       password.trim()
     );

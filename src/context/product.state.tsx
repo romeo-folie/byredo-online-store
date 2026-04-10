@@ -12,6 +12,7 @@ import {
   clearProductFromCart,
   filterBySearch,
 } from "../utils/product.util";
+import {collection, getDocs} from "firebase/firestore";
 import db from "../services/firebase/firestore";
 
 export interface IProduct {
@@ -124,14 +125,14 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
   }
 };
 
-const ProductState: React.FC = ({children}) => {
+const ProductState: React.FC<{children: React.ReactNode}> = ({children}) => {
   const [state, dispatch] = useReducer(ProductReducer, initialState);
 
   useEffect(() => {
     async function fetchData() {
       dispatch({type: SET_LOADING, payload: true});
-      const response = await db.collection("products").get();
-      const products = response.docs.map((doc) => {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const products = querySnapshot.docs.map((doc) => {
         const {id} = doc;
         const {name, price, type, category, size, url} = doc.data();
 

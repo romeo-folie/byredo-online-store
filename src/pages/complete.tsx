@@ -33,21 +33,26 @@ import {
 } from "../context/nav.state";
 import {useRouter} from "next/router";
 import SummaryItem from "../components/summary-item/summary-item.component";
-import {
-  useAuthUser,
-  withAuthUser,
-  withAuthUserSSR,
-  AuthAction,
-} from "next-firebase-auth";
+import {useAuth} from "../context/AuthContext";
 import {useProductState, CLEAR_CART} from "../context/product.state";
 import {getTotalPrice} from "../utils/product.util";
 import Head from "next/head";
+import {signOut} from "firebase/auth";
+import {auth} from "../services/firebase/firebase";
 
 const Complete = () => {
   const {dispatch} = useNavState();
   const router = useRouter();
-  const AuthUser = useAuthUser();
+  const {user, loading} = useAuth();
   const {productState, productDispatch} = useProductState();
+
+  React.useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/auth");
+    }
+  }, [user, loading, router]);
+
+  if (loading || !user) return null;
 
   const total = getTotalPrice(productState.cart);
 
@@ -67,8 +72,8 @@ const Complete = () => {
 
         <Row>
           <Search onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-          {AuthUser.id ? (
-            <ExitIcon onClick={() => AuthUser.signOut()} />
+          {user ? (
+            <ExitIcon onClick={() => signOut(auth)} />
           ) : (
             <User onClick={() => router.replace("/auth")} />
           )}
@@ -83,14 +88,14 @@ const Complete = () => {
             {"You've made a great choice"}
           </MainTitle>
           <SubTitle>
-            {`Confirmation letter has been sent to ${AuthUser.email}`}
+            {`Confirmation letter has been sent to ${user.email}`}
           </SubTitle>
         </Wrap>
 
         <Wrap>
           <MessageRow>
             <Wrap width={40}>
-              <Span>Hello, {`${AuthUser.displayName}`}</Span>
+              <Span>Hello, {`${user.displayName}`}</Span>
               <P>
                 Your order has been successfully completed and will be delivered
                 to you in the near future. You can track the delivery status in
@@ -120,7 +125,7 @@ const Complete = () => {
           <Detail>
             <Span bold>Shipping details</Span>
             <Span>
-              {AuthUser.displayName}
+              {user.displayName}
               <br />
               194 Ferry St London, 07015
               <br />
@@ -162,10 +167,4 @@ const Complete = () => {
   );
 };
 
-export const getServerSideProps = withAuthUserSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})();
-
-export default withAuthUser({
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-})(Complete);
+export default Complete;

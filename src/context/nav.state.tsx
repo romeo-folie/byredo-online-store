@@ -120,7 +120,7 @@ const NavReducer = (state: INav, action: NavAction): INav => {
   }
 };
 
-const NavState: React.FC = ({children}) => {
+const NavState: React.FC<{children: React.ReactNode}> = ({children}) => {
   const [state, dispatch] = useReducer(NavReducer, initialState);
 
   return (

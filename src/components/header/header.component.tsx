@@ -18,14 +18,16 @@ import {
   SET_NAV_OPTION,
 } from "../../context/nav.state";
 import {useRouter} from "next/router";
-import {useAuthUser, withAuthUser} from "next-firebase-auth";
+import {useAuth} from "../../context/AuthContext";
+import {signOut} from "firebase/auth";
+import {auth} from "../../services/firebase/firebase";
 import {useProductState, FILTER_PRODUCTS} from "../../context/product.state";
 
 const Header = () => {
   const {state, dispatch} = useNavState();
   const {productDispatch} = useProductState();
   const router = useRouter();
-  const AuthUser = useAuthUser();
+  const {user} = useAuth();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -51,8 +53,8 @@ const Header = () => {
       </Menu>
       <Menu>
         <SearchIcon onClick={() => dispatch({type: TOGGLE_SEARCH})} />
-        {AuthUser.id ? (
-          <ExitIcon onClick={() => AuthUser.signOut()} />
+        {user ? (
+          <ExitIcon onClick={() => signOut(auth)} />
         ) : (
           <UserIcon onClick={() => router.replace("/auth")} />
         )}
@@ -62,4 +64,4 @@ const Header = () => {
   );
 };
 
-export default withAuthUser()(Header);
+export default Header;

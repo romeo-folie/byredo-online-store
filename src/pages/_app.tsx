@@ -8,10 +8,8 @@ import NavState from "../context/nav.state";
 import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
 import Search from "../components/search/search.component";
-import initAuth from "../services/firebase/initAuth";
+import {AuthProvider} from "../context/AuthContext";
 import ProductState from "../context/product.state";
-
-initAuth();
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -111,16 +109,18 @@ function MyApp({Component, pageProps}: AppProps) {
             crossOrigin=""
           />
         </Head>
-        <NavState>
-          <ProductState>
-            <Header />
-            <SideMenu />
-            <SideSubMenu />
-            <Cart />
-            <Search />
-            <Component {...pageProps} />
-          </ProductState>
-        </NavState>
+        <AuthProvider>
+          <NavState>
+            <ProductState>
+              <Header />
+              <SideMenu />
+              <SideSubMenu />
+              <Cart />
+              <Search />
+              <Component {...pageProps} />
+            </ProductState>
+          </NavState>
+        </AuthProvider>
       </ThemeProvider>
     </>
   );

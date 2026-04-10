@@ -19,14 +19,26 @@ import {
   PromoCodeInput,
   Forms,
 } from "../pageStyles/checkout.styles";
-import {withAuthUser, withAuthUserSSR, AuthAction} from "next-firebase-auth";
+import {useAuth} from "../context/AuthContext";
 import {useProductState} from "../context/product.state";
+import {useRouter} from "next/router";
 import {getTotalPrice} from "../utils/product.util";
 import Head from "next/head";
+import React from "react";
 
 const Checkout = () => {
   const {dispatch} = useNavState();
   const {productState} = useProductState();
+  const {user, loading} = useAuth();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/auth");
+    }
+  }, [user, loading, router]);
+
+  if (loading || !user) return null;
 
   const handleCartEdit = () => {
     dispatch({type: TOGGLE_CART});
@@ -84,10 +96,4 @@ const Checkout = () => {
   );
 };
 
-export const getServerSideProps = withAuthUserSSR({
-  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
-})();
-
-export default withAuthUser({
-  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-})(Checkout);
+export default Checkout;
