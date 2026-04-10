@@ -40,11 +40,14 @@ import Head from "next/head";
 import {signOut} from "firebase/auth";
 import {auth} from "../services/firebase/firebase";
 
+import {useCheckout} from "../context/checkout.state";
+
 const Complete = () => {
   const {dispatch} = useNavState();
   const router = useRouter();
   const {user, loading} = useAuth();
   const {productState, productDispatch} = useProductState();
+  const {checkoutData} = useCheckout();
 
   React.useEffect(() => {
     if (!loading && !user) {
@@ -64,7 +67,7 @@ const Complete = () => {
   return (
     <Container>
       <Head>
-        <title>Complete Purchase</title>
+        <title>Complete Purchase | Byredo</title>
       </Head>
       <Header>
         <Menu onClick={() => dispatch({type: TOGGLE_MENU})} />
@@ -88,14 +91,14 @@ const Complete = () => {
             {"You've made a great choice"}
           </MainTitle>
           <SubTitle>
-            {`Confirmation letter has been sent to ${user.email}`}
+            {`Confirmation letter has been sent to ${checkoutData.userDetails.email || user.email}`}
           </SubTitle>
         </Wrap>
 
         <Wrap>
           <MessageRow>
             <Wrap width={40}>
-              <Span>Hello, {`${user.displayName}`}</Span>
+              <Span>Hello, {`${checkoutData.userDetails.firstName || user.displayName}`}</Span>
               <P>
                 Your order has been successfully completed and will be delivered
                 to you in the near future. You can track the delivery status in
@@ -114,22 +117,24 @@ const Complete = () => {
         <Wrap>
           <Detail>
             <Span bold>Order No</Span>
-            <Span>9PM2EQ</Span>
+            <Span>{checkoutData.orderInfo.orderNo || "9PM2EQ"}</Span>
           </Detail>
 
           <Detail>
             <Span bold>Est delivery date</Span>
-            <Span>06.08.19</Span>
+            <Span>{checkoutData.orderInfo.deliveryDate || "06.08.19"}</Span>
           </Detail>
 
           <Detail>
             <Span bold>Shipping details</Span>
             <Span>
-              {user.displayName}
+              {checkoutData.userDetails.firstName} {checkoutData.userDetails.lastName}
               <br />
-              194 Ferry St London, 07015
+              {checkoutData.shippingDetails.address}
               <br />
-              Europe Standard
+              {checkoutData.shippingDetails.city}, {checkoutData.shippingDetails.zipCode}
+              <br />
+              {checkoutData.shippingDetails.method} Shipping
             </Span>
           </Detail>
         </Wrap>

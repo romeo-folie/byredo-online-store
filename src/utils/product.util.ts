@@ -74,3 +74,22 @@ export const filterBySearch = (
       prod.category.toLowerCase().includes(input.toLowerCase())
   );
 };
+
+export const sortProducts = (
+  products: IProduct[],
+  sortBy: string
+): IProduct[] => {
+  const sorted = [...products];
+  switch (sortBy.toLowerCase()) {
+    case "price low to high":
+      return sorted.sort((a, b) => a.price - b.price);
+    case "price high to low":
+      return sorted.sort((a, b) => b.price - a.price);
+    case "name a-z":
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    case "name z-a":
+      return sorted.sort((a, b) => b.name.localeCompare(a.name));
+    default:
+      return sorted;
+  }
+};

@@ -11,6 +11,7 @@ import {
   filterByCategory,
   clearProductFromCart,
   filterBySearch,
+  sortProducts,
 } from "../utils/product.util";
 import {collection, getDocs} from "firebase/firestore";
 import db from "../services/firebase/firestore";
@@ -46,6 +47,7 @@ export const CLEAR_FROM_CART = "clearFromCart";
 export const CLEAR_CART = "clearCart";
 export const SET_LOADING = "setLoading";
 export const SEARCH_PRODUCTS = "searchProducts";
+export const SORT_PRODUCTS = "sortProducts";
 
 type ProductAction =
   | {type: typeof SET_PRODUCTS; payload: IProduct[]}
@@ -55,7 +57,8 @@ type ProductAction =
   | {type: typeof CLEAR_FROM_CART; payload: string}
   | {type: typeof CLEAR_CART}
   | {type: typeof SET_LOADING; payload: boolean}
-  | {type: typeof SEARCH_PRODUCTS; payload: string};
+  | {type: typeof SEARCH_PRODUCTS; payload: string}
+  | {type: typeof SORT_PRODUCTS; payload: string};
 
 interface ContextType {
   productState: IState;
@@ -94,6 +97,11 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
       return {
         ...state,
         filteredProducts: filterByCategory(state.products, action.payload),
+      };
+    case SORT_PRODUCTS:
+      return {
+        ...state,
+        filteredProducts: sortProducts(state.filteredProducts, action.payload),
       };
     case ADD_TO_CART:
       return {

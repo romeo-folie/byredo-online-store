@@ -5,7 +5,7 @@ import {
   ProdName,
   ProdDesc,
   ProductSection,
-  ProdImage,
+  ImageContainer,
   DetailSection,
   PriceRow,
   Price,
@@ -28,13 +28,37 @@ import {
   ADD_TO_CART,
 } from "../../context/product.state";
 import Head from 'next/head'
+import Image from "next/image";
+import {motion} from "framer-motion";
 
-const productDetails = [
-  {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
-  {name: "Heart", desc: "Cyclamen, Jasmine, Petals, Violet"},
-  {name: "Base", desc: "Black Amber, Moroccan Cedarwood, Musk, Vetiver"},
-  {name: "Shipping", desc: "Enter zip code"},
-];
+const getProductDetails = (type: string) => {
+  const defaults = [
+    {name: "Top", desc: "African Marigold, Bergamot, Bucchu, Lemon, Neroli"},
+    {name: "Heart", desc: "Cyclamen, Jasmine, Petals, Violet"},
+    {name: "Base", desc: "Black Amber, Moroccan Cedarwood, Musk, Vetiver"},
+    {name: "Shipping", desc: "Europe Standard (3-5 days)"},
+  ];
+
+  if (type === "Perfume") {
+    return [
+      {name: "Top", desc: "Pink Pepper, Raspberry, Rose Berries"},
+      {name: "Heart", desc: "Magnolia, Rose, Peony"},
+      {name: "Base", desc: "Exotic Woods, Patchouli, Saffron"},
+      {name: "Shipping", desc: "Europe Standard (3-5 days)"},
+    ];
+  }
+
+  if (type === "Cologne") {
+    return [
+      {name: "Top", desc: "Lemon, Neroli, Bergamot"},
+      {name: "Heart", desc: "Lavender, Rosemary, Jasmine"},
+      {name: "Base", desc: "Amber, Musk, Moss"},
+      {name: "Shipping", desc: "Europe Standard (3-5 days)"},
+    ];
+  }
+
+  return defaults;
+};
 
 const colors = ["#d6cf86", "#9bafd0", "#414345", "#b29495", "#9bafd4"];
 
@@ -44,60 +68,131 @@ interface Props {
 
 const ProductPage: React.FC<Props> = ({product}) => {
   const {productDispatch} = useProductState();
+  const productDetails = getProductDetails(product.type);
+
+  const containerVariants = {
+    hidden: {opacity: 0},
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  } as const;
+
+  const itemVariants = {
+    hidden: {opacity: 0, x: -20},
+    visible: {opacity: 1, x: 0, transition: {duration: 0.6}},
+  } as const;
+
+  const imageVariants = {
+    hidden: {opacity: 0, scale: 0.9},
+    visible: {opacity: 1, scale: 1, transition: {duration: 0.8, ease: "easeOut"}},
+  } as const;
+
+  const detailVariants = {
+    hidden: {opacity: 0, x: 20},
+    visible: {opacity: 1, x: 0, transition: {duration: 0.6}},
+  } as const;
 
   return (
     <Container>
       <Head>
-        <title>{product.name}</title>
+        <title>{product.name} | Byredo</title>
       </Head>
       <DescSection>
-        <ProdType>{product.type}</ProdType>
-        <ProdName>{product.name}</ProdName>
-        <ProdDesc>
-          {
-            "A warm and romantic vetiver inspired by Paris in the late 20's and it's infatuation with African culture, art, music and dance. A mix of Parisian avantgardism and African culture shaped a unique and vibrant expression. The intense life, the excess and euphoria is illustrated by Bal d'Afrique's neroli, African marigold and Moroccan cedarwood."
-          }{" "}
-        </ProdDesc>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <ProdType>{product.type}</ProdType>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <ProdName>{product.name}</ProdName>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <ProdDesc>
+              {
+                "A warm and romantic vetiver inspired by Paris in the late 20's and it's infatuation with African culture, art, music and dance. A mix of Parisian avantgardism and African culture shaped a unique and vibrant expression. The intense life, the excess and euphoria is illustrated by Bal d'Afrique's neroli, African marigold and Moroccan cedarwood."
+              }{" "}
+            </ProdDesc>
+          </motion.div>
+        </motion.div>
       </DescSection>
       <ProductSection>
-        <ProdImage src={product.url} />
+        <motion.div
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+          style={{width: "100%", display: "flex", justifyContent: "center"}}
+        >
+          <ImageContainer>
+            <Image
+              src={product.url}
+              alt={product.name}
+              fill
+              style={{objectFit: "contain"}}
+              priority
+            />
+          </ImageContainer>
+        </motion.div>
       </ProductSection>
       <DetailSection>
-        {/* Add name and prod type here. Hide till we're in mobile mode */}
-        <Type>{product.type}</Type>
-        <Name>{product.name}</Name>
-        <PriceRow>
-          <Price>{`$${product.price}`}</Price>
-          <Row>
-            {product.size ? (
-              <>
-                <Size>{product.size} ml</Size>
-                {product.size !== "225" ? <Size>225 ml</Size> : null}
-              </>
-            ) : (
-              <ColorSelector colors={colors} />
-            )}
-          </Row>
-        </PriceRow>
-        {productDetails.map((detail) => (
-          <DetailRow key={detail.name}>
-            <DetailName>{detail.name}</DetailName>
-            <DetailDesc>{detail.desc}</DetailDesc>
-          </DetailRow>
-        ))}
-        <CartButton
-          onClick={() => productDispatch({type: ADD_TO_CART, payload: product})}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          Add To Cart
-        </CartButton>
+          {/* Add name and prod type here. Hide till we're in mobile mode */}
+          <motion.div variants={detailVariants}>
+            <Type>{product.type}</Type>
+          </motion.div>
+          <motion.div variants={detailVariants}>
+            <Name>{product.name}</Name>
+          </motion.div>
+          <motion.div variants={detailVariants}>
+            <PriceRow>
+              <Price>{`$${product.price}`}</Price>
+              <Row>
+                {product.size ? (
+                  <>
+                    <Size>{product.size} ml</Size>
+                    {product.size !== "225" ? <Size>225 ml</Size> : null}
+                  </>
+                ) : (
+                  <ColorSelector colors={colors} />
+                )}
+              </Row>
+            </PriceRow>
+          </motion.div>
+          {productDetails.map((detail, idx) => (
+            <motion.div variants={detailVariants} key={detail.name}>
+              <DetailRow>
+                <DetailName>{detail.name}</DetailName>
+                <DetailDesc>{detail.desc}</DetailDesc>
+              </DetailRow>
+            </motion.div>
+          ))}
+          <motion.div variants={detailVariants} style={{marginTop: "auto"}}>
+            <CartButton
+              onClick={() => productDispatch({type: ADD_TO_CART, payload: product})}
+            >
+              Add To Cart
+            </CartButton>
+          </motion.div>
+        </motion.div>
       </DetailSection>
     </Container>
   );
 };
 
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await db.collection("products").get();
-  const paths = response.docs.map((doc) => {
+  const querySnapshot = await getDocs(collection(db, "products"));
+  const paths = querySnapshot.docs.map((doc) => {
     return {
       params: {id: doc.id},
     };
@@ -111,12 +206,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const params = context.params!;
-  const response = await db
-    .collection("products")
-    .doc(params.id as string)
-    .get();
+  const docSnap = await getDoc(doc(db, "products", params.id as string));
 
-  const product = {id: params.id, ...response.data()};
+  if (!docSnap.exists()) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const product = {id: params.id, ...docSnap.data()};
 
   return {
     props: {product},
@@ -127,3 +225,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default ProductPage;
+

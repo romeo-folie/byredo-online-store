@@ -13,6 +13,7 @@ interface Iprops {
   value?: string;
   label: string;
   error?: string;
+  placeholder?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -56,7 +57,7 @@ const Field = withStyles({
 })(TextField);
 
 const Input: React.FC<Iprops> = (props) => {
-  const {name, value, onChange, label, error} = props;
+  const {name, value, onChange, label, error, placeholder} = props;
 
   const styles = useStyles();
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -69,6 +70,7 @@ const Input: React.FC<Iprops> = (props) => {
     <Field
       label={label}
       name={name}
+      placeholder={placeholder}
       className={styles.textfield}
       onChange={onChange}
       value={value}

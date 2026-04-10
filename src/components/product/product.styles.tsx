@@ -10,18 +10,33 @@ export const Container = styled.div`
   /* margin: 5px; */
 `;
 
-export const Photo = styled.img<{isHovered: boolean}>`
-  transition: all 1.2s;
-  max-width: ${({isHovered}) => (isHovered ? "270px" : "250px")};
-  filter: drop-shadow(30px 15px 4px rgba(0, 0, 0, 0.1));
+export const ImageContainer = styled.div`
+  position: relative;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 
   @media only screen and (min-width: 1600px) {
-    max-width: ${({isHovered}) => (isHovered ? "350px" : "330px")};
+    width: 330px;
+    height: 400px;
   }
 
   @media only screen and (max-width: 1024px) {
-    max-width: ${({isHovered}) => (isHovered ? "240px" : "230px")};
+    width: 230px;
+    height: 280px;
   }
+`;
+
+export const PhotoWrapper = styled.div`
+  transition: all 0.8s ease;
+  filter: drop-shadow(30px 15px 10px rgba(0, 0, 0, 0.15));
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
 `;
 
 export const Title = styled.h3`

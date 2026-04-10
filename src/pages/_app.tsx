@@ -10,6 +10,7 @@ import Cart from "../components/cart/cart.component";
 import Search from "../components/search/search.component";
 import {AuthProvider} from "../context/AuthContext";
 import ProductState from "../context/product.state";
+import {CheckoutProvider} from "../context/checkout.state";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -81,7 +82,12 @@ const theme = {
   accent: "#000000",
 };
 
+import {AnimatePresence, motion} from "framer-motion";
+import {useRouter} from "next/router";
+
 function MyApp({Component, pageProps}: AppProps) {
+  const router = useRouter();
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -110,16 +116,29 @@ function MyApp({Component, pageProps}: AppProps) {
           />
         </Head>
         <AuthProvider>
-          <NavState>
-            <ProductState>
-              <Header />
-              <SideMenu />
-              <SideSubMenu />
-              <Cart />
-              <Search />
-              <Component {...pageProps} />
-            </ProductState>
-          </NavState>
+          <CheckoutProvider>
+            <NavState>
+              <ProductState>
+                <Header />
+                <SideMenu />
+                <SideSubMenu />
+                <Cart />
+                <Search />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={router.asPath}
+                    initial={{opacity: 0, y: 10}}
+                    animate={{opacity: 1, y: 0}}
+                    exit={{opacity: 0, y: -10}}
+                    transition={{duration: 0.4, ease: "easeInOut"}}
+                    style={{height: "100%", width: "100%"}}
+                  >
+                    <Component {...pageProps} />
+                  </motion.div>
+                </AnimatePresence>
+              </ProductState>
+            </NavState>
+          </CheckoutProvider>
         </AuthProvider>
       </ThemeProvider>
     </>

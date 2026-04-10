@@ -14,6 +14,12 @@ import {
 } from "../search-item/search-item.styles";
 import {useNavState, TOGGLE_SEARCH} from "../../context/nav.state";
 import {useRouter} from "next/router";
+import {motion} from "framer-motion";
+
+const itemVariants = {
+  hidden: {opacity: 0, y: 30},
+  show: {opacity: 1, y: 0, transition: {type: "spring", stiffness: 300, damping: 24}}
+} as const;
 
 interface Props {
   product: IProduct;
@@ -25,12 +31,17 @@ const SearchItem: React.FC<Props> = ({product}) => {
   const router = useRouter();
 
   return (
-    <Container
-      onClick={() => {
-        dispatch({type: TOGGLE_SEARCH});
-        router.push(`/products/${id}`);
-      }}
+    <motion.div
+      variants={itemVariants}
+      whileHover={{ scale: 1.02, x: 10 }}
+      whileTap={{ scale: 0.98 }}
     >
+      <Container
+        onClick={() => {
+          dispatch({type: TOGGLE_SEARCH});
+          router.push(`/products/${id}`);
+        }}
+      >
       <Thumbnail src={url} />
       <Description>
         <ProdName>{name}</ProdName>
@@ -44,7 +55,8 @@ const SearchItem: React.FC<Props> = ({product}) => {
       </Description>
       {size ? <ProdSize>{size}ml</ProdSize> : null}
       <Price>${price}</Price>
-    </Container>
+      </Container>
+    </motion.div>
   );
 };
 

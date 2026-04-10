@@ -53,16 +53,33 @@ const radioProps = {
   ],
 };
 
+import {useCheckout} from "../../context/checkout.state";
+
 const ShippingForm = () => {
+  const {checkoutData, setDetails} = useCheckout();
   const {
     handleSubmit,
     control,
     formState: {errors},
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      address: checkoutData.shippingDetails.address,
+      city: checkoutData.shippingDetails.city,
+      zipCode: checkoutData.shippingDetails.zipCode,
+      country: checkoutData.shippingDetails.country,
+      deliveryOption: checkoutData.shippingDetails.method === "Express" ? "express" : "standard",
+    }
+  });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log(data);
+    setDetails("shippingDetails", {
+      address: data.address,
+      city: data.city,
+      zipCode: data.zipCode,
+      country: data.country,
+      method: data.deliveryOption === "express" ? "Express" : "Standard",
+    });
     router.replace("/checkout/#payment");
   };
 
@@ -73,8 +90,7 @@ const ShippingForm = () => {
         <Controller
           name="country"
           control={control}
-          defaultValue={initialValues.country}
-          rules={{}}
+          rules={{required: "Country is required"}}
           render={({field}) => (
             <Input
               label="Country"
@@ -87,13 +103,12 @@ const ShippingForm = () => {
         <Controller
           name="address"
           control={control}
-          defaultValue={initialValues.address}
-          rules={{}}
+          rules={{required: "Address is required"}}
           render={({field}) => (
             <Input
               label="Address"
               {...field}
-              error={errors?.country?.message}
+              error={errors?.address?.message}
             />
           )}
         />
@@ -103,8 +118,7 @@ const ShippingForm = () => {
             <Controller
               name="city"
               control={control}
-              defaultValue={initialValues.city}
-              rules={{}}
+              rules={{required: "City is required"}}
               render={({field}) => (
                 <Input label="City" {...field} error={errors?.city?.message} />
               )}
@@ -115,8 +129,13 @@ const ShippingForm = () => {
             <Controller
               name="zipCode"
               control={control}
-              defaultValue={initialValues.zipCode}
-              rules={{}}
+              rules={{
+                required: "Zip is required",
+                pattern: {
+                  value: /^\d{5}(-\d{4})?$/,
+                  message: "Invalid zip code"
+                }
+              }}
               render={({field}) => (
                 <Input
                   label="Zip Code"
@@ -131,8 +150,6 @@ const ShippingForm = () => {
         <Controller
           name="stateOrProvince"
           control={control}
-          defaultValue={initialValues.stateOrProvince}
-          rules={{}}
           render={({field}) => (
             <Input
               label="State/Province"
@@ -147,15 +164,12 @@ const ShippingForm = () => {
             <Controller
               name="countryCode"
               control={control}
-              defaultValue={initialValues.countryCode}
-              rules={{}}
               render={({field}) => (
                 <Input
                   {...field}
                   label="Country code"
                   error={errors?.countryCode?.message}
                 />
-                // <FormSelector />
               )}
             />
           </Wrap>
@@ -164,8 +178,7 @@ const ShippingForm = () => {
             <Controller
               name="phoneNumber"
               control={control}
-              defaultValue={initialValues.phoneNumber}
-              rules={{}}
+              rules={{required: "Phone is required"}}
               render={({field}) => (
                 <Input
                   {...field}
@@ -184,8 +197,7 @@ const ShippingForm = () => {
         <Controller
           name="deliveryOption"
           control={control}
-          defaultValue={initialValues.deliveryOption}
-          rules={{}}
+          rules={{required: "Please select a delivery option"}}
           render={({field}) => (
             <RadioBtnGroup
               {...field}

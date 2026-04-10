@@ -105,15 +105,15 @@ export const ProductSection = styled.div`
   }
 `;
 
-export const ProdImage = styled.img`
-  width: 70%;
-  filter: drop-shadow(30px 15px 4px rgba(0, 0, 0, 0.1));
-  /* margin: 100px 0; */
+export const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  filter: drop-shadow(30px 15px 10px rgba(0, 0, 0, 0.15));
+  max-width: 600px;
 
-  @media only screen and (max-width: 1024px) {
-    width: 80%;
-    /* margin: auto 10%; */
-    /* margin: 0 100px; */
+  @media only screen and (max-width: 1000px) {
+    max-width: 400px;
   }
 `;
 

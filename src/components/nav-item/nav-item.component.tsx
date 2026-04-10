@@ -1,10 +1,11 @@
 import Link from "next/link";
-import {MouseEvent} from "react";
+import {MouseEvent, ReactNode} from "react";
 import {Option} from "./nav-item.styles";
 
 interface Props {
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
   active?: boolean;
+  children: ReactNode;
 }
 
 const NavItem: React.FC<Props> = ({children, onClick, active}) => {

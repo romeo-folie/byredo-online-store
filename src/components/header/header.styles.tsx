@@ -37,6 +37,7 @@ export const Brand = styled(Logo)`
 export const Menu = styled.nav`
   display: flex;
   align-items: center;
+  gap: 40px;
 `;
 
 export const UserIcon = styled(Person)`

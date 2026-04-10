@@ -16,9 +16,12 @@ export const Container = styled.div<{isOpen?: boolean}>`
   transition: all 0.3s;
   z-index: 180;
   display: flex;
+  overflow: hidden;
 `;
 
-export const Header = styled(MHeader)``;
+export const Header = styled(MHeader)`
+  z-index: 10;
+`;
 
 export const Brand = styled(Logo)`
   width: 100px;
@@ -63,43 +66,62 @@ export const ContentWrap = styled.div`
   @media only screen and (max-width: 480px) {
     width: 95%;
   }
+
+  z-index: 10;
 `;
 
-export const InputWrap = styled.div`
-  height: 60px;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+export const InputWrap = styled.div<{isFocused?: boolean}>`
+  height: ${({isFocused}) => (isFocused ? "100px" : "80px")};
+  width: ${({isFocused}) => (isFocused ? "105%" : "100%")};
+  border: ${({isFocused}) => (isFocused ? "2px solid #000" : "1px solid rgba(0,0,0,0.15)")};
+  border-radius: 12px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: ${({isFocused}) => (isFocused ? "0 20px 40px rgba(0,0,0,0.12)" : "none")};
+  background-color: #fff;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 0 20px;
 
   @media only screen and (max-width: 480px) {
-    height: 45px;
+    height: ${({isFocused}) => (isFocused ? "80px" : "60px")};
   }
 `;
 
 export const Input = styled.input`
-  width: 95%;
+  width: 90%;
   height: 100%;
   border: none;
   outline: none;
-  padding-left: 15px;
-  font-size: 1.25rem;
+  padding-left: 20px;
+  font-size: 2rem;
+  font-weight: bold;
   background: transparent;
 
   @media only screen and (min-width: 1600px) {
-    font-size: 1.4rem;
-    padding-left: 10px;
+    font-size: 2.5rem;
   }
 
   @media only screen and (max-width: 480px) {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
+  }
+  
+  &::placeholder {
+    color: rgba(0,0,0,0.2);
+    font-weight: normal;
   }
 `;
 
-export const SearchIcon = styled(Search)``;
+export const SearchIcon = styled(Search)`
+  width: 35px;
+  height: 35px;
+  opacity: 0.5;
+`;
 
 export const Items = styled.div`
+  width: 100%;
   height: 90%;
   padding: 50px 0 20px;
   overflow-y: auto;
@@ -112,6 +134,9 @@ export const Items = styled.div`
 export const Message = styled.div`
   color: rgba(0, 0, 0, 0.5);
   font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
 
   @media only screen and (min-width: 1600px) {
     font-size: 1.4rem;

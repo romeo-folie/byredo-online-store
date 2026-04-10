@@ -17,7 +17,7 @@ export const CategorySection = styled.div`
   display: flex;
   flex-direction: column;
   /* background-color: red; */
-  padding-top: 70px;
+  padding-top: 130px;
   padding-left: 15px;
   overflow-y: auto;
   scrollbar-width: none;
@@ -37,7 +37,7 @@ export const CategorySection = styled.div`
 export const ProductSection = styled.div`
   width: 65%;
   height: 100%;
-  padding-top: 70px;
+  padding-top: 130px;
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -70,7 +70,7 @@ export const Grid = styled.div`
 `;
 
 export const FilterSection = styled.div`
-  padding-top: 80px;
+  padding-top: 130px;
   /* padding-right: 15px; */
   width: 15%;
   display: flex;
