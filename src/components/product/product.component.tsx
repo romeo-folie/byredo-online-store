@@ -2,7 +2,7 @@ import {useState} from "react";
 import {Container, ImageContainer, PhotoWrapper, Title, Price} from "./product.styles";
 import {useRouter} from "next/router";
 import Image from "next/image";
-import {motion} from "framer-motion";
+import {motion, Variants} from "framer-motion";
 
 interface Props {
   id: string;
@@ -12,18 +12,18 @@ interface Props {
   onLoad?: () => void;
 }
 
+const itemVariants: Variants = {
+  hidden: {opacity: 0, y: 40},
+  show: {opacity: 1, y: 0, transition: {type: "spring", stiffness: 260, damping: 20}}
+};
+
 const Product: React.FC<Props> = ({id, path, name, price, onLoad}) => {
   const router = useRouter();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   return (
-    <motion.div
-      initial={{opacity: 0, y: 20}}
-      whileInView={{opacity: 1, y: 0}}
-      viewport={{once: true}}
-      transition={{duration: 0.6, ease: "easeOut"}}
-    >
+    <motion.div variants={itemVariants}>
       <Container
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -34,8 +34,8 @@ const Product: React.FC<Props> = ({id, path, name, price, onLoad}) => {
             animate={{
               scale: isHovered ? 1.05 : 1,
             }}
-            transition={{duration: 0.4, ease: "easeOut"}}
-            style={{width: "100%", height: "100%", position: "relative"}}
+            transition={{duration: 0.8, ease: "easeOut"}}
+            style={{width: "100%", height: "100%", position: "relative", overflow: "hidden"}}
           >
             <PhotoWrapper style={{backgroundColor: "transparent"}}>
               <Image

@@ -82,7 +82,7 @@ const Cart = () => {
               right: 0,
               height: "100vh",
               width: "80%",
-              maxWidth: "1200px",
+              maxWidth: "1600px",
               zIndex: 180,
               backgroundColor: "#fff",
               display: "flex",

@@ -17,6 +17,16 @@ import Head from "next/head";
 import {motion} from "framer-motion";
 
 
+const gridVariants = {
+  hidden: {opacity: 0},
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2
+    }
+  }
+};
 
 const Home: React.FC = () => {
   const {state, dispatch} = useNavState();
@@ -43,7 +53,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <FullScreenLoader isLoading={!isReady} />
       <Container>
       <Head>
         <title>Shop | Byredo</title>
@@ -55,16 +64,23 @@ const Home: React.FC = () => {
       </CategorySection>
       <ProductSection>
         <Grid>
-          {productState.filteredProducts.map((prod, idx) => (
-            <Product
-              path={prod.url}
-              name={prod.name}
-              price={prod.price}
-              id={prod.id}
-              key={prod.id}
-              onLoad={() => setLoadedImages(prev => prev + 1)}
-            />
-          ))}
+          <motion.div
+            variants={gridVariants}
+            initial="hidden"
+            animate={isReady ? "show" : "hidden"}
+            style={{ width: "100%", display: "contents" }}
+          >
+            {productState.filteredProducts.map((prod, idx) => (
+              <Product
+                path={prod.url}
+                name={prod.name}
+                price={prod.price}
+                id={prod.id}
+                key={prod.id}
+                onLoad={() => setLoadedImages(prev => prev + 1)}
+              />
+            ))}
+          </motion.div>
         </Grid>
       </ProductSection>
       <FilterSection>

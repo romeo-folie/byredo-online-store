@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import {
   FormSection,
   FormTitle,
@@ -60,6 +61,7 @@ const ShippingForm = () => {
   const {
     handleSubmit,
     control,
+    watch,
     formState: {errors},
   } = useForm<FormValues>({
     defaultValues: {
@@ -70,6 +72,18 @@ const ShippingForm = () => {
       deliveryOption: checkoutData.shippingDetails.method === "Express" ? "express" : "standard",
     }
   });
+
+  const deliveryOption = watch("deliveryOption");
+
+  useEffect(() => {
+    const newMethod = deliveryOption === "express" ? "Express" : "Standard";
+    if (checkoutData.shippingDetails.method !== newMethod) {
+      setDetails("shippingDetails", {
+        method: newMethod,
+      });
+    }
+  }, [deliveryOption, setDetails, checkoutData.shippingDetails.method]);
+
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {

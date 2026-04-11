@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, ReactNode} from "react";
+import React, {createContext, useContext, useState, ReactNode, useCallback, useMemo} from "react";
 
 interface CheckoutData {
   userDetails: {
@@ -47,14 +47,20 @@ export const CheckoutProvider: React.FC<{children: ReactNode}> = ({children}) =>
   const [checkoutData, setCheckoutData] = useState<CheckoutData>(initialState);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const setDetails = (section: keyof CheckoutData, data: any) => {
-    setCheckoutData((prev) => ({
-      ...prev,
-      [section]: {...(prev[section] as object), ...data},
-    }));
-  };
+  const setDetails = useCallback((section: keyof CheckoutData, data: any) => {
+    setCheckoutData((prev) => {
+      // Deep compare check for simple updates to prevent loops
+      if (JSON.stringify(prev[section]) === JSON.stringify({...prev[section], ...data})) {
+        return prev;
+      }
+      return {
+        ...prev,
+        [section]: {...(prev[section] as object), ...data},
+      };
+    });
+  }, []);
 
-  const generateOrderInfo = () => {
+  const generateOrderInfo = useCallback(() => {
     const orderNo = Math.random().toString(36).substring(2, 8).toUpperCase();
     const date = new Date();
     date.setDate(date.getDate() + 5);
@@ -65,12 +71,18 @@ export const CheckoutProvider: React.FC<{children: ReactNode}> = ({children}) =>
     });
 
     setDetails("orderInfo", {orderNo, deliveryDate});
-  };
+  }, [setDetails]);
+
+  const value = useMemo(() => ({
+    checkoutData, 
+    setDetails, 
+    isProcessing, 
+    setIsProcessing, 
+    generateOrderInfo
+  }), [checkoutData, setDetails, isProcessing, generateOrderInfo]);
 
   return (
-    <CheckoutContext.Provider
-      value={{checkoutData, setDetails, isProcessing, setIsProcessing, generateOrderInfo}}
-    >
+    <CheckoutContext.Provider value={value}>
       {children}
     </CheckoutContext.Provider>
   );

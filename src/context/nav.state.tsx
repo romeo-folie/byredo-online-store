@@ -10,6 +10,7 @@ interface INav {
   subMenuOption: string;
   navOptions: string[];
   categories: ICategory[];
+  isLoading: boolean;
 }
 
 export const TOGGLE_MENU = "toggleMenu";
@@ -25,14 +26,15 @@ type NavAction =
   | {type: typeof TOGGLE_CART}
   | {type: typeof TOGGLE_SEARCH}
   | {type: typeof SET_NAV_OPTION; payload: string}
-  | {type: typeof SET_SUB_MENU_OPTION; payload: string};
+  | {type: typeof SET_SUB_MENU_OPTION; payload: string}
+  | {type: "SET_LOADING"; payload: boolean};
 
 interface ContextType {
   state: INav;
   dispatch: Dispatch<NavAction>;
 }
 
-const initialState = {
+const initialState: INav = {
   isMenuOpen: false,
   isSubMenuOpen: false,
   isCartOpen: false,
@@ -76,6 +78,7 @@ const initialState = {
       ],
     },
   ],
+  isLoading: true,
 };
 
 export const NavContext = createContext<ContextType>({
@@ -114,6 +117,11 @@ const NavReducer = (state: INav, action: NavAction): INav => {
       return {
         ...state,
         subMenuOption: action.payload,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;

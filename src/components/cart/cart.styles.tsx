@@ -15,7 +15,7 @@ export const Overlay = styled.div<{isOpen?: boolean}>`
 
 export const Container = styled.div<{isOpen?: boolean}>`
   height: 100vh;
-  width: ${({isOpen}) => (isOpen ? "80%" : "0")};
+  width: 100%;
   z-index: 180;
   position: absolute;
   overflow: hidden;
@@ -38,9 +38,9 @@ export const Container = styled.div<{isOpen?: boolean}>`
 `;
 
 export const ItemSection = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 70%;
-  padding: 15px 20px;
+  padding: 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -52,9 +52,9 @@ export const ItemSection = styled.div`
 `;
 
 export const SummarySection = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 30%;
-  padding: 15px 20px;
+  padding: 40px 40px;
   background-color: ${({theme}) => theme.primary};
   display: flex;
   flex-direction: column;

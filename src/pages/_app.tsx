@@ -5,12 +5,13 @@ import Header from "../components/header/header.component";
 import Head from "next/head";
 import SideMenu from "../components/side-menu/side-menu.component";
 import NavState from "../context/nav.state";
-import SideSubMenu from "../components/side-submenu/side-submenu.component";
 import Cart from "../components/cart/cart.component";
 import Search from "../components/search/search.component";
 import {AuthProvider} from "../context/AuthContext";
 import ProductState from "../context/product.state";
 import {CheckoutProvider} from "../context/checkout.state";
+import FullScreenLoader from "../components/full-screen-loader/full-screen-loader.component";
+import {useNavState} from "../context/nav.state";
 
 const GlobalStyle = createGlobalStyle`
 @font-face {
@@ -33,8 +34,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Acumin, Helvetica Neue, Roboto, Oxygen, -apple-system, BlinkMacSystemFont, 
-    Ubuntu, Cantarell, Segoe UI, Fira Sans, Droid Sans, sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   position: relative;
   font-size: 15px;
   -webkit-tap-highlight-color: transparent;
@@ -74,6 +74,8 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #e3e3e3 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+
 `;
 
 const theme = {
@@ -82,7 +84,7 @@ const theme = {
   accent: "#000000",
 };
 
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, LayoutGroup, motion} from "framer-motion";
 import {useRouter} from "next/router";
 
 function MyApp({Component, pageProps}: AppProps) {
@@ -98,10 +100,33 @@ function MyApp({Component, pageProps}: AppProps) {
   }, []);
 
   return (
+    <NavState>
+      <AppContent Component={Component} pageProps={pageProps} />
+    </NavState>
+  );
+}
+
+function AppContent({Component, pageProps}: any) {
+  const router = useRouter();
+  const {state, dispatch} = useNavState();
+
+  // Initial load only — the FullScreenLoader is a one-time entry experience.
+  // Route changes are handled by the AnimatePresence page transition below.
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch({type: "SET_LOADING", payload: false});
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [dispatch]);
+
+  return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
           <link
             rel="preload"
             href="/fonts/acumin/Acumin-RPro.otf"
@@ -117,27 +142,29 @@ function MyApp({Component, pageProps}: AppProps) {
         </Head>
         <AuthProvider>
           <CheckoutProvider>
-            <NavState>
-              <ProductState>
+            <ProductState>
+              {/* LayoutGroup is required so layoutId="cart-bag" resolves
+                  across FullScreenLoader (sibling) and Header→CartIcon */}
+              <LayoutGroup>
+                <FullScreenLoader />
                 <Header />
                 <SideMenu />
-                <SideSubMenu />
                 <Cart />
                 <Search />
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={router.asPath}
-                    initial={{opacity: 0, y: 10}}
-                    animate={{opacity: 1, y: 0}}
-                    exit={{opacity: 0, y: -10}}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
                     transition={{duration: 0.4, ease: "easeInOut"}}
                     style={{height: "100%", width: "100%"}}
                   >
                     <Component {...pageProps} />
                   </motion.div>
                 </AnimatePresence>
-              </ProductState>
-            </NavState>
+              </LayoutGroup>
+            </ProductState>
           </CheckoutProvider>
         </AuthProvider>
       </ThemeProvider>

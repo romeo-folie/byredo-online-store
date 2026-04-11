@@ -175,7 +175,7 @@ const ProductPage: React.FC<Props> = ({product}) => {
               </DetailRow>
             </motion.div>
           ))}
-          <motion.div variants={detailVariants} style={{marginTop: "auto"}}>
+          <motion.div variants={detailVariants} style={{marginTop: "40px"}}>
             <CartButton
               onClick={() => productDispatch({type: ADD_TO_CART, payload: product})}
             >

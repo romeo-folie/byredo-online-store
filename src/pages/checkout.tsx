@@ -25,11 +25,13 @@ import {useRouter} from "next/router";
 import {getTotalPrice} from "../utils/product.util";
 import Head from "next/head";
 import React from "react";
+import {useCheckout} from "../context/checkout.state";
 
 const Checkout = () => {
   const {dispatch} = useNavState();
   const {productState} = useProductState();
   const {user, loading} = useAuth();
+  const {checkoutData} = useCheckout();
   const router = useRouter();
 
   React.useEffect(() => {
@@ -43,8 +45,9 @@ const Checkout = () => {
   const handleCartEdit = () => {
     dispatch({type: TOGGLE_CART});
   };
-
-  const total = getTotalPrice(productState.cart);
+  const baseTotal = getTotalPrice(productState.cart);
+  const shippingCost = checkoutData.shippingDetails.method === "Express" ? 40 : 20;
+  const total = baseTotal > 0 ? baseTotal + shippingCost : 0;
 
   return (
     <Container>
@@ -83,12 +86,7 @@ const Checkout = () => {
         <Row>
           <DetName>Total</DetName>
           <DetValue>
-            $
-            {total > 50
-              ? total.toFixed(2)
-              : total > 0
-              ? (total + 20).toFixed(2)
-              : total.toFixed(2)}
+            ${total.toFixed(2)}
           </DetValue>
         </Row>
       </ItemSection>
