@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {Container, ImageContainer, PhotoWrapper, Title, Price} from "./product.styles";
 import {useRouter} from "next/router";
-import Image from "next/image";
+import Head from "next/head";
 import {motion, Variants} from "framer-motion";
+import {getOptimizedUrl} from "../../utils/cloudinary";
 
 interface Props {
   id: string;
@@ -22,6 +23,11 @@ const Product: React.FC<Props> = ({id, path, name, price, onLoad}) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
+  // Thumbnail size for the grid
+  const thumbnailUrl = getOptimizedUrl(path, 400);
+  // Full size for the detail page (preloading)
+  const detailUrl = getOptimizedUrl(path, 1000);
+
   return (
     <motion.div variants={itemVariants}>
       <Container
@@ -29,6 +35,9 @@ const Product: React.FC<Props> = ({id, path, name, price, onLoad}) => {
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => router.push(`/products/${id}`)}
       >
+        <Head>
+          {isHovered && <link rel="preload" as="image" href={detailUrl} />}
+        </Head>
         <ImageContainer>
           <motion.div
             animate={{
@@ -38,20 +47,21 @@ const Product: React.FC<Props> = ({id, path, name, price, onLoad}) => {
             style={{width: "100%", height: "100%", position: "relative", overflow: "hidden"}}
           >
             <PhotoWrapper style={{backgroundColor: "transparent"}}>
-              <Image
-                src={path}
+              <motion.img
+                layoutId={id}
+                src={thumbnailUrl}
                 alt={name}
-                fill
+                onLoad={() => {
+                  setIsLoaded(true);
+                  if (onLoad) onLoad();
+                }}
                 style={{
+                  width: "100%",
+                  height: "100%",
                   objectFit: "contain",
                   opacity: isLoaded ? 1 : 0,
                   transition: "opacity 0.6s ease-in-out",
                 }}
-                onLoadingComplete={() => {
-                  setIsLoaded(true);
-                  if (onLoad) onLoad();
-                }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </PhotoWrapper>
           </motion.div>

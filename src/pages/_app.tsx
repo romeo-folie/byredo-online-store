@@ -151,18 +151,26 @@ function AppContent({Component, pageProps}: any) {
                 <SideMenu />
                 <Cart />
                 <Search />
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={router.asPath}
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={{duration: 0.4, ease: "easeInOut"}}
-                    style={{height: "100%", width: "100%"}}
-                  >
-                    <Component {...pageProps} />
-                  </motion.div>
-                </AnimatePresence>
+                <div style={{position: "relative", width: "100%", height: "100vh", overflow: "hidden"}}>
+                  <AnimatePresence>
+                    <motion.div
+                      key={router.asPath}
+                      initial={{opacity: 0}}
+                      animate={{opacity: 1}}
+                      exit={{opacity: 0}}
+                      transition={{duration: 0.35, ease: "easeInOut"}}
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        height: "100%",
+                        width: "100%",
+                      }}
+                    >
+                      <Component {...pageProps} />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </LayoutGroup>
             </ProductState>
           </CheckoutProvider>

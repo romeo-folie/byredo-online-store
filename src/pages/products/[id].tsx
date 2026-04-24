@@ -30,6 +30,7 @@ import {
 import Head from 'next/head'
 import Image from "next/image";
 import {motion} from "framer-motion";
+import {getOptimizedUrl} from "../../utils/cloudinary";
 
 const getProductDetails = (type: string) => {
   const defaults = [
@@ -85,15 +86,12 @@ const ProductPage: React.FC<Props> = ({product}) => {
     visible: {opacity: 1, x: 0, transition: {duration: 0.6}},
   } as const;
 
-  const imageVariants = {
-    hidden: {opacity: 0, scale: 0.9},
-    visible: {opacity: 1, scale: 1, transition: {duration: 0.8, ease: "easeOut"}},
-  } as const;
-
   const detailVariants = {
     hidden: {opacity: 0, x: 20},
     visible: {opacity: 1, x: 0, transition: {duration: 0.6}},
   } as const;
+
+  const optimizedUrl = getOptimizedUrl(product.url, 1000);
 
   return (
     <Container>
@@ -123,18 +121,18 @@ const ProductPage: React.FC<Props> = ({product}) => {
       </DescSection>
       <ProductSection>
         <motion.div
-          variants={imageVariants}
-          initial="hidden"
-          animate="visible"
           style={{width: "100%", display: "flex", justifyContent: "center"}}
         >
           <ImageContainer>
-            <Image
-              src={product.url}
+            <motion.img
+              layoutId={product.id}
+              src={optimizedUrl}
               alt={product.name}
-              fill
-              style={{objectFit: "contain"}}
-              priority
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
             />
           </ImageContainer>
         </motion.div>
