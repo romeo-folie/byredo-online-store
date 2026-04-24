@@ -1,6 +1,8 @@
 import React from "react";
 import type {AppProps} from "next/app";
 import {createGlobalStyle, ThemeProvider} from "styled-components";
+import { useRouter } from "next/router";
+import { AnimatePresence, LayoutGroup } from "framer-motion";
 import Header from "../components/header/header.component";
 import Head from "next/head";
 import SideMenu from "../components/side-menu/side-menu.component";
@@ -84,6 +86,8 @@ const theme = {
 };
 
 function MyApp({Component, pageProps}: AppProps) {
+  const router = useRouter();
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -118,7 +122,13 @@ function MyApp({Component, pageProps}: AppProps) {
             <SideSubMenu />
             <Cart />
             <Search />
-            <Component {...pageProps} />
+            <LayoutGroup>
+              <div style={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
+                <AnimatePresence>
+                  <Component {...pageProps} key={router.route} />
+                </AnimatePresence>
+              </div>
+            </LayoutGroup>
           </ProductState>
         </NavState>
       </ThemeProvider>

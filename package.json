@@ -14,21 +14,25 @@
     "firebase": "^8.8.0",
     "firebase-admin": "^9.11.0",
     "firebase-functions": "^3.14.1",
+    "framer-motion": "^6.5.1",
     "next": "11.0.1",
     "next-firebase-auth": "^0.13.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.10.1",
-    "styled-components": "^5.3.0"
+    "react-hook-form": "7.10.1",
+    "styled-components": "5.3.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
-    "@types/lodash": "^4.14.171",
+    "@types/lodash": "4.14.171",
     "@types/react": "17.0.11",
-    "@types/styled-components": "^5.1.10",
+    "@types/styled-components": "5.1.10",
     "babel-plugin-styled-components": "^1.12.0",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
     "typescript": "4.3.4"
+  },
+  "overrides": {
+    "@types/node": "18.19.0"
   }
 }

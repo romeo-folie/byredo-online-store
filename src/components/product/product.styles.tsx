@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   text-align: center;
@@ -10,17 +11,18 @@ export const Container = styled.div`
   /* margin: 5px; */
 `;
 
-export const Photo = styled.img<{isHovered: boolean}>`
+export const Photo = styled(motion.img)<{$isHovered: boolean}>`
   transition: all 1.2s;
-  max-width: ${({isHovered}) => (isHovered ? "270px" : "250px")};
+  cursor: pointer;
+  max-width: ${({$isHovered}) => ($isHovered ? "270px" : "250px")};
   filter: drop-shadow(30px 15px 4px rgba(0, 0, 0, 0.1));
 
   @media only screen and (min-width: 1600px) {
-    max-width: ${({isHovered}) => (isHovered ? "350px" : "330px")};
+    max-width: ${({$isHovered}) => ($isHovered ? "350px" : "330px")};
   }
 
   @media only screen and (max-width: 1024px) {
-    max-width: ${({isHovered}) => (isHovered ? "240px" : "230px")};
+    max-width: ${({$isHovered}) => ($isHovered ? "240px" : "230px")};
   }
 `;
 
