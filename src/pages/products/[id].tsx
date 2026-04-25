@@ -63,8 +63,13 @@ const ProductPage: React.FC<Props> = ({product}) => {
   const optimizedUrl = getOptimizedUrl(product.url, 1000);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    const { body, documentElement: html } = document;
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    return () => {
+      body.style.overflow = "";
+      html.style.overflow = "";
+    };
   }, []);
 
   return (
