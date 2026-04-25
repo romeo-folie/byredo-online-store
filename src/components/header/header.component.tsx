@@ -46,6 +46,7 @@ const Header = () => {
   const {user} = useAuth();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>, opt: string) => {
+    // Prevent Link href="#" from racing with router.replace("/") → "Cancel rendering route"
     e.preventDefault();
     dispatch({type: SET_NAV_OPTION, payload: opt});
     productDispatch({type: FILTER_PRODUCTS, payload: opt});

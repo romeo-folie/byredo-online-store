@@ -41,6 +41,7 @@ const Search = () => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>, opt: string) => {
+    e.preventDefault();
     dispatch({type: SET_NAV_OPTION, payload: opt});
   };
 
