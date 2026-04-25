@@ -21,11 +21,24 @@ import SearchItem from "../search-item/search-item.component";
 import NavItem from "../nav-item/nav-item.component";
 import {useRouter} from "next/router";
 import {SEARCH_PRODUCTS, useProductState} from "../../context/product.state";
+import {motion, AnimatePresence} from "framer-motion";
+import {useState} from "react";
+
+const containerVariants = {
+  hidden: {opacity: 0},
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 const Search = () => {
   const {state, dispatch} = useNavState();
   const {productState, productDispatch} = useProductState();
   const router = useRouter();
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const {innerText} = e.target as HTMLAnchorElement;
@@ -38,7 +51,7 @@ const Search = () => {
 
   return (
     <Container isOpen={state.isSearchOpen}>
-      <Header>
+      <Header style={{ zIndex: 10 }}>
         <Brand
           onClick={() => {
             dispatch({type: TOGGLE_SEARCH});
@@ -61,18 +74,42 @@ const Search = () => {
         <CloseIcon onClick={() => dispatch({type: TOGGLE_SEARCH})} />
       </Header>
       <ContentWrap>
-        <InputWrap>
+        <InputWrap isFocused={isFocused}>
           <SearchIcon />
-          <Input placeholder="Search" onChange={handleChange} />
+          <Input 
+            placeholder="Search products..." 
+            onChange={handleChange} 
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+          />
         </InputWrap>
         <Items>
-          {productState.searchResults.length ? (
-            productState.searchResults.map((prod) => (
-              <SearchItem product={prod} key={prod.id} />
-            ))
-          ) : (
-            <Message>Nothing to show</Message>
-          )}
+          <AnimatePresence>
+            {productState.searchResults.length ? (
+              <motion.div
+                key="results-list"
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                style={{ width: "100%" }}
+              >
+                {productState.searchResults.map((prod) => (
+                  <SearchItem product={prod} key={prod.id} />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty-message"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Message>No products found</Message>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Items>
       </ContentWrap>
     </Container>

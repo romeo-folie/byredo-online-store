@@ -8,16 +8,20 @@ import {
   TOGGLE_MENU,
   useNavState,
 } from "../../context/nav.state";
+import {useProductState, FILTER_PRODUCTS} from "../../context/product.state";
 
 const CategoryList: React.FC<ICategory> = ({title, items}) => {
   const {state, dispatch} = useNavState();
+  const {productDispatch} = useProductState();
 
   const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     const {innerText} = e.target as HTMLLIElement;
     dispatch({type: SET_SUB_MENU_OPTION, payload: innerText});
+    productDispatch({type: FILTER_PRODUCTS, payload: innerText});
+
     if (window.innerWidth <= 1000) {
-      dispatch({type: TOGGLE_MENU});
-      dispatch({type: TOGGLE_SUBMENU});
+      if (state.isMenuOpen) dispatch({type: TOGGLE_MENU});
+      if (state.isSubMenuOpen) dispatch({type: TOGGLE_SUBMENU});
     }
   };
 

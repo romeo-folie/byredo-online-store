@@ -1,0 +1,25 @@
+
+> byredo-store@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.14
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+   Disabled SWC as replacement for Babel because of custom Babel configuration ".babelrc" https://nextjs.org/docs/messages/swc-disabled
+ ✓ Ready in 1836ms
+ ○ Compiling / ...
+ ✓ Compiled / in 896ms (935 modules)
+ GET / 200 in 981ms
+ GET /_next/static/webpack/9ea45d118d61a5cd.webpack.hot-update.json 404 in 1327ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 121ms
+ ○ Compiling /products/[id] ...
+   Using external babel configuration from /Users/superteam/superteam-ops/projects/byredo-online-store/.babelrc
+ ⚠ It looks like there is a custom Babel configuration that can be removed:
+ ⚠ Next.js supports the following features natively: 
+ ⚠ 	- 'styled-components' can be enabled via 'compiler.styledComponents' in 'next.config.js'
+ ⚠ For more details configuration options, please refer https://nextjs.org/docs/architecture/nextjs-compiler#supported-features
+ ✓ Compiled /products/[id] in 4.1s (943 modules)
+ GET /_next/data/development/products/2dkor8Sn8VoVaTcsiIAi.json?id=2dkor8Sn8VoVaTcsiIAi 200 in 10991ms

@@ -3,8 +3,8 @@ import {Container, Form, Title, Row, Button} from "./signin-form.styles";
 import Input from "../input/input.component";
 import Check from "../check/check.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
-import {auth} from "../../services/firebase/firebase";
 import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../../services/firebase/firebase";
 
 interface FormValues {
   email: string;

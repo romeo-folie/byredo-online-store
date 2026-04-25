@@ -24,28 +24,43 @@ const initialValues: FormValues = {
 };
 
 const UserDetailForm = () => {
+  const {checkoutData, setDetails} = useCheckout();
   const {
     handleSubmit,
     control,
     formState: {errors},
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      firstname: checkoutData.userDetails.firstName,
+      lastname: checkoutData.userDetails.lastName,
+      email: checkoutData.userDetails.email,
+    }
+  });
   const router = useRouter();
-  const {setDetails} = useCheckout();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    setDetails("userDetails", {firstName: data.firstname, lastName: data.lastname, email: data.email});
+    setDetails("userDetails", {
+      firstName: data.firstname,
+      lastName: data.lastname,
+      email: data.email,
+    });
     router.replace("/checkout/#shipping");
   };
 
   return (
-    <FormSection>
+    <FormSection id="user-details">
       <FormTitle>Who is placing this order?</FormTitle>
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <Controller
           name="email"
           control={control}
-          defaultValue={initialValues.email}
-          rules={{}}
+          rules={{
+            required: "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address"
+            }
+          }}
           render={({field}) => (
             <Input
               label="Email address"
@@ -60,8 +75,7 @@ const UserDetailForm = () => {
             <Controller
               name="firstname"
               control={control}
-              defaultValue={initialValues.firstname}
-              rules={{}}
+              rules={{required: "First name is required"}}
               render={({field}) => (
                 <Input
                   label="First Name"
@@ -76,8 +90,7 @@ const UserDetailForm = () => {
             <Controller
               name="lastname"
               control={control}
-              defaultValue={initialValues.lastname}
-              rules={{}}
+              rules={{required: "Last name is required"}}
               render={({field}) => (
                 <Input
                   label="Last Name"

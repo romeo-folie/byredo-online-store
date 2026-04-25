@@ -65,11 +65,18 @@ export const sortProducts = (
   sortBy: string
 ): IProduct[] => {
   const sorted = [...products];
-  if (sortBy === "price-asc") return sorted.sort((a, b) => +a.price - +b.price);
-  if (sortBy === "price-desc") return sorted.sort((a, b) => +b.price - +a.price);
-  if (sortBy === "name-asc") return sorted.sort((a, b) => a.name.localeCompare(b.name));
-  if (sortBy === "name-desc") return sorted.sort((a, b) => b.name.localeCompare(a.name));
-  return sorted;
+  switch (sortBy.toLowerCase()) {
+    case "price low to high":
+      return sorted.sort((a, b) => a.price - b.price);
+    case "price high to low":
+      return sorted.sort((a, b) => b.price - a.price);
+    case "name a-z":
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    case "name z-a":
+      return sorted.sort((a, b) => b.name.localeCompare(a.name));
+    default:
+      return sorted;
+  }
 };
 
 export const filterBySearch = (

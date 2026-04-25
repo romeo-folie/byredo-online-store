@@ -54,23 +54,35 @@ const radioProps = {
 };
 
 const PaymentForm = () => {
+  const {checkoutData, setDetails, isProcessing, setIsProcessing, generateOrderInfo} = useCheckout();
   const {
     handleSubmit,
     control,
     formState: {errors},
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      cardNumber: checkoutData.paymentDetails.cardNumber,
+      name: checkoutData.paymentDetails.cardName,
+      expiration: checkoutData.paymentDetails.expiry,
+      cvv: checkoutData.paymentDetails.cvv,
+    }
+  });
   const router = useRouter();
-  const {setDetails, generateOrderInfo} = useCheckout();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+    setIsProcessing(true);
     setDetails("paymentDetails", {
-      cardName: data.name,
       cardNumber: data.cardNumber,
+      cardName: data.name,
       expiry: data.expiration,
       cvv: data.cvv,
     });
-    generateOrderInfo();
-    router.push("/complete");
+
+    setTimeout(() => {
+      generateOrderInfo();
+      setIsProcessing(false);
+      router.push("/complete");
+    }, 2500);
   };
 
   return (
@@ -80,8 +92,7 @@ const PaymentForm = () => {
         <Controller
           name="paymentType"
           control={control}
-          defaultValue={initialValues.paymentType}
-          rules={{}}
+          rules={{required: "Required"}}
           render={({field}) => (
             <RadioBtnGroup
               {...field}
@@ -94,8 +105,7 @@ const PaymentForm = () => {
         <Controller
           name="name"
           control={control}
-          defaultValue={initialValues.name}
-          rules={{}}
+          rules={{required: "Name on card is required"}}
           render={({field}) => (
             <Input
               label="Name on card"
@@ -108,12 +118,18 @@ const PaymentForm = () => {
         <Controller
           name="cardNumber"
           control={control}
-          defaultValue={initialValues.cardNumber}
-          rules={{}}
+          rules={{
+            required: "Card number is required",
+            pattern: {
+              value: /^\d{16}$/,
+              message: "Invalid card number (16 digits)"
+            }
+          }}
           render={({field}) => (
             <Input
               label="Card number"
               {...field}
+              placeholder="0000 0000 0000 0000"
               error={errors?.cardNumber?.message}
             />
           )}
@@ -124,12 +140,18 @@ const PaymentForm = () => {
             <Controller
               name="expiration"
               control={control}
-              defaultValue={initialValues.expiration}
-              rules={{}}
+              rules={{
+                required: "Required",
+                pattern: {
+                  value: /^(0[1-9]|1[0-2])\/\d{2}$/,
+                  message: "MM/YY"
+                }
+              }}
               render={({field}) => (
                 <Input
                   label="Expiration"
                   {...field}
+                  placeholder="MM/YY"
                   error={errors?.expiration?.message}
                 />
               )}
@@ -140,10 +162,15 @@ const PaymentForm = () => {
             <Controller
               name="cvv"
               control={control}
-              defaultValue={initialValues.cvv}
-              rules={{}}
+              rules={{
+                required: "Required",
+                pattern: {
+                  value: /^\d{3,4}$/,
+                  message: "3-4 digits"
+                }
+              }}
               render={({field}) => (
-                <Input label="CVV" {...field} error={errors?.cvv?.message} />
+                <Input label="CVV" {...field} placeholder="000" error={errors?.cvv?.message} />
               )}
             />
           </Wrap>
@@ -152,13 +179,10 @@ const PaymentForm = () => {
         <Controller
           name="billingAddress"
           control={control}
-          defaultValue={initialValues.billingAddress}
-          rules={{}}
           render={({field}) => (
             <Check
               {...field}
               label="Use shipping address as billing address"
-              error={errors?.billingAddress?.message}
             />
           )}
         />
@@ -166,8 +190,7 @@ const PaymentForm = () => {
         <Controller
           name="acceptTerms"
           control={control}
-          defaultValue={initialValues.acceptTerms}
-          rules={{}}
+          rules={{required: "You must accept terms"}}
           render={({field}) => (
             <Check
               {...field}
@@ -177,7 +200,9 @@ const PaymentForm = () => {
           )}
         />
 
-        <Button type="submit">Complete Purchase</Button>
+        <Button type="submit" disabled={isProcessing}>
+          {isProcessing ? "Processing..." : "Complete Purchase"}
+        </Button>
       </Form>
     </FormSection>
   );
