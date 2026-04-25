@@ -121,7 +121,7 @@ const SideMenu = () => {
             </Header>
 
             <div style={{position: "relative", overflow: "hidden", flex: 1}}>
-              <AnimatePresence mode="popLayout" custom={state.isSubMenuOpen ? 1 : -1}>
+              <AnimatePresence custom={state.isSubMenuOpen ? 1 : -1}>
                 {!state.isSubMenuOpen ? (
                   <motion.div
                     key="main"

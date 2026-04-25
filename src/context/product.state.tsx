@@ -155,7 +155,6 @@ const ProductState: React.FC<{children: React.ReactNode}> = ({children}) => {
         };
       });
       dispatch({type: SET_PRODUCTS, payload: products});
-      // dispatch({type: SET_LOADING, payload: false});
     }
 
     fetchData();

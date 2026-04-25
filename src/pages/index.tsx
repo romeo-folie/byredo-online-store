@@ -54,52 +54,52 @@ const Home: React.FC = () => {
   return (
     <>
       <Container>
-      <Head>
-        <title>Shop | Byredo</title>
-      </Head>
-      <CategorySection>
-        {state.categories.map((cat, idx) => (
-          <CategoryList title={cat.title} items={cat.items} key={idx} />
-        ))}
-      </CategorySection>
-      <ProductSection>
-        <Grid>
-          <motion.div
-            variants={gridVariants}
-            initial="hidden"
-            animate={isReady ? "show" : "hidden"}
-            style={{ width: "100%", display: "contents" }}
-          >
-            {productState.filteredProducts.map((prod, idx) => (
-              <Product
-                path={prod.url}
-                name={prod.name}
-                price={prod.price}
-                id={prod.id}
-                key={prod.id}
-                onLoad={() => setLoadedImages(prev => prev + 1)}
-              />
-            ))}
-          </motion.div>
-        </Grid>
-      </ProductSection>
-      <FilterSection>
-        <Selector 
-          name="Filter" 
-          options={["All", "Perfume", "Cologne", "Oil", "Accessories"]} 
-          onChange={handleFilter}
-        />
-        <Selector 
-          name="Sort" 
-          options={["Price low to high", "Price high to low", "Name A-Z", "Name Z-A"]} 
-          onChange={handleSort}
-        />
-      </FilterSection>
-      <Title>
-        {state.activeNavOption}{" "}
-        {state.subMenuOption ? " / " + state.subMenuOption : ""}
-      </Title>
-    </Container>
+        <Head>
+          <title>Shop | Byredo</title>
+        </Head>
+        <CategorySection>
+          {state.categories.map((cat, idx) => (
+            <CategoryList title={cat.title} items={cat.items} key={idx} />
+          ))}
+        </CategorySection>
+        <ProductSection>
+          <Grid>
+            <motion.div
+              variants={gridVariants}
+              initial="hidden"
+              animate={isReady ? "show" : "hidden"}
+              style={{ width: "100%", display: "contents" }}
+            >
+              {productState.filteredProducts.map((prod, idx) => (
+                <Product
+                  path={prod.url}
+                  name={prod.name}
+                  price={prod.price}
+                  id={prod.id}
+                  key={prod.id}
+                  onLoad={() => setLoadedImages(prev => prev + 1)}
+                />
+              ))}
+            </motion.div>
+          </Grid>
+        </ProductSection>
+        <FilterSection>
+          <Selector
+            name="Filter"
+            options={["All", "Perfume", "Cologne", "Oil", "Accessories"]}
+            onChange={handleFilter}
+          />
+          <Selector
+            name="Sort"
+            options={["Price low to high", "Price high to low", "Name A-Z", "Name Z-A"]}
+            onChange={handleSort}
+          />
+        </FilterSection>
+        <Title>
+          {state.activeNavOption}{" "}
+          {state.subMenuOption ? " / " + state.subMenuOption : ""}
+        </Title>
+      </Container>
     </>
   );
 };

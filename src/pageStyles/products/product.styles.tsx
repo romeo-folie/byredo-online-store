@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   height: 100vh;
@@ -41,13 +42,11 @@ export const ProdType = styled.span`
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 1.1px;
-  /* margin-bottom: 10px; */
 `;
 
 export const ProdName = styled.h2`
   font-weight: normal;
   font-size: 2.5rem;
-  /* margin-top: 10px;*/
   margin: 13px 0 5px;
 `;
 
@@ -77,14 +76,8 @@ export const ProductSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   justify-content: center;
-  /* overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  } */
 
   @media only screen and (min-width: 1600px) {
     width: 60%;
@@ -99,9 +92,7 @@ export const ProductSection = styled.div`
     height: 70%;
     flex-direction: row;
     justify-content: center;
-    overflow-y: hidden;
-    overflow-x: auto;
-    /* padding-top: 80px; */
+    overflow: hidden;
   }
 `;
 
@@ -162,7 +153,6 @@ export const Price = styled.span`
 
   @media only screen and (max-width: 1000px) {
     font-size: 1.6rem;
-    /* width: 50%; */
   }
 `;
 

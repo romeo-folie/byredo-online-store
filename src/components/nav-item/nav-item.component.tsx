@@ -11,7 +11,7 @@ interface Props {
 
 const NavItem: React.FC<Props> = ({children, onClick, active}) => {
   return (
-    <Link href="#" passHref replace legacyBehavior>
+    <Link href="#" passHref replace>
       <Option onClick={onClick} active={active} style={{ position: "relative" }}>
         {children}
       </Option>

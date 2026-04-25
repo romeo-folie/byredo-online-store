@@ -1,6 +1,4 @@
-import { initializeApp, getApps, getApp, cert } from "firebase-admin/app";
-import { getAuth } from "firebase-admin/auth";
-import { getFirestore } from "firebase-admin/firestore";
+import * as admin from "firebase-admin";
 import _ from "lodash";
 
 const privateKey = process.env.FIREBASE_PRIVATE_KEY
@@ -9,8 +7,8 @@ const privateKey = process.env.FIREBASE_PRIVATE_KEY
     : _.replace(process.env.FIREBASE_PRIVATE_KEY, new RegExp("\\\\n", "g"), "\n")
   : "";
 
-const adminConfig = {
-  credential: cert({
+const adminConfig: admin.AppOptions = {
+  credential: admin.credential.cert({
     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID as string,
     clientEmail: process.env.FIREBASE_CLIENT_EMAIL as string,
     privateKey: privateKey,
@@ -18,9 +16,9 @@ const adminConfig = {
   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
-const adminApp = getApps().length === 0 ? initializeApp(adminConfig) : getApp();
+const adminApp = admin.apps.length === 0 ? admin.initializeApp(adminConfig) : admin.app();
 
-export const adminAuth = getAuth(adminApp);
-export const adminDb = getFirestore(adminApp);
+export const adminAuth = admin.auth(adminApp);
+export const adminDb = admin.firestore(adminApp);
 
 export default adminApp;

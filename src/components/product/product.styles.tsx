@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   text-align: center;
@@ -7,7 +8,6 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   cursor: pointer;
-  /* margin: 5px; */
 `;
 
 export const ImageContainer = styled.div`

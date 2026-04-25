@@ -11,8 +11,8 @@ import {
 import Input from "../input/input.component";
 import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
-// import FormSelector from "../form-selector/form-selector.component";
 import {useRouter} from "next/router";
+import {useCheckout} from "../../context/checkout.state";
 
 interface FormValues {
   country: string;
@@ -54,8 +54,6 @@ const radioProps = {
   ],
 };
 
-import {useCheckout} from "../../context/checkout.state";
-
 const ShippingForm = () => {
   const {checkoutData, setDetails} = useCheckout();
   const {
@@ -74,6 +72,7 @@ const ShippingForm = () => {
   });
 
   const deliveryOption = watch("deliveryOption");
+  const router = useRouter();
 
   useEffect(() => {
     const newMethod = deliveryOption === "express" ? "Express" : "Standard";
@@ -83,8 +82,6 @@ const ShippingForm = () => {
       });
     }
   }, [deliveryOption, setDetails, checkoutData.shippingDetails.method]);
-
-  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
     setDetails("shippingDetails", {

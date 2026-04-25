@@ -49,7 +49,6 @@ export const CheckoutProvider: React.FC<{children: ReactNode}> = ({children}) =>
 
   const setDetails = useCallback((section: keyof CheckoutData, data: any) => {
     setCheckoutData((prev) => {
-      // Deep compare check for simple updates to prevent loops
       if (JSON.stringify(prev[section]) === JSON.stringify({...prev[section], ...data})) {
         return prev;
       }
@@ -74,10 +73,10 @@ export const CheckoutProvider: React.FC<{children: ReactNode}> = ({children}) =>
   }, [setDetails]);
 
   const value = useMemo(() => ({
-    checkoutData, 
-    setDetails, 
-    isProcessing, 
-    setIsProcessing, 
+    checkoutData,
+    setDetails,
+    isProcessing,
+    setIsProcessing,
     generateOrderInfo
   }), [checkoutData, setDetails, isProcessing, generateOrderInfo]);
 

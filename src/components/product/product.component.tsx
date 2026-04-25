@@ -23,9 +23,7 @@ const Product: React.FC<Props> = ({id, path, name, price, onLoad}) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  // Thumbnail size for the grid
   const thumbnailUrl = getOptimizedUrl(path, 400);
-  // Full size for the detail page (preloading)
   const detailUrl = getOptimizedUrl(path, 1000);
 
   return (

@@ -73,7 +73,6 @@ const FullScreenLoader: React.FC = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          {/* Counter badge — fades out as transition begins */}
           <motion.div
             style={{
               position: "relative",
@@ -82,9 +81,6 @@ const FullScreenLoader: React.FC = () => {
               alignItems: "center",
             }}
           >
-            {/* layoutId="cart-bag": Framer Motion will animate this to the
-                header cart icon position when isLoading → false and this
-                unmounts while CartIcon mounts its version. */}
             <motion.div
               layoutId="cart-bag"
               layout

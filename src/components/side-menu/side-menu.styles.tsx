@@ -9,12 +9,10 @@ export const Container = styled.div<{isOpen: boolean}>`
   height: 100vh;
   padding: 15px;
   background-color: ${({theme}) => theme.primary};
-  position: absolute;
   overflow: hidden;
-  z-index: 200;
-  width: ${({isOpen}) => (isOpen ? "100%" : "0")};
-  left: ${({isOpen}) => (isOpen ? "0" : "-50px")};
-  transition: all 0.3s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (min-width: 1000px) {
     display: none;

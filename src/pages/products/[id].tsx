@@ -21,15 +21,16 @@ import {
 } from "../../pageStyles/products/product.styles";
 import ColorSelector from "../../components/color-selector/color-selector.component";
 import db from "../../services/firebase/firestore";
+import {collection, getDocs, doc, getDoc} from "firebase/firestore";
 import {GetStaticPaths, GetStaticProps} from "next";
 import {
   useProductState,
   IProduct,
   ADD_TO_CART,
 } from "../../context/product.state";
-import Head from 'next/head'
-import Image from "next/image";
+import Head from 'next/head';
 import {motion} from "framer-motion";
+import {useEffect} from "react";
 import {getOptimizedUrl} from "../../utils/cloudinary";
 
 const getProductDetails = (type: string) => {
@@ -70,6 +71,17 @@ interface Props {
 const ProductPage: React.FC<Props> = ({product}) => {
   const {productDispatch} = useProductState();
   const productDetails = getProductDetails(product.type);
+  const optimizedUrl = getOptimizedUrl(product.url, 1000);
+
+  useEffect(() => {
+    const {body, documentElement: html} = document;
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    return () => {
+      body.style.overflow = "";
+      html.style.overflow = "";
+    };
+  }, []);
 
   const containerVariants = {
     hidden: {opacity: 0},
@@ -90,8 +102,6 @@ const ProductPage: React.FC<Props> = ({product}) => {
     hidden: {opacity: 0, x: 20},
     visible: {opacity: 1, x: 0, transition: {duration: 0.6}},
   } as const;
-
-  const optimizedUrl = getOptimizedUrl(product.url, 1000);
 
   return (
     <Container>
@@ -143,7 +153,6 @@ const ProductPage: React.FC<Props> = ({product}) => {
           initial="hidden"
           animate="visible"
         >
-          {/* Add name and prod type here. Hide till we're in mobile mode */}
           <motion.div variants={detailVariants}>
             <Type>{product.type}</Type>
           </motion.div>
@@ -165,7 +174,7 @@ const ProductPage: React.FC<Props> = ({product}) => {
               </Row>
             </PriceRow>
           </motion.div>
-          {productDetails.map((detail, idx) => (
+          {productDetails.map((detail) => (
             <motion.div variants={detailVariants} key={detail.name}>
               <DetailRow>
                 <DetailName>{detail.name}</DetailName>
@@ -186,20 +195,10 @@ const ProductPage: React.FC<Props> = ({product}) => {
   );
 };
 
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const querySnapshot = await getDocs(collection(db, "products"));
-  const paths = querySnapshot.docs.map((doc) => {
-    return {
-      params: {id: doc.id},
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
+  const snapshot = await getDocs(collection(db, "products"));
+  const paths = snapshot.docs.map((d) => ({params: {id: d.id}}));
+  return {paths, fallback: false};
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -207,20 +206,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const docSnap = await getDoc(doc(db, "products", params.id as string));
 
   if (!docSnap.exists()) {
-    return {
-      notFound: true,
-    };
+    return {notFound: true};
   }
 
   const product = {id: params.id, ...docSnap.data()};
 
   return {
     props: {product},
-    // Re-generate the post at most once per second
-    // if a request comes in
     revalidate: 1,
   };
 };
 
 export default ProductPage;
-

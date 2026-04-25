@@ -11,6 +11,7 @@ import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import Check from "../check/check.component";
 import {useRouter} from "next/router";
+import {useCheckout} from "../../context/checkout.state";
 
 interface FormValues {
   paymentType: string;
@@ -52,8 +53,6 @@ const radioProps = {
   ],
 };
 
-import {useCheckout} from "../../context/checkout.state";
-
 const PaymentForm = () => {
   const {checkoutData, setDetails, isProcessing, setIsProcessing, generateOrderInfo} = useCheckout();
   const {
@@ -78,8 +77,7 @@ const PaymentForm = () => {
       expiry: data.expiration,
       cvv: data.cvv,
     });
-    
-    // Simulate secure payment processing
+
     setTimeout(() => {
       generateOrderInfo();
       setIsProcessing(false);

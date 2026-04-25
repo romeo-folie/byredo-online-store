@@ -25,13 +25,7 @@ const Signin: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     const {email, password} = data;
-    const {user} = await signInWithEmailAndPassword(
-      auth,
-      email.trim(),
-      password.trim()
-    );
-    // console.log("logged in user ", user);
-    // dispatch some kind of action to create the user
+    await signInWithEmailAndPassword(auth, email.trim(), password.trim());
   };
 
   return (

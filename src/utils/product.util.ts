@@ -60,21 +60,6 @@ export const getTotalPrice = (cartItems: ICartItem[]) => {
   return cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
 };
 
-export const filterBySearch = (
-  products: IProduct[],
-  input: string
-): IProduct[] => {
-  if (input === "") {
-    return [];
-  }
-
-  return products.filter(
-    (prod) =>
-      prod.name.toLowerCase().includes(input.toLowerCase()) ||
-      prod.category.toLowerCase().includes(input.toLowerCase())
-  );
-};
-
 export const sortProducts = (
   products: IProduct[],
   sortBy: string
@@ -92,4 +77,19 @@ export const sortProducts = (
     default:
       return sorted;
   }
+};
+
+export const filterBySearch = (
+  products: IProduct[],
+  input: string
+): IProduct[] => {
+  if (input === "") {
+    return [];
+  }
+
+  return products.filter(
+    (prod) =>
+      prod.name.toLowerCase().includes(input.toLowerCase()) ||
+      prod.category.toLowerCase().includes(input.toLowerCase())
+  );
 };

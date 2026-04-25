@@ -84,7 +84,7 @@ const Search = () => {
           />
         </InputWrap>
         <Items>
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {productState.searchResults.length ? (
               <motion.div
                 key="results-list"

@@ -9,6 +9,7 @@ import {
 import Input from "../input/input.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import {useRouter} from "next/router";
+import {useCheckout} from "../../context/checkout.state";
 
 interface FormValues {
   firstname: string;
@@ -21,8 +22,6 @@ const initialValues: FormValues = {
   lastname: "",
   email: "",
 };
-
-import {useCheckout} from "../../context/checkout.state";
 
 const UserDetailForm = () => {
   const {checkoutData, setDetails} = useCheckout();
