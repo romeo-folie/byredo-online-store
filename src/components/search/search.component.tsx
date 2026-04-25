@@ -40,9 +40,8 @@ const Search = () => {
   const router = useRouter();
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    const {innerText} = e.target as HTMLAnchorElement;
-    dispatch({type: SET_NAV_OPTION, payload: innerText});
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>, opt: string) => {
+    dispatch({type: SET_NAV_OPTION, payload: opt});
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -63,7 +62,7 @@ const Search = () => {
           {state.navOptions.map((opt, idx) => (
             <NavItem
               key={idx}
-              onClick={handleClick}
+              onClick={(e) => handleClick(e, opt)}
               active={state.activeNavOption === opt}
             >
               {opt}

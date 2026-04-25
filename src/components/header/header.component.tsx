@@ -45,13 +45,10 @@ const Header = () => {
   const router = useRouter();
   const {user} = useAuth();
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    // Prevent the Link's href="#" from firing a navigation that races
-    // with router.replace("/") below → avoids "Cancel rendering route" error
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>, opt: string) => {
     e.preventDefault();
-    const {innerText} = e.target as HTMLAnchorElement;
-    dispatch({type: SET_NAV_OPTION, payload: innerText});
-    productDispatch({type: FILTER_PRODUCTS, payload: innerText});
+    dispatch({type: SET_NAV_OPTION, payload: opt});
+    productDispatch({type: FILTER_PRODUCTS, payload: opt});
     router.replace("/");
   };
 
@@ -67,7 +64,7 @@ const Header = () => {
         {state.navOptions.map((opt, idx) => (
           <NavItem
             key={idx}
-            onClick={handleClick}
+            onClick={(e) => handleClick(e, opt)}
             active={state.activeNavOption === opt}
           >
             {opt}
