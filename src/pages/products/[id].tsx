@@ -30,6 +30,7 @@ import {
 } from "../../context/product.state";
 import Head from 'next/head';
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import {getOptimizedUrl} from "../../utils/cloudinary";
 
 const pageVariants = {
@@ -59,8 +60,12 @@ interface Props {
 
 const ProductPage: React.FC<Props> = ({product}) => {
   const {productDispatch} = useProductState();
-
   const optimizedUrl = getOptimizedUrl(product.url, 1000);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   return (
     <motion.div
