@@ -6,6 +6,7 @@ export const Container = styled.div`
   width: 100%;
   background-color: ${({theme}) => theme.primary};
   display: flex;
+  overflow: hidden;
 
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
