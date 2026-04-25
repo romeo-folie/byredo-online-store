@@ -78,14 +78,8 @@ export const ProductSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   justify-content: center;
-  /* overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  } */
 
   @media only screen and (min-width: 1600px) {
     width: 60%;
