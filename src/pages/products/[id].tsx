@@ -21,6 +21,7 @@ import {
 } from "../../pageStyles/products/product.styles";
 import ColorSelector from "../../components/color-selector/color-selector.component";
 import db from "../../services/firebase/firestore";
+import {collection, getDocs, doc, getDoc} from "firebase/firestore";
 import {GetStaticPaths, GetStaticProps} from "next";
 import {
   useProductState,
@@ -120,34 +121,16 @@ const ProductPage: React.FC<Props> = ({product}) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await db.collection("products").get();
-  const paths = response.docs.map((doc) => {
-    return {
-      params: {id: doc.id},
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
+  const snapshot = await getDocs(collection(db, "products"));
+  const paths = snapshot.docs.map((d) => ({params: {id: d.id}}));
+  return {paths, fallback: false};
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const params = context.params!;
-  const response = await db
-    .collection("products")
-    .doc(params.id as string)
-    .get();
-
-  const product = {id: params.id, ...response.data()};
-
-  return {
-    props: {product},
-    // Re-generate the post at most once per second
-    // if a request comes in
-    revalidate: 1,
-  };
+  const snapshot = await getDoc(doc(db, "products", params.id as string));
+  const product = {id: params.id, ...snapshot.data()};
+  return {props: {product}, revalidate: 1};
 };
 
 export default ProductPage;

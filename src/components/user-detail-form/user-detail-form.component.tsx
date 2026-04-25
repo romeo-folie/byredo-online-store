@@ -9,6 +9,7 @@ import {
 import Input from "../input/input.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import {useRouter} from "next/router";
+import {useCheckout} from "../../context/checkout.state";
 
 interface FormValues {
   firstname: string;
@@ -29,9 +30,10 @@ const UserDetailForm = () => {
     formState: {errors},
   } = useForm<FormValues>();
   const router = useRouter();
+  const {setDetails} = useCheckout();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log(data);
+    setDetails("userDetails", {firstName: data.firstname, lastName: data.lastname, email: data.email});
     router.replace("/checkout/#shipping");
   };
 

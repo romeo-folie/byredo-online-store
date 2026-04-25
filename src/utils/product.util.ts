@@ -60,6 +60,18 @@ export const getTotalPrice = (cartItems: ICartItem[]) => {
   return cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
 };
 
+export const sortProducts = (
+  products: IProduct[],
+  sortBy: string
+): IProduct[] => {
+  const sorted = [...products];
+  if (sortBy === "price-asc") return sorted.sort((a, b) => +a.price - +b.price);
+  if (sortBy === "price-desc") return sorted.sort((a, b) => +b.price - +a.price);
+  if (sortBy === "name-asc") return sorted.sort((a, b) => a.name.localeCompare(b.name));
+  if (sortBy === "name-desc") return sorted.sort((a, b) => b.name.localeCompare(a.name));
+  return sorted;
+};
+
 export const filterBySearch = (
   products: IProduct[],
   input: string

@@ -10,6 +10,7 @@ import Input from "../input/input.component";
 import Check from "../check/check.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import {auth} from "../../services/firebase/firebase";
+import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 
 interface FormValues {
   fullname: string;
@@ -35,14 +36,9 @@ const Signup: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     const {fullname, email, password} = data;
-    const {user} = await auth.createUserWithEmailAndPassword(
-      email.trim(),
-      password.trim()
-    );
+    const {user} = await createUserWithEmailAndPassword(auth, email.trim(), password.trim());
     if (user) {
-      await user.updateProfile({
-        displayName: fullname,
-      });
+      await updateProfile(user, {displayName: fullname});
     }
   };
 

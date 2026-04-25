@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import Logo from "../../../public/vectors/logo.svg";
 import Person from "../../../public/vectors/person-outline.svg";
 import Search from "../../../public/vectors/search-outline.svg";
@@ -37,11 +38,11 @@ export const Brand = styled(Logo)`
 export const Menu = styled.nav`
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
 
 export const UserIcon = styled(Person)`
   width: 25px;
-  margin-right: 18px;
   margin-top: 3px;
   z-index: 18;
   cursor: pointer;
@@ -53,7 +54,6 @@ export const UserIcon = styled(Person)`
 
 export const ExitIcon = styled(Exit)`
   width: 25px;
-  margin-right: 15px;
   margin-top: 3px;
   z-index: 18;
   cursor: pointer;
@@ -65,7 +65,6 @@ export const ExitIcon = styled(Exit)`
 
 export const SearchIcon = styled(Search)`
   width: 25px;
-  margin-right: 18px;
   margin-top: 5px;
   cursor: pointer;
 
@@ -77,6 +76,26 @@ export const SearchIcon = styled(Search)`
 export const MenuIcon = styled(MIcon)`
   width: 30px;
   cursor: pointer;
+
+  @media only screen and (min-width: 1001px) {
+    display: none;
+  }
+`;
+
+export const BrandWrapper = styled(motion.div)`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+export const MenuIconWrapper = styled(motion.div)`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 
   @media only screen and (min-width: 1001px) {
     display: none;

@@ -10,8 +10,8 @@ import {
 import Input from "../input/input.component";
 import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
-// import FormSelector from "../form-selector/form-selector.component";
 import {useRouter} from "next/router";
+import {useCheckout} from "../../context/checkout.state";
 
 interface FormValues {
   country: string;
@@ -60,9 +60,16 @@ const ShippingForm = () => {
     formState: {errors},
   } = useForm<FormValues>();
   const router = useRouter();
+  const {setDetails} = useCheckout();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log(data);
+    setDetails("shippingDetails", {
+      address: data.address,
+      city: data.city,
+      zipCode: data.zipCode,
+      country: data.country,
+      method: data.deliveryOption,
+    });
     router.replace("/checkout/#payment");
   };
 

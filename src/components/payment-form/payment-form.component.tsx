@@ -11,6 +11,7 @@ import RadioBtnGroup from "../radio-btn-group/radio-btn-group.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import Check from "../check/check.component";
 import {useRouter} from "next/router";
+import {useCheckout} from "../../context/checkout.state";
 
 interface FormValues {
   paymentType: string;
@@ -59,9 +60,16 @@ const PaymentForm = () => {
     formState: {errors},
   } = useForm<FormValues>();
   const router = useRouter();
+  const {setDetails, generateOrderInfo} = useCheckout();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log(data);
+    setDetails("paymentDetails", {
+      cardName: data.name,
+      cardNumber: data.cardNumber,
+      expiry: data.expiration,
+      cvv: data.cvv,
+    });
+    generateOrderInfo();
     router.push("/complete");
   };
 

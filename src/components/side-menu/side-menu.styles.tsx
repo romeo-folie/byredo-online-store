@@ -3,17 +3,16 @@ import Logo from "../../../public/vectors/logo.svg";
 import X from "../../../public/vectors/x.svg";
 import Insta from "../../../public/vectors/instagram.svg";
 import Fb from "../../../public/vectors/facebook.svg";
+import ChevronLeft from "../../../public/vectors/chevron-left.svg";
 
 export const Container = styled.div<{isOpen: boolean}>`
   height: 100vh;
   padding: 15px;
   background-color: ${({theme}) => theme.primary};
-  position: absolute;
   overflow: hidden;
-  z-index: 200;
-  width: ${({isOpen}) => (isOpen ? "100%" : "0")};
-  left: ${({isOpen}) => (isOpen ? "0" : "-50px")};
-  transition: all 0.3s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (min-width: 1000px) {
     display: none;
@@ -76,4 +75,28 @@ export const FacebookIcon = styled(Fb)``;
 
 export const SocialWrap = styled.div`
   display: flex;
+`;
+
+export const TitleWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const ArrowIcon = styled(ChevronLeft)`
+  cursor: pointer;
+  stroke: rgba(0, 0, 0, 0.6);
+`;
+
+export const Title = styled.span`
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: capitalize;
+`;
+
+export const SubMenuWrapper = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 `;

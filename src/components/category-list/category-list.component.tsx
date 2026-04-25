@@ -15,8 +15,10 @@ const CategoryList: React.FC<ICategory> = ({title, items}) => {
   const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     const {innerText} = e.target as HTMLLIElement;
     dispatch({type: SET_SUB_MENU_OPTION, payload: innerText});
-    dispatch({type: TOGGLE_MENU});
-    dispatch({type: TOGGLE_SUBMENU});
+    if (window.innerWidth <= 1000) {
+      dispatch({type: TOGGLE_MENU});
+      dispatch({type: TOGGLE_SUBMENU});
+    }
   };
 
   return (

@@ -18,16 +18,21 @@ import {
   TOGGLE_CART,
   TOGGLE_SEARCH,
 } from "../context/nav.state";
-import {
-  withAuthUser,
-  withAuthUserTokenSSR,
-  AuthAction,
-} from "next-firebase-auth";
 import Head from "next/head";
+import {useAuth} from "../context/AuthContext";
 
 const Auth = () => {
   const {dispatch} = useNavState();
   const router = useRouter();
+  const {user, loading} = useAuth();
+
+  React.useEffect(() => {
+    if (!loading && user) {
+      router.replace("/");
+    }
+  }, [user, loading, router]);
+
+  if (loading || user) return null;
 
   return (
     <Container>
@@ -53,9 +58,4 @@ const Auth = () => {
   );
 };
 
-export const getServerSideProps = withAuthUserTokenSSR({
-  whenAuthed: AuthAction.REDIRECT_TO_APP,
-  whenUnauthed: AuthAction.RENDER,
-})();
-
-export default withAuthUser({whenAuthed: AuthAction.REDIRECT_TO_APP})(Auth);
+export default Auth;

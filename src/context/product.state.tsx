@@ -11,7 +11,9 @@ import {
   filterByCategory,
   clearProductFromCart,
   filterBySearch,
+  sortProducts,
 } from "../utils/product.util";
+import {collection, getDocs} from "firebase/firestore";
 import db from "../services/firebase/firestore";
 
 export interface IProduct {
@@ -45,6 +47,7 @@ export const CLEAR_FROM_CART = "clearFromCart";
 export const CLEAR_CART = "clearCart";
 export const SET_LOADING = "setLoading";
 export const SEARCH_PRODUCTS = "searchProducts";
+export const SORT_PRODUCTS = "sortProducts";
 
 type ProductAction =
   | {type: typeof SET_PRODUCTS; payload: IProduct[]}
@@ -54,7 +57,8 @@ type ProductAction =
   | {type: typeof CLEAR_FROM_CART; payload: string}
   | {type: typeof CLEAR_CART}
   | {type: typeof SET_LOADING; payload: boolean}
-  | {type: typeof SEARCH_PRODUCTS; payload: string};
+  | {type: typeof SEARCH_PRODUCTS; payload: string}
+  | {type: typeof SORT_PRODUCTS; payload: string};
 
 interface ContextType {
   productState: IState;
@@ -94,6 +98,11 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
         ...state,
         filteredProducts: filterByCategory(state.products, action.payload),
       };
+    case SORT_PRODUCTS:
+      return {
+        ...state,
+        filteredProducts: sortProducts(state.filteredProducts, action.payload),
+      };
     case ADD_TO_CART:
       return {
         ...state,
@@ -124,14 +133,14 @@ const ProductReducer = (state: IState, action: ProductAction): IState => {
   }
 };
 
-const ProductState: React.FC = ({children}) => {
+const ProductState: React.FC<{children: React.ReactNode}> = ({children}) => {
   const [state, dispatch] = useReducer(ProductReducer, initialState);
 
   useEffect(() => {
     async function fetchData() {
       dispatch({type: SET_LOADING, payload: true});
-      const response = await db.collection("products").get();
-      const products = response.docs.map((doc) => {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const products = querySnapshot.docs.map((doc) => {
         const {id} = doc;
         const {name, price, type, category, size, url} = doc.data();
 
@@ -146,7 +155,6 @@ const ProductState: React.FC = ({children}) => {
         };
       });
       dispatch({type: SET_PRODUCTS, payload: products});
-      // dispatch({type: SET_LOADING, payload: false});
     }
 
     fetchData();

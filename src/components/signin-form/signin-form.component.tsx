@@ -4,6 +4,7 @@ import Input from "../input/input.component";
 import Check from "../check/check.component";
 import {useForm, Controller, SubmitHandler} from "react-hook-form";
 import {auth} from "../../services/firebase/firebase";
+import {signInWithEmailAndPassword} from "firebase/auth";
 
 interface FormValues {
   email: string;
@@ -24,12 +25,7 @@ const Signin: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     const {email, password} = data;
-    const {user} = await auth.signInWithEmailAndPassword(
-      email.trim(),
-      password.trim()
-    );
-    // console.log("logged in user ", user);
-    // dispatch some kind of action to create the user
+    await signInWithEmailAndPassword(auth, email.trim(), password.trim());
   };
 
   return (

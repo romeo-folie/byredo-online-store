@@ -1,2 +1,2 @@
-import firebase from "./firebase";
-export default firebase.firestore();
+import { db } from "./firebase";
+export default db;
