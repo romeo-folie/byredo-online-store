@@ -36,5 +36,8 @@
   },
   "overrides": {
     "@types/node": "18.19.0"
+  },
+  "resolutions": {
+    "@types/node": "18.19.0"
   }
 }
